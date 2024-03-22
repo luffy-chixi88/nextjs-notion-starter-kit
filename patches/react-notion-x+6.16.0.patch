@@ -1,0 +1,18 @@
+diff --git a/node_modules/react-notion-x/.DS_Store b/node_modules/react-notion-x/.DS_Store
+new file mode 100644
+index 0000000..c7437fa
+Binary files /dev/null and b/node_modules/react-notion-x/.DS_Store differ
+diff --git a/node_modules/react-notion-x/build/index.js b/node_modules/react-notion-x/build/index.js
+index a18bcfd..9aa6d65 100644
+--- a/node_modules/react-notion-x/build/index.js
++++ b/node_modules/react-notion-x/build/index.js
+@@ -2410,7 +2410,8 @@ var Block = (props) => {
+       if (components.Callout) {
+         return /* @__PURE__ */ React28.createElement(components.Callout, {
+           block,
+-          className: blockId
++          className: blockId,
++          children
+         });
+       } else {
+         return /* @__PURE__ */ React28.createElement("div", {

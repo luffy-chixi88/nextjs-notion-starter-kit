@@ -4,6 +4,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 })
 
 module.exports = withBundleAnalyzer({
+  // output: 'standalone',
   staticPageGenerationTimeout: 300,
   images: {
     domains: [

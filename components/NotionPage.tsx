@@ -27,6 +27,9 @@ import { PageAside } from './PageAside'
 import { PageHead } from './PageHead'
 import styles from './styles.module.css'
 
+
+import { PageIcon, Text } from 'react-notion-x'
+
 // -----------------------------------------------------------------------------
 // dynamic imports for optional components
 // -----------------------------------------------------------------------------
@@ -141,6 +144,47 @@ const propertyTextValue = (
   return defaultFn()
 }
 
+const Header = (props) => {
+  const { children } = props
+  return (
+    <>
+    <h1>this is a custom component</h1>
+    {children}
+    </>
+  )
+}
+
+const Callout = (props) => {
+  const { block, className, children } = props
+  const currentTitle = (block.properties?.title?.[0]?.[0] || '').split('\n')
+  if(currentTitle.length) console.log('firstTitle', currentTitle[0])
+  const title = currentTitle[0].split('|')
+  const query = new URLSearchParams(title[1])
+  switch(title[0]){
+    case 'Header':
+      return <Header {...props} className={cs(props.className, query.get('class'))} />
+  }
+  return (
+    <div
+      className={cs(
+        'notion-callout',
+        query.get('class'),
+        block.format?.block_color &&
+          `notion-${block.format?.block_color}_co`,
+        className
+      )}
+    >
+      <div className='notion-callout-content'>
+        <PageIcon block={block} />
+        <div className='notion-callout-text'>
+          <Text value={block.properties?.title} block={block} />
+          {children}
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export const NotionPage: React.FC<types.PageProps> = ({
   site,
   recordMap,
@@ -160,6 +204,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
       Pdf,
       Modal,
       Tweet,
+      Callout,
       Header: NotionPageHeader,
       propertyLastEditedTimeValue,
       propertyTextValue,
