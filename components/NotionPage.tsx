@@ -8,10 +8,10 @@ import cs from 'classnames'
 import { PageBlock } from 'notion-types'
 import { formatDate, getBlockTitle, getPageProperty } from 'notion-utils'
 import BodyClassName from 'react-body-classname'
-import { NotionRenderer } from 'react-notion-x'
+import { NotionRenderer, Text } from 'react-notion-x'
 import TweetEmbed from 'react-tweet-embed'
 import { useSearchParam } from 'react-use'
-
+import { useBlockType } from '@/hooks/useBlockType'
 import * as config from '@/lib/config'
 import * as types from '@/lib/types'
 import { mapImageUrl } from '@/lib/map-image-url'
@@ -21,14 +21,15 @@ import { useDarkMode } from '@/lib/use-dark-mode'
 
 import { Footer } from './Footer'
 import { Loading } from './Loading'
-import { NotionPageHeader } from './NotionPageHeader'
 import { Page404 } from './Page404'
 import { PageAside } from './PageAside'
 import { PageHead } from './PageHead'
 import styles from './styles.module.css'
 
+import Nav from '@/components/Nav'
+// import { NotionPageHeader } from './NotionPageHeader'
 
-import { PageIcon, Text } from 'react-notion-x'
+
 
 // -----------------------------------------------------------------------------
 // dynamic imports for optional components
@@ -144,42 +145,38 @@ const propertyTextValue = (
   return defaultFn()
 }
 
-const Header = (props) => {
-  const { children } = props
-  return (
-    <>
-    <h1>this is a custom component</h1>
-    {children}
-    </>
-  )
-}
 
 const Callout = (props) => {
   const { block, className, children } = props
-  const currentTitle = (block.properties?.title?.[0]?.[0] || '').split('\n')
-  if(currentTitle.length) console.log('firstTitle', currentTitle[0])
-  const title = currentTitle[0].split('|')
-  const query = new URLSearchParams(title[1])
-  switch(title[0]){
-    case 'Header':
-      return <Header {...props} className={cs(props.className, query.get('class'))} />
-  }
+
+  const titleInfo = useBlockType({ block })
+
+  const content = React.useMemo(() => {
+    switch(titleInfo.title){
+      case 'Nav':
+        return <Nav {...props} meta={titleInfo.meta} />
+      default:
+        return (
+          <div className='notion-callout-text'>
+            <Text value={block.properties?.title} block={block} />
+            {children}
+          </div>
+        )
+    }
+  }, [block, props, titleInfo, children])
+
   return (
     <div
       className={cs(
         'notion-callout',
-        query.get('class'),
+        titleInfo.meta?.className,
         block.format?.block_color &&
           `notion-${block.format?.block_color}_co`,
         className
       )}
     >
       <div className='notion-callout-content'>
-        <PageIcon block={block} />
-        <div className='notion-callout-text'>
-          <Text value={block.properties?.title} block={block} />
-          {children}
-        </div>
+       {content}
       </div>
     </div>
   )
@@ -205,7 +202,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
       Modal,
       Tweet,
       Callout,
-      Header: NotionPageHeader,
+      Header: () => null,  // 导航读notion模块 NotionPageHeader
       propertyLastEditedTimeValue,
       propertyTextValue,
       propertyDateValue
