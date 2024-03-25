@@ -403,3 +403,11 @@
 .notion-equation.notion-equation-block{
   align-items: center;
 }
+
+/* amir add */
+.notion-callout{
+  border: 0;
+}
+.notion-callout-content .notion-page-icon-inline{
+  display: none;
+}
