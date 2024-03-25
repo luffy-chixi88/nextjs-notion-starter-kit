@@ -151,8 +151,6 @@ const Callout = (props) => {
 
   const titleInfo = useBlockType({ block })
 
-  if(titleInfo.title) console.log('titleInfo', titleInfo, block)
-
   const content = React.useMemo(() => {
     switch(titleInfo.title){
       case 'Nav':
