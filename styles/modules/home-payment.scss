@@ -1,3 +1,52 @@
-.payment{
-  background-color: #ddd;
+.notion-callout.pt-payment{
+  padding: 40px 0;
+  background-color: #f6f8fb;
+  &>.notion-callout-content>.notion-callout-text>.notion-row{
+
+    &>.notion-column:nth-child(3){
+      background-color: #fff;
+      margin-left: 24px;
+      width: 703px !important;
+      height: 640px;
+      border-radius: 8px;
+      padding: 0 32px;
+      justify-content: center;
+    }
+    .notion-column{
+      padding: 0;
+    }
+  }
+  .notion-spacer{
+    display: none;
+  }
+  figcaption{
+    display: none;
+  }
+  figure{
+    margin: 0;
+  }
+  img[alt="payment-customer-img"]{
+    width: 496px;
+    height: 640px;
+  }
+  img[alt="payment-example-img"]{
+    width: 242px;
+    height: 495px;
+  }
+  .notion-callout{
+  }
+  .notion-callout .notion-callout-content{
+    padding: 0;
+  }
+}
+
+.notion-callout.pt-rowImgs{
+  &>.notion-callout-content>.notion-callout-text>.notion-row{
+    .notion-spacer{
+      display: none;
+    }
+    &>.notion-column{
+      width: 64px !important;
+    }
+  }
 }
