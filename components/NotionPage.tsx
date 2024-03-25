@@ -86,7 +86,7 @@ const Collection = dynamic(() =>
 const FormatCollection = (props) => {
   const { block } = props
   const { recordMap } = useNotionContext()
-  const componentName = recordMap.collection_view[block.view_ids[0]]?.value?.name
+  const componentName = recordMap.collection_view?.[block.view_ids?.[0]]?.value?.name
   switch(componentName){
     case 'PasstoScence':
       return <PasstoScence {...props} />

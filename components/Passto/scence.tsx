@@ -30,7 +30,6 @@ export function PasstoScence(props){
             return res
         })
     }, [blockIds, recordMap, schema])
-    console.log('list', list)
 
     return (
         <div className={classNames(className)}>
