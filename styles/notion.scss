@@ -249,7 +249,12 @@
   position: relative;
   transition: unset;
   border: none;
-  b{
+  opacity: 1;
+  
+  &:hover {
+    opacity: 0.7;
+  }
+  b {
     display: inline-flex;
     align-items: center;
     justify-content: center;
