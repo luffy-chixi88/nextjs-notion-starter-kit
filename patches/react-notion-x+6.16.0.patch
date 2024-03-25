@@ -1,11 +1,22 @@
 diff --git a/node_modules/react-notion-x/.DS_Store b/node_modules/react-notion-x/.DS_Store
 new file mode 100644
-index 0000000..c7437fa
+index 0000000..18f574e
 Binary files /dev/null and b/node_modules/react-notion-x/.DS_Store differ
 diff --git a/node_modules/react-notion-x/build/index.js b/node_modules/react-notion-x/build/index.js
-index a18bcfd..9aa6d65 100644
+index a18bcfd..ddef15b 100644
 --- a/node_modules/react-notion-x/build/index.js
 +++ b/node_modules/react-notion-x/build/index.js
+@@ -1720,8 +1720,8 @@ var Asset = ({ block, zoomable = true, children }) => {
+       source = (_i = (_h = (_g = block.properties) == null ? void 0 : _g.source) == null ? void 0 : _h[0]) == null ? void 0 : _i[0];
+     }
+     const src = mapImageUrl(source, block);
+-    const caption = getTextContent((_j = block.properties) == null ? void 0 : _j.caption);
+-    const alt = caption || "notion image";
++    const caption = getTextContent((_j = block.properties) == null ? void 0 : _j.alt_text);
++    const alt = caption || "passto image";
+     content = /* @__PURE__ */ React19.createElement(LazyImage, {
+       src,
+       alt,
 @@ -2410,7 +2410,8 @@ var Block = (props) => {
        if (components.Callout) {
          return /* @__PURE__ */ React28.createElement(components.Callout, {
