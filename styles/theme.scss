@@ -7,6 +7,9 @@
 .notion-h3 {
     font-size: 24px;
 }
+.notion-text {
+    color: #666666;
+}
 
 .pt-nav{
     padding: 0;
@@ -130,5 +133,42 @@
             }
         }
     }
-   
+}
+
+.pt-manager {
+    > .notion-callout-content > .notion-callout-text {
+        
+        .pt-demo {
+            > .notion-callout-content {
+                padding: 0;
+
+                .notion-row {
+                    .notion-spacer {
+                        width: 100px;
+                    }
+                    .notion-column {
+                        width: auto !important;
+                        justify-content: flex-end;
+                        padding: 0;
+                    }
+                }
+            }
+        }
+        .notion-link { 
+            b {
+                height: 40px;
+                padding: 8px 26px;
+                background-color: var(--light-primary);
+            }
+        }
+        .notion-asset-wrapper-image {
+            margin-top: 32px;
+            margin-bottom: 48px;
+        }
+        > .notion-row > .notion-column {
+            .notion-asset-wrapper-image {
+                flex-direction: row;
+            }
+        }
+    }
 }
