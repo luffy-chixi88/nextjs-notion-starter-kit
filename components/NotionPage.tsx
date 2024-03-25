@@ -25,7 +25,9 @@ import { Page404 } from './Page404'
 import { PageAside } from './PageAside'
 import { PageHead } from './PageHead'
 import styles from './styles.module.css'
+import { useNotionContext } from 'react-notion-x'
 
+import { PasstoScence } from '@/components/Passto/scence'
 import Nav from '@/components/Nav'
 // import { NotionPageHeader } from './NotionPageHeader'
 
@@ -80,6 +82,20 @@ const Collection = dynamic(() =>
     (m) => m.Collection
   )
 )
+
+const FormatCollection = (props) => {
+  const { block } = props
+  const { recordMap } = useNotionContext()
+  const componentName = recordMap.collection_view[block.view_ids[0]]?.value?.name
+  switch(componentName){
+    case 'PasstoScence':
+      return <PasstoScence {...props} />
+    default:
+      return <Collection {...props} />
+  }
+}
+
+
 const Equation = dynamic(() =>
   import('react-notion-x/build/third-party/equation').then((m) => m.Equation)
 )
@@ -196,7 +212,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
       nextImage: Image,
       nextLink: Link,
       Code,
-      Collection,
+      Collection: FormatCollection,
       Equation,
       Pdf,
       Modal,
