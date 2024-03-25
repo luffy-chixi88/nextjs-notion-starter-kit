@@ -30,7 +30,6 @@ export async function getPreviewImageMap(
       }
     )
   )
-
   return previewImagesMap
 }
 
