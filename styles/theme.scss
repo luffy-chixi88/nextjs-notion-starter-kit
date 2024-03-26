@@ -95,7 +95,7 @@
                         .notion-column{
                             width: 44px !important;
                             margin-right: 48px;
-                        }   
+                        }
                     }
                 }
                 &:nth-child(3){
@@ -111,7 +111,7 @@
                         }
                     }
                 }
-               
+
             }
             .notion-gray{
                 color: rgba(255, 255, 255, 0.5);
@@ -140,12 +140,31 @@
     }
 }
 
+.pt-banner-reverse.pt-banner{
+  .notion-callout-content{
+      > .notion-callout-text > .notion-row{
+          > .notion-column{
+              &:nth-child(3){
+                  padding-left: 40px;
+                  background: none;
+              }
+              &:first-child{
+                  padding: 120px 0;
+                  background: #0E31CC url(/banner-bg.png);
+                  background-size: cover;
+              }
+
+          }
+      }
+  }
+}
+
 .pt-manager {
     padding-top: 120px;
     padding-bottom: 106px;
 
     > .notion-callout-content > .notion-callout-text {
-        
+
         .notion-h {
             margin-top: 0;
         }
@@ -168,7 +187,7 @@
                 }
             }
         }
-        .notion-link { 
+        .notion-link {
             b {
                 height: 40px;
                 padding: 8px 26px;
@@ -188,7 +207,7 @@
                 }
             }
         }
-        
+
     }
 }
 
@@ -198,7 +217,7 @@
     padding-bottom: 120px;
 
     > .notion-callout-content > .notion-callout-text {
-        
+
         .notion-h, .notion-text {
             color: #FFFFFF;
             padding: 0;
@@ -226,12 +245,12 @@
                 padding: 0;
 
                 > .notion-callout-text {
-                
+
                     display: flex;
                     flex-direction: column;
                     align-items: flex-end;
                     text-align: right;
-    
+
                     .notion-h1 {
                         width: 300px;
                         margin-top: 8px;
@@ -246,11 +265,11 @@
         }
         .list {
             margin-top: 64px;
-            
+
             > .notion-callout-content {
                 padding: 0;
 
-                > .notion-callout-text > .notion-row { 
+                > .notion-callout-text > .notion-row {
                     justify-content: space-between;
 
                     .notion-spacer {
@@ -262,7 +281,7 @@
                         height: 100%;
 
                         > .notion-callout-content > .notion-callout-text {
-                            
+
                             .notion-h3 {
                                 margin-top: 30px;
                                 margin-bottom: 8px;
@@ -280,7 +299,7 @@
 
 .pt-contact {
     background-color: #101018;
-    
+
     > .notion-callout-content {
         max-width: 1472px;
         padding: 0;
@@ -451,12 +470,12 @@
 
                     > .notion-callout-content {
                         padding: 0;
-                        
+
                         > .notion-callout-text {
-    
+
                             > .notion-asset-wrapper-image {
                                 margin: 0;
-    
+
                                 > div {
                                     width: auto !important;
                                 }
@@ -505,7 +524,7 @@
                 > .notion-column {
                     width: calc(50% + 16px) !important;
                     justify-content: center;
-                    
+
                     > .notion-callout > .notion-callout-content {
                         .notion-h {
                             margin-top: 0;
@@ -514,7 +533,7 @@
                         .notion-list {
                             list-style-type: none;
                             padding-left: 0;
-                            
+
                             li {
                                 padding: 0;
                                 line-height: 32px;
@@ -552,7 +571,7 @@
                         }
                     }
                 }
-            } 
+            }
         }
     }
 }
