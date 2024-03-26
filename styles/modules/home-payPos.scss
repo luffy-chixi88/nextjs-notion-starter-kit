@@ -1,0 +1,46 @@
+.notion-callout.pt-payPos{
+  padding-bottom: 40px;
+  background-color: #f6f8fb;
+  .notion-spacer{
+    display: none;
+  }
+  img[alt="payment-pos-img"]{
+    margin-left: 12px;
+  }
+  &>.notion-callout-content{
+
+    .notion-asset-wrapper-image{
+      margin: 0;
+    }
+    &>.notion-callout-text>.notion-row{
+      padding: 0;
+
+      &>.notion-column:first-of-type{
+        background-color: #fff;
+        justify-content: center;
+        flex: 1;
+        margin-right: 24px;
+        border-radius: 8px;
+        padding-left: 32px;
+      }
+
+      &>.notion-column{
+        padding-top: 0;
+        padding-bottom: 0;
+        width: auto !important;
+        justify-content: center;
+
+        .notion-h2{
+          margin-top: 0;
+        }
+        .notion-column{
+          justify-content: center;
+        }
+      }
+
+      .notion-callout-content{
+        padding: 0;
+      }
+    }
+  }
+}
