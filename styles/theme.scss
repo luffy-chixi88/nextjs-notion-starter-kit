@@ -146,7 +146,7 @@
         .notion-h1 {
             margin-bottom: 40px;
         }
-        .pt-demo {
+        .demo {
             > .notion-callout-content {
                 padding: 0;
 
@@ -173,7 +173,7 @@
             margin-top: 32px;
             margin-bottom: 48px;
         }
-        .pt-list {
+        .list {
             > .notion-callout-content > .notion-callout-text > .notion-row > .notion-column {
                 .notion-asset-wrapper-image {
                     flex-direction: row;
@@ -207,10 +207,12 @@
         }
         > .notion-row {
             .notion-column {
-                justify-content: center;
+                flex-direction: row;
+                justify-content: flex-end;
+                align-items: center;
             }
         }
-        .pt-right {
+        .right {
             width: 480px;
 
             > .notion-callout-content > .notion-callout-text {
@@ -230,7 +232,7 @@
                 }
             }
         }
-        .pt-list {
+        .list {
             margin-top: 64px;
             
             > .notion-callout-content {
@@ -290,28 +292,35 @@
                 color: var(--primary);
             }
             > .notion-column {
+                padding: 0;
 
-                .pt-left {
+                .left {
                     height: 100%;
-                    padding: 120px 72px;
+                    padding: 110px 80px;
 
                     &.notion-blue_background_co {
                         background-color: #0E31CC;
                     }
-                    > .notion-callout-content > .notion-callout-text {
+                    > .notion-callout-content {
+                        max-width: 375px;
 
-                        .notion-h {
-                            margin: 0;
-                        }
-                        .notion-text {
-                            font-size: 20px;
-                        }
-                        div:last-child {
-                            margin-top: 20px;
+                        > .notion-callout-text {
+
+                            .notion-h {
+                                margin-top: 0;
+                                margin-bottom: 16px;
+                            }
+                            .notion-text {
+                                font-size: 20px;
+                                padding: 0;
+                            }
+                            div:last-child {
+                                margin-top: 40px;
+                            }
                         }
                     }
                 }
-                .pt-right {
+                .right {
                     height: 100%;
                     display: flex;
                     justify-content: center;
@@ -320,13 +329,18 @@
 
                         .notion-asset-wrapper-image {
                             flex-direction: row;
+                            img {
+                                width: 40px;
+                                height: 40px;
+                            }
                         }
-
                         .notion-h3 {
                             font-weight: 400;
                             margin-bottom: 0;
                         }
-
+                        .notion-link {
+                            color: #FFFFFF;
+                        }
                     }
                 }
             }
