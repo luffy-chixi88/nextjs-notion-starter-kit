@@ -1,6 +1,7 @@
 import React from 'react'
 import clsx from 'classnames'
 import Link from 'next/link'
+import { useNotionContext } from 'react-notion-x'
 
 interface IBtn {
   children: React.ReactNode
@@ -14,6 +15,7 @@ interface IBtn {
 }
 
 function Btn({ size, className, type, disabled, block, onClick, children, href }: IBtn) {
+  const { components, mapPageUrl } = useNotionContext()
   const handleClick = () => {
     if (disabled) return
     onClick?.()
@@ -34,18 +36,30 @@ function Btn({ size, className, type, disabled, block, onClick, children, href }
       'btn-gradient hover:btn-gradient-hover': type === 'gradient',
     },
   ])
-  if (href && !href.startsWith('http')) {
+  // notion page id
+  if(href && !href.startsWith('/') && !href.startsWith('http')){
+    return (
+        <components.PageLink
+            href={mapPageUrl(href)}
+            className={formatClsx}
+        >
+            {children}
+        </components.PageLink>
+        )
+  }else if (href && !href.startsWith('http')) {
+    // 相对路径
     return (
       <Link className={formatClsx} onClick={handleClick} href={href}>
         {children}
       </Link>
     )
+  }else{
+    return (
+        <a onClick={handleClick} className={formatClsx}>
+            {children}
+        </a>
+    )
   }
-  return (
-    <a onClick={handleClick} className={formatClsx}>
-      {children}
-    </a>
-  )
 }
 
 export default Btn

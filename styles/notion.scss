@@ -10,6 +10,7 @@
 .notion {
   --primary: #123AF0;
   --light-primary: #1865FF;
+  --gray: #6D6D82;
   --notion-max-width: 1256px;
   --notion-header-height: 80px;
   --notion-gray_background_co: #F7F9FC;
@@ -439,4 +440,7 @@
 }
 .notion-callout-content .notion-page-icon-inline{
   display: none;
+}
+.notion-full-page{
+  padding-bottom: 0;
 }

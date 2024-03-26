@@ -65,3 +65,8 @@ body {
 ::-webkit-scrollbar-track {           
     background-color: var(--bg-color);
 }
+
+
+.hidden{
+  display: none!important;
+}
