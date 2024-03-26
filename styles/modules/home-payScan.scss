@@ -2,14 +2,21 @@
   padding-bottom: 40px;
   background-color: #f6f8fb;
 
+  .notion-spacer{
+    display: none;
+  }
   &>.notion-callout-content{
-    background-color: #fff;
-    padding-left:  32px;
-    padding-right:  0;
 
     &>.notion-callout-text>.notion-row{
       padding: 0;
+      background-color: #fff;
 
+      &>.notion-column:first-of-type{
+        padding-left:  32px;
+        flex: 1;
+        width: auto !important;
+
+      }
       &>.notion-column{
         padding-top: 0;
         padding-bottom: 0;
