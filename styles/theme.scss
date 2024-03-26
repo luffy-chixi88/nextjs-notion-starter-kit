@@ -118,7 +118,7 @@
             }
             .notion-link{
                 margin-right: 15px;
-                
+
                 b {
                     font-weight: 600;
                     background-color: #0E31CC;
@@ -483,6 +483,75 @@
                 }
             }
         }
+    }
+}
 
+.pt-vision {
+    > .notion-callout-content {
+        padding: 120px 0;
+
+        > .notion-callout-text {
+
+            .notion-h1 {
+                margin-top: 0;
+                margin-bottom: 48px;
+            }
+            > .notion-row {
+
+                > .notion-spacer {
+                    width: 0;
+                }
+                > .notion-column {
+                    width: calc(50% + 16px) !important;
+                    justify-content: center;
+                    
+                    > .notion-callout > .notion-callout-content {
+                        .notion-h {
+                            margin-top: 0;
+                            margin-bottom: 16px;
+                        }
+                        .notion-list {
+                            list-style-type: none;
+                            padding-left: 0;
+                            
+                            li {
+                                padding: 0;
+                                line-height: 32px;
+
+                                &::before {
+                                    content: "";
+                                    display: inline-block;
+                                    width: 3px;
+                                    height: 3px;
+                                    border-radius: 3px;
+                                    background-color: var(--fg-color);
+                                    margin: 4px 8px 4px 4px;
+                                }
+                            }
+                        }
+                    }
+                    .left {
+                        border-radius: 8px 0px 0px 8px;
+                        > .notion-callout-content {
+                            padding: 120px 40px 120px 80px;
+                        }
+                    }
+                    .right {
+                        text-align: right;
+                        border-radius: 0px 8px 8px 0px;
+
+                        > .notion-callout-content {
+                            padding: 120px 80px 120px 60px;
+                        }
+                    }
+
+                    > .notion-asset-wrapper-image {
+                        > div {
+                            width: auto !important;
+                        }
+                    }
+                }
+            } 
+        }
     }
 }
