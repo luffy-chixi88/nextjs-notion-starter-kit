@@ -142,9 +142,7 @@
     padding-bottom: 106px;
 
     > .notion-callout-content > .notion-callout-text {
-        .notion-text {
-            color: #666666;
-        }
+        
         .notion-h {
             margin-top: 0;
         }
@@ -183,6 +181,9 @@
                 .notion-asset-wrapper-image {
                     flex-direction: row;
                 }
+                .notion-text {
+                    color: #666666;
+                }
             }
         }
         
@@ -212,9 +213,8 @@
         }
         > .notion-row {
             .notion-column {
-                flex-direction: row;
-                justify-content: flex-end;
-                align-items: center;
+                justify-content: center;
+                align-items: flex-end;
             }
         }
         .right {
@@ -394,6 +394,36 @@
             .notion-link b {
                 font-weight: 400;
                 background-color: var(--light-primary);
+            }
+        }
+    }
+}
+
+.pt-channel {
+    > .notion-callout-content {
+        padding: 60px 0 75px;
+
+        > .notion-callout-text > .notion-row > .notion-column {
+            justify-content: center;
+            align-items: flex-end;
+
+            .right {
+                max-width: 480px;
+
+                > .notion-callout-content > .notion-callout-text{
+                    text-align: right;
+
+                    .notion-h1 {
+                        margin: 12px 0 32px;
+                    }
+                    .notion-text {
+                        margin: 12px 0;
+                    }
+                    .notion-link b {
+                        font-weight: 400;
+                        background-color: var(--light-primary);
+                    }
+                }
             }
         }
     }
