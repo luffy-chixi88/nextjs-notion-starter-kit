@@ -21,12 +21,14 @@ export function PasstoScence(props){
             const block = recordMap.block[blockId].value
             const { properties } = block
             Object.keys(properties).forEach(item => {
-                const { type, name } = schema[item]
-                if(type && name){
-                    const value = (type === 'title' || type === 'text') ? properties[item][0][0] : mapImageUrl(properties[item][0][1][0][1], block)
-                    res[name] = value ?? ''
+                if(schema[item]) {
+                    const { type, name } = schema[item]
+                    if(type && name){
+                        const value = (type === 'title' || type === 'text') ? properties[item][0][0] : mapImageUrl(properties[item][0][1][0][1], block)
+                        res[name] = value ?? ''
+                    }
                 }
-                })    
+            })    
             return res
         })
     }, [blockIds, recordMap, schema])
