@@ -582,3 +582,14 @@
     background-size: cover;
     color: #fff;
 }
+
+
+// 代码块样式
+.pt-code {
+    background-color: #181825;
+    pre[class*="language-"]{
+        background-color: transparent;
+        border: none;
+        max-height: 560px;
+    }
+}

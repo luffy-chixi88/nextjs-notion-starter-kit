@@ -8,7 +8,8 @@ import * as Fathom from 'fathom-client'
 import 'katex/dist/katex.min.css'
 import posthog from 'posthog-js'
 // used for code syntax highlighting (optional)
-import 'prismjs/themes/prism-coy.css'
+import 'prismjs/themes/prism-tomorrow.css'
+import 'prismjs/plugins/line-numbers/prism-line-numbers.min.css'
 // core styles shared by all of react-notion-x (required)
 import 'react-notion-x/src/styles.css'
 import 'styles/global.css'
@@ -18,8 +19,6 @@ import 'styles/custom.scss'
 // global style overrides for notion
 import 'styles/notion.scss'
 import 'styles/theme.scss'
-// global style overrides for prism theme (optional)
-import 'styles/prism-theme.css'
 
 import {
   fathomConfig,

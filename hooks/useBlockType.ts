@@ -8,6 +8,13 @@ interface iProps {
     block: blockType
 }
 
+export type iMeta = qs.ParsedQs;
+
+export interface iBlockType {
+    title: string,
+    meta: iMeta;
+}
+
 // 读取block自定义类型
 export function useBlockType({ block }: iProps) {
     const res = useMemo(() => {

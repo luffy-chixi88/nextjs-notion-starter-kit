@@ -69,7 +69,7 @@ export function PasstoScence(props){
                     )
                })}
             </div>
-            <div className="my-8">
+            {selectItem && <div className="my-8">
                 <div className={cs("flex")}>
                     <div className="max-w-[380px] mr-8 flex flex-wrap items-center">
                         <div>
@@ -103,7 +103,7 @@ export function PasstoScence(props){
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>}
         </div>
     )
 }

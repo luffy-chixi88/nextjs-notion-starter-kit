@@ -27,6 +27,7 @@ import styles from './styles.module.css'
 import { useNotionContext } from 'react-notion-x'
 
 import { PasstoScence } from '@/components/Passto/scence'
+import { PasstoCode } from '@/components/Passto/code'
 import Nav from '@/components/Nav'
 // import { NotionPageHeader } from './NotionPageHeader'
 
@@ -163,13 +164,16 @@ const propertyTextValue = (
 
 const Callout = (props) => {
   const { block, className, children } = props
-
   const titleInfo = useBlockType({ block })
-
   const content = React.useMemo(() => {
     switch(titleInfo.title){
       case 'Nav':
         return <Nav {...props} meta={titleInfo.meta} />
+      case 'PasstoCode':
+        return <PasstoCode {...props} meta={titleInfo.meta} />
+      case 'TDK':
+        console.log(props, titleInfo)
+        break
       default:
         return (
           <div className='notion-callout-text'>
