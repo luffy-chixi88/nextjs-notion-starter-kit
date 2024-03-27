@@ -1,5 +1,6 @@
 .notion-h1 {
     font-size: 40px;
+    margin: 0;
 }
 .notion-h2 {
     font-size: 32px;
@@ -158,9 +159,16 @@
               }
               &:first-child{
                   padding: 120px 0;
-                  background: #0E31CC url(/banner-bg.png);
+                  background: #075aff url(/banner-bg.png);
                   background-size: cover;
               }
+
+                .notion-list:first-of-type{
+                    margin-top: 20px;
+                }
+                .notion-list:last-of-type{
+                    margin-bottom: 20px;
+                }
 
           }
       }
