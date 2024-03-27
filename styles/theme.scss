@@ -207,7 +207,6 @@
                 }
             }
         }
-
     }
 }
 
@@ -245,7 +244,6 @@
                 padding: 0;
 
                 > .notion-callout-text {
-
                     display: flex;
                     flex-direction: column;
                     align-items: flex-end;
@@ -258,7 +256,7 @@
                     }
                     .notion-link {
                         display: block;
-                        margin-top: 150px;
+                        margin-top: 8vw;
                     }
                 }
             }
@@ -326,7 +324,7 @@
 
                 .left {
                     height: 100%;
-                    padding: 110px 80px;
+                    padding: 6vw 4vw;
 
                     &.notion-blue_background_co {
                         background-color: #0E31CC;
@@ -410,7 +408,6 @@
                     }
                 }
             }
-
             .notion-text {
                 color: #666666;
             }
@@ -453,7 +450,7 @@
         > .notion-callout-text {
             .notion-h1 {
                 margin-top: 0;
-                margin-bottom: 56px;
+                margin-bottom: 3vw;
             }
             .notion-h {
                 color: #FFFFFF;
@@ -512,7 +509,7 @@
 
             .notion-h1 {
                 margin-top: 0;
-                margin-bottom: 48px;
+                margin-bottom: 2.5vw;
             }
             > .notion-row {
 
@@ -551,7 +548,7 @@
                     .left {
                         border-radius: 8px 0px 0px 8px;
                         > .notion-callout-content {
-                            padding: 120px 40px 120px 80px;
+                            padding: 6vw 2vw 6vw 4vw;
                         }
                     }
                     .right {
@@ -559,7 +556,7 @@
                         border-radius: 0px 8px 8px 0px;
 
                         > .notion-callout-content {
-                            padding: 120px 80px 120px 60px;
+                            padding: 6vw 4vw 6vw 2vw;
                         }
                     }
 
@@ -591,11 +588,12 @@
         max-height: 560px;
     }
 }
+
 .pt-service {
     background-color: #101018;
 
     > .notion-callout-content {
-        padding: 200px 0;
+        padding: 12vw 0;
 
         > .notion-callout-text {
             .notion-h, .notion-text {
@@ -617,4 +615,88 @@
             }
         }
     } 
+}
+
+.pt-promise {
+    > .notion-callout-content {
+        width: 100%;
+        max-width: none;
+        padding: 0;
+
+        > .notion-callout-text > .notion-row > .notion-column {
+            padding: 0;
+            justify-content: center;
+
+            .notion-h {
+                color: #FFFFFF;
+                margin: 0;
+            }
+            .notion-text {
+                color: #FFFFFF80;
+                margin: 0;
+            }
+            .left {
+                > .notion-callout-content {
+                    padding: 12vw 40px;
+                    display: flex;
+                    justify-content: flex-end;
+
+                    > .notion-callout-text {
+                        width: 450px;
+
+                        .notion-text {
+                            font-size: 20px;
+                        }
+                    }
+                }
+            }
+            .right {
+                > .notion-callout-content {
+                    padding: 40px;
+
+                    > .notion-callout-text {
+                        .notion-text {
+                            font-size: 14px;
+                        }
+                        .form-callout > .notion-callout-content {
+                            padding: 0;
+
+                            .form-box {
+                                background-color: #FFFFFF;
+                                border-radius: 8px;
+                                padding: 6px 6px 6px 18px;
+                                display: inline-block;
+                                margin-top: 24px;
+                                margin-bottom: 24px;
+        
+                                form {
+                                    display: flex;
+                                    align-items: center;
+        
+                                    .form-item {
+                                        input {
+                                            width: 300px;
+                                        }
+                                        margin-right: 10px;
+                                    }
+        
+                                    .submit-btn button {
+                                        padding: 10px 30px;
+                                        min-width: 166px;
+                                        background-color: var(--primary);
+                                        color: #FFFFFF;
+                                        border-radius: 8px;
+                                        text-align: center;
+                                    }
+                                }
+                            }
+                         }
+                    }
+                }
+            }
+        }
+    }
+    &.notion-blue_background_co .left {
+        background-color: #0E31CC;
+    }
 }

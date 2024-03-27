@@ -26,6 +26,7 @@ import { useNotionContext } from 'react-notion-x'
 
 import { PasstoScence } from '@/components/Passto/scence'
 import { PasstoCode } from '@/components/Passto/code'
+import { PasstoForm } from '@/components/Passto/form'
 import Nav from '@/components/Nav'
 import TDK from '@/components/TDK'
 
@@ -170,6 +171,8 @@ const Callout = (props) => {
         return <PasstoCode {...props} meta={titleInfo.meta} />
       case 'TDK':
         return <TDK {...props} meta={titleInfo.meta} />
+      case 'PasstoForm' :
+        return <PasstoForm {...props} meta={titleInfo.meta} />
       default:
         return (
           <div className='notion-callout-text'>
