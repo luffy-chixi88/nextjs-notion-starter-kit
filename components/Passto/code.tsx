@@ -1,17 +1,15 @@
 import React, { useRef, useMemo, useEffect, useState } from "react"
 import cs from "classnames"
+import { useNotionContext } from 'react-notion-x'
+import { getTextContent } from 'notion-utils'
+import { CodeBlock } from 'notion-types'
+import { iMeta } from '@/hooks/useBlockType'
 import { highlightElement } from 'prismjs'
 import 'prismjs/plugins/line-numbers/prism-line-numbers.min.js'
 import 'prismjs/components/prism-java.min.js'
 import 'prismjs/components/prism-javascript.min.js'
 import 'prismjs/components/prism-python.min.js'
 import 'prismjs/components/prism-go.min.js'
-
-
-import { useNotionContext } from 'react-notion-x'
-import { getTextContent } from 'notion-utils'
-import { CodeBlock } from 'notion-types'
-import { iMeta } from '@/hooks/useBlockType'
 
 
 interface iProps {
@@ -46,9 +44,7 @@ export function PasstoCode({ block, className }: iProps){
         })
         return res
     }, [block, recordMap])
-
-    console.log('codeBlocks', codeBlocks)
-
+    
     return (
         <div className={cs('rounded-2xl overflow-hidden bg-black pt-code', className)}>
             <div className="flex">
@@ -57,8 +53,8 @@ export function PasstoCode({ block, className }: iProps){
                         <a 
                             key={i} 
                             onClick={() => setAct(i)}
-                            className={cs('cursor-pointer px-4 py-2 text-sm', {
-                                'text-[color:var(--primary)] border-b-2 border-b-[color:var(--primary)]': act === i ,
+                            className={cs('cursor-pointer p-4 text-sm', {
+                                'text-[color:white] border-b-2 border-b-[color:white]': act === i ,
                                 'text-[color:#6D6D82]': act !== i
                             })}
                         >
@@ -78,7 +74,6 @@ export function PasstoCode({ block, className }: iProps){
 export function Code(props){
     const { className, language, content, defaultLanguage = 'javascript' } = props
 
-
     const codeRef = useRef()
     useEffect(() => {
       if (codeRef.current) {
@@ -89,16 +84,14 @@ export function Code(props){
         }
       }
     }, [codeRef])
-    
+
     const formatLang = useMemo(() => {
         const lang = (language || defaultLanguage).toLowerCase()
         return (lang === 'nodejs' || lang === 'php') ? defaultLanguage: lang
     }, [language, defaultLanguage])
 
-    console.log('language', formatLang)
-
     return (
-        <pre className={cs('notion-code', className)} >
+        <pre className={cs('notion-code', className)}>
             <code className={`language-${formatLang} line-numbers`} ref={codeRef}>
                 {content}
             </code>

@@ -7,7 +7,6 @@ import { useRouter } from 'next/router'
 import cs from 'classnames'
 import { PageBlock } from 'notion-types'
 import { formatDate, getBlockTitle, getPageProperty } from 'notion-utils'
-import BodyClassName from 'react-body-classname'
 import { NotionRenderer, Text } from 'react-notion-x'
 import TweetEmbed from 'react-tweet-embed'
 import { useSearchParam } from 'react-use'
@@ -17,7 +16,6 @@ import * as types from '@/lib/types'
 import { mapImageUrl } from '@/lib/map-image-url'
 import { getCanonicalPageUrl, mapPageUrl } from '@/lib/map-page-url'
 import { searchNotion } from '@/lib/search-notion'
-import { useDarkMode } from '@/lib/use-dark-mode'
 
 import { Loading } from './Loading'
 import { Page404 } from './Page404'
@@ -29,7 +27,7 @@ import { useNotionContext } from 'react-notion-x'
 import { PasstoScence } from '@/components/Passto/scence'
 import { PasstoCode } from '@/components/Passto/code'
 import Nav from '@/components/Nav'
-// import { NotionPageHeader } from './NotionPageHeader'
+import TDK from '@/components/TDK'
 
 
 
@@ -94,7 +92,6 @@ const FormatCollection = (props) => {
       return <Collection {...props} />
   }
 }
-
 
 const Equation = dynamic(() =>
   import('react-notion-x/build/third-party/equation').then((m) => m.Equation)
@@ -172,8 +169,7 @@ const Callout = (props) => {
       case 'PasstoCode':
         return <PasstoCode {...props} meta={titleInfo.meta} />
       case 'TDK':
-        console.log(props, titleInfo)
-        break
+        return <TDK {...props} meta={titleInfo.meta} />
       default:
         return (
           <div className='notion-callout-text'>
@@ -231,8 +227,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
   // lite mode is for oembed
   const isLiteMode = lite === 'true'
-
-  const { isDarkMode } = useDarkMode()
 
   const siteMapPageUrl = React.useMemo(() => {
     const params: any = {}
@@ -311,15 +305,12 @@ export const NotionPage: React.FC<types.PageProps> = ({
         url={canonicalPageUrl}
       />
 
-      {isLiteMode && <BodyClassName className='notion-lite' />}
-      {isDarkMode && <BodyClassName className='dark-mode' />}
-
       <NotionRenderer
         bodyClassName={cs(
           styles.notion,
           pageId === site.rootNotionPageId && 'index-page'
         )}
-        darkMode={isDarkMode}
+        darkMode={false}
         components={components}
         recordMap={recordMap}
         rootPageId={site.rootNotionPageId}
