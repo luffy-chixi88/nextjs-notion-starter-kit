@@ -36,6 +36,7 @@
 
 .notion-callout.shareLinks{
   width: 260px;
+  margin-top: 30px;
   >.notion-callout-content>.notion-callout-text{
     display: flex;
     justify-content: space-between;
@@ -45,6 +46,9 @@
     }
     img{
       cursor: pointer;
+      &:hover{
+        opacity: 0.8;
+      }
     }
   }
 }

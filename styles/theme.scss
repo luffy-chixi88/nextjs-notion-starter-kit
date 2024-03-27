@@ -84,14 +84,25 @@
             > .notion-column{
                 width: 50%!important;
                 padding: 0;
-                display: flex;
-                justify-content: center;
                 &:first-child{
+                    padding-top: 200px;
                     padding-left: calc(((100% - 1256px) / 2) + 16px);
                     padding-right: 60px;
 
+                    .notion-h3{
+                        margin: 0;
+                        font-weight: normal;
+                        margin-top: 0;
+                    }
+                    .notion-h1{
+                        margin: 20px 0 60px 0;
+                        .notion-h-title{
+                            font-size: 48px;
+                        }
+                    }
+
                     .notion-row{
-                        margin-top: 30px;
+                        margin-top: 140px;
                         .notion-column{
                             width: 44px !important;
                             margin-right: 48px;
@@ -99,8 +110,8 @@
                     }
                 }
                 &:nth-child(3){
-                    padding: 120px 0;
-                    background: #0E31CC url(/banner-bg.png);
+                    padding: 120px 0px;
+                    background: #075AFF url(/banner-bg.png) 24px 24px no-repeat;
                     background-size: cover;
                     .notion-asset-wrapper{
                         > div {
@@ -129,9 +140,6 @@
                         color: var(--primary);
                     }
                 }
-            }
-            .notion-h1{
-                margin: 20px 0 40px 0;
             }
             .notion-list {
                 color: #FFFFFF80;
@@ -181,7 +189,7 @@
                     }
                     .notion-column {
                         width: auto !important;
-                        justify-content: flex-end;
+                        justify-content: center;
                         padding: 0;
                     }
                 }
@@ -327,7 +335,7 @@
                     padding: 6vw 4vw;
 
                     &.notion-blue_background_co {
-                        background-color: #0E31CC;
+                        background-color: #075AFF;
                     }
                     > .notion-callout-content {
                         max-width: 375px;
