@@ -2,7 +2,7 @@ import React, { useMemo } from 'react'
 import Head from 'next/head'
 import { useNotionContext } from 'react-notion-x'
 
-export default function TDK({ block, className }){
+export default function TDK({ block }){
 
     const { recordMap } = useNotionContext()
 
