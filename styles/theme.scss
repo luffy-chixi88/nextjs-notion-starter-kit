@@ -451,8 +451,6 @@
         padding: 120px 0;
 
         > .notion-callout-text {
-
-
             .notion-h1 {
                 margin-top: 0;
                 margin-bottom: 56px;
@@ -581,4 +579,32 @@
     background: #101018;
     background-size: cover;
     color: #fff;
+}
+
+.pt-service {
+    background-color: #101018;
+
+    > .notion-callout-content {
+        padding: 200px 0;
+
+        > .notion-callout-text {
+            .notion-h, .notion-text {
+                color: #FFFFFF;
+                margin: 0;
+                text-align: center;
+            }
+            .list {
+                > .notion-callout-content > .notion-callout-text > .notion-row {
+                    justify-content: center;
+
+                    > .notion-column {
+                        width: auto !important;
+                    }
+                    > .notion-spacer {
+                        width: 105px;
+                    }
+                }
+            }
+        }
+    } 
 }
