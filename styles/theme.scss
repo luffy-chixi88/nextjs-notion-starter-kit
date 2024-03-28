@@ -747,41 +747,55 @@
 .notion-toggle {
     border: 1px solid var(--color-border-default) !important;
     border-radius: 8px;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
     position: relative;
     text-align: left;
     transition: background .2s ease-in-out;
+
     summary {
         margin: 0;
-        padding: 12px;
+        padding: 12px 0;
+        font-size: 24px;
         &::marker {
             content: none;
         }
-    }
-    &:after {
-        position: absolute;
-        font-weight: 100;
-        font-size: 24px;
-        line-height: 1;
-        opacity: .4;
-        content: "";
-        background: url(/images/icon/plus.svg) no-repeat top center;
-        background-size: cover;
-        top: 14px;
-        right: 18px;
-    }
-    &[open] {
-        background: var(--color-card-bg-hover);
-        padding-bottom: 16px;
-
         &:after {
-            content: "" ;
-            background-image: url(/images/icon/minus.svg);
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            font-weight: 100;
+            font-size: 24px;
+            line-height: 1;
+            content: "";
+            background: url(/icon/plus.svg) no-repeat top center;
+            background-size: cover;
+            top: 14px;
+            right: 0;
         }
     }
+   
+    &[open] {
+        summary{
+            &:after {
+                content: "" ;
+                background-image: url(/icon/minus.svg);
+            }
+        }
+      
+    }
     > div {
-        padding-inline-end: calc(1.5em + 4px)!important;
+        font-size: 20px;
         color: var(--gray);
+        margin-left: 0;
+
+        li {
+            padding: 0;
+        }
+
+        .notion-text{
+            padding: 0;
+            margin: 0;
+        }
     }
 
 
