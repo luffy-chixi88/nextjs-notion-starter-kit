@@ -1,7 +1,6 @@
-import { getPageTitle, parsePageId } from 'notion-utils'
-
 import * as config from './config'
 import { getPage } from './notion'
+import { getPageTitle, parsePageId } from 'notion-utils'
 
 export const oembed = async ({
   url,
@@ -27,10 +26,7 @@ export const oembed = async ({
   if (pageTitle) title = pageTitle
 
   const user = page.notion_user[Object.keys(page.notion_user)[0]]?.value
-  const name = [user.given_name, user.family_name]
-    .filter(Boolean)
-    .join(' ')
-    .trim()
+  const name = [user.given_name, user.family_name].filter(Boolean).join(' ').trim()
   if (name) authorName = name
 
   const params: any = { lite: 'true' }

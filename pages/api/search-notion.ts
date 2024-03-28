@@ -14,9 +14,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const results = await search(searchParams)
   console.log('>>> lambda search-notion', results)
 
-  res.setHeader(
-    'Cache-Control',
-    'public, s-maxage=60, max-age=60, stale-while-revalidate=60'
-  )
+  res.setHeader('Cache-Control', 'public, s-maxage=60, max-age=60, stale-while-revalidate=60')
   res.status(200).json(results)
 }

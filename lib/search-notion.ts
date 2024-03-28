@@ -1,19 +1,16 @@
 // import ky from 'ky'
+import * as types from './types'
+import { api } from './config'
 import ExpiryMap from 'expiry-map'
 import fetch from 'isomorphic-unfetch'
 import pMemoize from 'p-memoize'
-
-import * as types from './types'
-import { api } from './config'
 
 export const searchNotion = pMemoize(searchNotionImpl, {
   cacheKey: (args) => args[0]?.query,
   cache: new ExpiryMap(10000)
 })
 
-async function searchNotionImpl(
-  params: types.SearchParams
-): Promise<types.SearchResults> {
+async function searchNotionImpl(params: types.SearchParams): Promise<types.SearchResults> {
   return fetch(api.searchNotion, {
     method: 'POST',
     body: JSON.stringify(params),

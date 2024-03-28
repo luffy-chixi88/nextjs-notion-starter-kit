@@ -4,35 +4,31 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
-import cs from 'classnames'
-import { PageBlock } from 'notion-types'
-import { formatDate, getBlockTitle, getPageProperty } from 'notion-utils'
-import { NotionRenderer, Text } from 'react-notion-x'
-import TweetEmbed from 'react-tweet-embed'
-import { useSearchParam } from 'react-use'
-import { useBlockType } from '@/hooks/useBlockType'
 import * as config from '@/lib/config'
 import * as types from '@/lib/types'
-import { mapImageUrl } from '@/lib/map-image-url'
-import { getCanonicalPageUrl, mapPageUrl } from '@/lib/map-page-url'
-import { searchNotion } from '@/lib/search-notion'
-
 import { Loading } from './Loading'
 import { Page404 } from './Page404'
 import { PageAside } from './PageAside'
 import { PageHead } from './PageHead'
 import styles from './styles.module.css'
-import { useNotionContext } from 'react-notion-x'
-
-import { PasstoStep } from '@/components/Passto/step'
-import { PasstoScence } from '@/components/Passto/scence'
+import Nav from '@/components/Nav'
 import { PasstoCode } from '@/components/Passto/code'
 import { PasstoForm } from '@/components/Passto/form'
 import { PasstoIntro } from '@/components/Passto/introduce'
-import Nav from '@/components/Nav'
+import { PasstoScence } from '@/components/Passto/scence'
+import { PasstoStep } from '@/components/Passto/step'
 import TDK from '@/components/TDK'
-
-
+import { useBlockType } from '@/hooks/useBlockType'
+import { mapImageUrl } from '@/lib/map-image-url'
+import { getCanonicalPageUrl, mapPageUrl } from '@/lib/map-page-url'
+import { searchNotion } from '@/lib/search-notion'
+import cs from 'classnames'
+import { PageBlock } from 'notion-types'
+import { formatDate, getBlockTitle, getPageProperty } from 'notion-utils'
+import { NotionRenderer, Text } from 'react-notion-x'
+import { useNotionContext } from 'react-notion-x'
+import TweetEmbed from 'react-tweet-embed'
+import { useSearchParam } from 'react-use'
 
 // -----------------------------------------------------------------------------
 // dynamic imports for optional components
@@ -87,13 +83,14 @@ const Collection = dynamic(() =>
 const FormatCollection = (props) => {
   const { block } = props
   const { recordMap } = useNotionContext()
-  const componentName = recordMap.collection_view?.[block.view_ids?.[0]]?.value?.name
-  switch(componentName){
+  const componentName =
+    recordMap.collection_view?.[block.view_ids?.[0]]?.value?.name
+  switch (componentName) {
     case 'PasstoScence':
       return <PasstoScence {...props} />
     // case 'PasstoStep':
     //   return <PasstoStep {...props} />
-    case 'PasstoIntro' :
+    case 'PasstoIntro':
       return <PasstoIntro {...props} />
     default:
       return <Collection {...props} />
@@ -165,19 +162,18 @@ const propertyTextValue = (
   return defaultFn()
 }
 
-
 const Callout = (props) => {
   const { block, className, children } = props
   const titleInfo = useBlockType({ block })
   const content = React.useMemo(() => {
-    switch(titleInfo.title){
+    switch (titleInfo.title) {
       case 'Nav':
         return <Nav {...props} meta={titleInfo.meta} />
       case 'PasstoCode':
         return <PasstoCode {...props} meta={titleInfo.meta} />
       case 'TDK':
         return <TDK {...props} meta={titleInfo.meta} />
-      case 'PasstoForm' :
+      case 'PasstoForm':
         return <PasstoForm {...props} meta={titleInfo.meta} />
       case 'PasstoStep':
         return <PasstoStep {...props} meta={titleInfo.meta} />
@@ -196,14 +192,11 @@ const Callout = (props) => {
       className={cs(
         'notion-callout',
         titleInfo.meta?.className,
-        block.format?.block_color &&
-          `notion-${block.format?.block_color}_co`,
+        block.format?.block_color && `notion-${block.format?.block_color}_co`,
         className
       )}
     >
-      <div className='notion-callout-content'>
-       {content}
-      </div>
+      <div className='notion-callout-content'>{content}</div>
     </div>
   )
 }
@@ -228,7 +221,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
       Modal,
       Tweet,
       Callout,
-      Header: () => null,  // 导航读notion模块 NotionPageHeader
+      Header: () => null, // 导航读notion模块 NotionPageHeader
       propertyLastEditedTimeValue,
       propertyTextValue,
       propertyDateValue

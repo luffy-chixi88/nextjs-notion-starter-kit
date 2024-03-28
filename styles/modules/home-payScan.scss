@@ -1,32 +1,30 @@
-.notion-callout.pt-payscan{
+.notion-callout.pt-payscan {
   padding-bottom: 40px;
   background-color: #f6f8fb;
 
-  .notion-spacer{
+  .notion-spacer {
     display: none;
   }
-  &>.notion-callout-content{
-
-    &>.notion-callout-text>.notion-row{
+  & > .notion-callout-content {
+    & > .notion-callout-text > .notion-row {
       padding: 0;
       background-color: #fff;
 
-      &>.notion-column{
+      & > .notion-column {
         padding-top: 0;
         padding-bottom: 0;
         width: auto !important;
         flex: 1;
         justify-content: center;
 
-        .notion-h2{
+        .notion-h2 {
           margin-top: 0;
         }
       }
 
-      &>.notion-column:first-of-type{
-        padding-left:  32px;
+      & > .notion-column:first-of-type {
+        padding-left: 32px;
         width: 487px !important;
-
       }
     }
   }

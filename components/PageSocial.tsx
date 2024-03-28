@@ -1,10 +1,8 @@
 import * as React from 'react'
 
-import cs from 'classnames'
-
 import * as config from '@/lib/config'
-
 import styles from './PageSocial.module.css'
+import cs from 'classnames'
 
 interface SocialLink {
   name: string

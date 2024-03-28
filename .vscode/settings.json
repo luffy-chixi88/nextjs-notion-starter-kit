@@ -1,4 +1,19 @@
 {
+  "editor.tabSize": 2,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "never",
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.format": "explicit"
+  },
+  /** stylelint **/
+  "stylelint.enable": true,
+  // 关闭VS Code编辑器内置的样式规则检测规范，避免与Stylelint的检测规范重复|冲突
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
   "typescript.tsdk": "./node_modules/typescript/lib",
   "files.exclude": {
     "**/logs": true,

@@ -1,8 +1,7 @@
 import * as React from 'react'
 
-import cs from 'classnames'
-
 import styles from './styles.module.css'
+import cs from 'classnames'
 
 export const LoadingIcon = (props) => {
   const { className, ...rest } = props

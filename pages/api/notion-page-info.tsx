@@ -1,19 +1,12 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import got from 'got'
-import { PageBlock } from 'notion-types'
-import {
-  getBlockIcon,
-  getBlockTitle,
-  getPageProperty,
-  isUrl,
-  parsePageId
-} from 'notion-utils'
-
 import * as libConfig from '@/lib/config'
 import { mapImageUrl } from '@/lib/map-image-url'
 import { notion } from '@/lib/notion-api'
 import { NotionPageInfo } from '@/lib/types'
+import got from 'got'
+import { PageBlock } from 'notion-types'
+import { getBlockIcon, getBlockTitle, getPageProperty, isUrl, parsePageId } from 'notion-utils'
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== 'POST') {
@@ -36,23 +29,17 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   const blockSpaceId = block.space_id
 
-  if (
-    blockSpaceId &&
-    libConfig.rootNotionSpaceId &&
-    blockSpaceId !== libConfig.rootNotionSpaceId
-  ) {
+  if (blockSpaceId && libConfig.rootNotionSpaceId && blockSpaceId !== libConfig.rootNotionSpaceId) {
     return res.status(400).send({
       error: `Notion page "${pageId}" belongs to a different workspace.`
     })
   }
 
-  const isBlogPost =
-    block.type === 'page' && block.parent_table === 'collection'
+  const isBlogPost = block.type === 'page' && block.parent_table === 'collection'
   const title = getBlockTitle(block, recordMap) || libConfig.name
 
   const imageCoverPosition =
-    (block as PageBlock).format?.page_cover_position ??
-    libConfig.defaultPageCoverPosition
+    (block as PageBlock).format?.page_cover_position ?? libConfig.defaultPageCoverPosition
   const imageObjectPosition = imageCoverPosition
     ? `center ${(1 - imageCoverPosition) * 100}%`
     : null
@@ -65,18 +52,14 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const imageFallbackUrl = mapImageUrl(libConfig.defaultPageCover, block)
 
   const blockIcon = getBlockIcon(block, recordMap)
-  const authorImageBlockUrl = mapImageUrl(
-    blockIcon && isUrl(blockIcon) ? blockIcon : null,
-    block
-  )
+  const authorImageBlockUrl = mapImageUrl(blockIcon && isUrl(blockIcon) ? blockIcon : null, block)
   const authorImageFallbackUrl = mapImageUrl(libConfig.defaultPageIcon, block)
   const [authorImage, image] = await Promise.all([
     getCompatibleImageUrl(authorImageBlockUrl, authorImageFallbackUrl),
     getCompatibleImageUrl(imageBlockUrl, imageFallbackUrl)
   ])
 
-  const author =
-    getPageProperty<string>('Author', block, recordMap) || libConfig.author
+  const author = getPageProperty<string>('Author', block, recordMap) || libConfig.author
 
   // const socialDescription =
   //   getPageProperty<string>('Description', block, recordMap) ||
@@ -112,10 +95,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     detail
   }
 
-  res.setHeader(
-    'Cache-Control',
-    'public, s-maxage=3600, max-age=3600, stale-while-revalidate=3600'
-  )
+  res.setHeader('Cache-Control', 'public, s-maxage=3600, max-age=3600, stale-while-revalidate=3600')
   res.status(200).json(pageInfo)
 }
 

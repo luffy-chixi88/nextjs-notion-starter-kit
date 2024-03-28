@@ -1,10 +1,6 @@
 import { PageProps } from './types'
 
-export async function pageAcl({
-  site,
-  recordMap,
-  pageId
-}: PageProps): Promise<PageProps> {
+export async function pageAcl({ site, recordMap, pageId }: PageProps): Promise<PageProps> {
   if (!site) {
     return {
       error: {
@@ -38,11 +34,7 @@ export async function pageAcl({
   const rootValue = recordMap.block[rootKey]?.value
   const rootSpaceId = rootValue?.space_id
 
-  if (
-    rootSpaceId &&
-    site.rootNotionSpaceId &&
-    rootSpaceId !== site.rootNotionSpaceId
-  ) {
+  if (rootSpaceId && site.rootNotionSpaceId && rootSpaceId !== site.rootNotionSpaceId) {
     if (process.env.NODE_ENV) {
       return {
         error: {

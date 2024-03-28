@@ -1,6 +1,7 @@
-import React from 'react'
-import clsx from 'classnames'
 import Link from 'next/link'
+import React from 'react'
+
+import clsx from 'classnames'
 import { useNotionContext } from 'react-notion-x'
 
 interface IBtn {
@@ -31,36 +32,33 @@ function Btn({ size, className, type, disabled, block, onClick, children, href }
       'cursor-pointer': !disabled,
       'opacity-50 cursor-not-allowed': disabled,
       'text-light': type,
-      'bg-[var(--primary)]': type === 'primary',
-    },
+      'bg-[var(--primary)]': type === 'primary'
+    }
   ])
   // notion page id
-  if(href && !href.startsWith('/') && !href.startsWith('http')){
+  if (href && !href.startsWith('/') && !href.startsWith('http')) {
     return (
-        <components.PageLink
-            href={mapPageUrl(href)}
-            className={formatClsx}
-        >
-            {children}
-        </components.PageLink>
-        )
-  }else if (href && !href.startsWith('http')) {
+      <components.PageLink href={mapPageUrl(href)} className={formatClsx}>
+        {children}
+      </components.PageLink>
+    )
+  } else if (href && !href.startsWith('http')) {
     // 相对路径
     return (
       <Link className={formatClsx} onClick={handleClick} href={href}>
         {children}
       </Link>
     )
-  }else{
+  } else {
     const otherProps = {} as any
-    if(href) {
-        otherProps.href = href
-        otherProps.target = '_blank'
+    if (href) {
+      otherProps.href = href
+      otherProps.target = '_blank'
     }
     return (
-        <a onClick={handleClick} className={formatClsx} {...otherProps}>
-            {children}
-        </a>
+      <a onClick={handleClick} className={formatClsx} {...otherProps}>
+        {children}
+      </a>
     )
   }
 }

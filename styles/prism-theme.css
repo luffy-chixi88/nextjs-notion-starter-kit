@@ -124,7 +124,8 @@ pre[class*='language-']:after {
   display: none !important;
 }
 
-pre[class*="language-"], :not(pre) > code[class*="language-"]{
+pre[class*='language-'],
+:not(pre) > code[class*='language-'] {
   background-color: #181825;
   border-color: #181825;
 }
