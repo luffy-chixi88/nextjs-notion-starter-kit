@@ -54,11 +54,22 @@
 }
 
 .notion-callout.footerMenu{
-  width: 140px;
+  min-width: 150px;
+  .notion-column, .notion-text{
+    padding: 0;
+  }
   >.notion-callout-content>.notion-callout-text{
+    font-size: 14px;
+    .notion-text{
+      b{
+        color: white;
+        margin-bottom: 24px;
+        display: block;
+        font-size: 16px;
+      }
+    }
     .notion-link{
       display: block;
-      margin-bottom: 24px;
       &:hover{
         color: #fff;
       }
