@@ -28,6 +28,7 @@ import { PasstoStep } from '@/components/Passto/step'
 import { PasstoScence } from '@/components/Passto/scence'
 import { PasstoCode } from '@/components/Passto/code'
 import { PasstoForm } from '@/components/Passto/form'
+import { PasstoIntro } from '@/components/Passto/introduce'
 import Nav from '@/components/Nav'
 import TDK from '@/components/TDK'
 
@@ -92,6 +93,8 @@ const FormatCollection = (props) => {
       return <PasstoScence {...props} />
     // case 'PasstoStep':
     //   return <PasstoStep {...props} />
+    case 'PasstoIntro' :
+      return <PasstoIntro {...props} />
     default:
       return <Collection {...props} />
   }

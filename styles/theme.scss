@@ -9,6 +9,21 @@
     font-size: 24px;
 }
 
+// 重写 li 样式
+ul {
+    list-style-type: none !important;
+    li::before {
+        content: "";
+        display: inline-block;
+        width: 3px;
+        height: 3px;
+        border-radius: 3px;
+        background-color: var(--fg-color); 
+        margin: 4px 8px 4px 4px;
+    }
+}
+
+
 .pt-nav{
     padding: 0;
     margin: 0;
@@ -144,6 +159,10 @@
             }
             .notion-list {
                 color: #FFFFFF80;
+                
+                li::before {
+                    background-color: #FFFFFF80;
+                }
             }
         }
     }
@@ -242,7 +261,7 @@
             color: #1865FF;
         }
         .notion-gray {
-            color: #6D6D82;
+            color: var(--gray);
         }
         .notion-gray_background_co {
             background-color: #181825;
@@ -542,22 +561,11 @@
                             margin-bottom: 16px;
                         }
                         .notion-list {
-                            list-style-type: none;
                             padding-left: 0;
 
                             li {
                                 padding: 0;
                                 line-height: 32px;
-
-                                &::before {
-                                    content: "";
-                                    display: inline-block;
-                                    width: 3px;
-                                    height: 3px;
-                                    border-radius: 3px;
-                                    background-color: var(--fg-color);
-                                    margin: 4px 8px 4px 4px;
-                                }
                             }
                         }
                     }
@@ -701,7 +709,7 @@
                                     .submit-btn button {
                                         padding: 10px 30px;
                                         min-width: 166px;
-                                        background-color: var(--primary);
+                                        background-color: var(--light-primary);
                                         color: #FFFFFF;
                                         border-radius: 8px;
                                         text-align: center;
@@ -715,7 +723,7 @@
         }
     }
     &.notion-blue_background_co .left {
-        background-color: #0E31CC;
+        background-color: #075AFF;
     }
 }
 
@@ -783,7 +791,81 @@
         padding-inline-end: calc(1.5em + 4px)!important;
         color: var(--gray);
     }
-
-
 }
+
+// 介绍
+.pt-introduce {
+    > .notion-callout-content {
+        padding-top: 92px;
+        padding-bottom: 120px;
+
+        > .notion-callout-text {
+            .notion-h1 {
+                margin-bottom: 3vw;
+            }
+            .intro-list {
+                .intro-item {
+                    padding: 32px 0 0 32px;
+                    border-radius: 8px;
+                    margin-left: 24px;
+                    width: 290px;
+                    transition: all 1s;
+
+                    &:first-child {
+                        margin-left: 0;
+                    }
+                    // 标题
+                    .title {
+                        font-size: 24px;
+                        font-weight: 600;
+                        color: #FFFFFF;
+                        margin-bottom: 24px;
+                    }
+                    .content {
+                        color: #FFFFFF;
+                        opacity: 0.2;
+                        width: 536px;
+
+                        ul {
+                            margin-bottom: 40px;
+
+                            li::before {
+                                background-color: #FFFFFF;
+                            }
+                        }
+                    }
+                    // 背景色
+                    &:nth-child(3n+1) {
+                        background-color: #0E31CC;
+                    }
+                    &:nth-child(3n+2) {
+                        background-color: #1865FF;
+                    }
+                    &:nth-child(3n+3) {
+                        background-color: #5A31F4;
+                    }
+
+                    &.active {
+                        padding-right: 32px;
+                        width: 600px;
+                        background-color: #FFFFFF;
+
+                        .title {
+                            color: var(--light-primary);
+                        }
+                        .content {
+                            color: var(--fg-color);
+                            opacity: 1;
+
+                            ul li::before {
+                                background-color: var(--fg-color);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 
