@@ -31,9 +31,7 @@ function Btn({ size, className, type, disabled, block, onClick, children, href }
       'cursor-pointer': !disabled,
       'opacity-50 cursor-not-allowed': disabled,
       'text-light': type,
-      'bg-bmBlue': type === 'default',
-      'bg-primary': type === 'primary',
-      'btn-gradient hover:btn-gradient-hover': type === 'gradient',
+      'bg-[var(--primary)]': type === 'primary',
     },
   ])
   // notion page id
@@ -54,8 +52,13 @@ function Btn({ size, className, type, disabled, block, onClick, children, href }
       </Link>
     )
   }else{
+    const otherProps = {} as any
+    if(href) {
+        otherProps.href = href
+        otherProps.target = '_blank'
+    }
     return (
-        <a onClick={handleClick} className={formatClsx}>
+        <a onClick={handleClick} className={formatClsx} {...otherProps}>
             {children}
         </a>
     )

@@ -53,6 +53,9 @@ export function PasstoScence(props){
                                     'border-b-[#1865FF]': (i === 0 && index === i), 
                                     'border-b-[#009444]': i === 1 && index === i,
                                     'border-b-[#5B3BEA]': i === 2 && index === i,
+                                    'hover:border-[#1865FF]': i === 0, 
+                                    'hover:border-[#009444]': i === 1,
+                                    'hover:border-[#5B3BEA]': i === 2,
                                 }
                             )} 
                             onClick={() => setIndex(i)}
@@ -60,6 +63,13 @@ export function PasstoScence(props){
                           <div>
                             <div className="relative flex items-center w-[56px] h-[56px]">
                                 <Image src={index === i ? item.TabIconAct : item.TabIcon} alt={item.TabTitle} layout='fill' />
+                                {/* 预加载图片 */}
+                                <Image 
+                                    className="hidden"
+                                    src={index !== i ? item.TabIconAct : item.TabIcon}
+                                    alt={item.TabTitle}
+                                    layout='fill'
+                                />
                             </div>
                             <p className={cs('text-[color:var(--gray)] mt-4', {
                                 'text-white': index === i
@@ -76,7 +86,6 @@ export function PasstoScence(props){
                             <h3 className="notion-h2">{selectItem.Title}</h3>
                             <p className={cs("notion-text notion-gray text-[color:var(--gray)]")}>{selectItem.Description}</p>
                             <Btn 
-                                type="primary"
                                 href={selectItem.Link}
                                 className="notion-link mt-6"
                             >

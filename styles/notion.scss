@@ -11,9 +11,11 @@
   --primary: #123AF0;
   --light-primary: #1865FF;
   --gray: #6D6D82;
+  --bgGray: #F7F9FC;
+  --bgNight: #101018;
   --notion-max-width: 1256px;
   --notion-header-height: 80px;
-  --notion-gray_background_co: #F7F9FC;
+  --notion-gray_background_co: var(--bgGray);
   --notion-blue_background_co: var(--light-primary);
   --notion-gray: rgba(0, 0, 0, 0.5);
 }

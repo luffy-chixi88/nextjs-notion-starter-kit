@@ -24,6 +24,7 @@ import { PageHead } from './PageHead'
 import styles from './styles.module.css'
 import { useNotionContext } from 'react-notion-x'
 
+import { PasstoStep } from '@/components/Passto/step'
 import { PasstoScence } from '@/components/Passto/scence'
 import { PasstoCode } from '@/components/Passto/code'
 import { PasstoForm } from '@/components/Passto/form'
@@ -89,6 +90,8 @@ const FormatCollection = (props) => {
   switch(componentName){
     case 'PasstoScence':
       return <PasstoScence {...props} />
+    // case 'PasstoStep':
+    //   return <PasstoStep {...props} />
     default:
       return <Collection {...props} />
   }
@@ -173,6 +176,8 @@ const Callout = (props) => {
         return <TDK {...props} meta={titleInfo.meta} />
       case 'PasstoForm' :
         return <PasstoForm {...props} meta={titleInfo.meta} />
+      case 'PasstoStep':
+        return <PasstoStep {...props} meta={titleInfo.meta} />
       default:
         return (
           <div className='notion-callout-text'>

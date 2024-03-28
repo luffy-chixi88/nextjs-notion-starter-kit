@@ -19,6 +19,9 @@ import 'styles/custom.scss'
 // global style overrides for notion
 import 'styles/notion.scss'
 import 'styles/theme.scss'
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 import {
   fathomConfig,

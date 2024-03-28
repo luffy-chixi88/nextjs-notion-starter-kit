@@ -2,17 +2,17 @@ import { useMemo } from "react";
 import * as types from 'notion-types'
 import { useNotionContext } from 'react-notion-x'
 import { mapImageUrl } from '@/lib/map-image-url'
-import { getTextContent } from 'notion-utils'
 
 
 interface iProps {
-    block: types.CollectionViewPageBlock
+    block: types.CollectionViewPageBlock,
+    multipleFile?: boolean,  // 是否多文件
 }
 
 // 读取block自定义类型
-export function useDataBase<T>({ block }: iProps) {
+export function useDataBase<T>({ block, multipleFile = false }: iProps) {
     const { recordMap } = useNotionContext()
-    const component = recordMap.collection_view[block.view_ids[0]]?.value
+    const component = recordMap.collection_view[block.view_ids?.[0]]?.value
     const collectId = component?.format?.collection_pointer?.id
     
     const blockIds = useMemo(() => {
@@ -33,13 +33,16 @@ export function useDataBase<T>({ block }: iProps) {
                     if(type && name){
                         switch(type){
                             case 'file':
-                                properties[item].forEach(sitem => {
-                                    console.log('sitem?.[1]?.[1]', sitem)
-                                    if(sitem?.[1]?.[0]?.[1]){
-                                        if(!res[name]) res[name] = []
-                                        res[name].push(mapImageUrl(sitem?.[1]?.[0]?.[1], block))
-                                    }
-                                })
+                                if(multipleFile){
+                                    properties[item].forEach(sitem => {
+                                        if(sitem?.[1]?.[0]?.[1]){
+                                            if(!res[name]) res[name] = []
+                                            res[name].push(mapImageUrl(sitem?.[1]?.[0]?.[1], block))
+                                        }
+                                    })
+                                } else {
+                                    res[name] = mapImageUrl(properties[item]?.[0]?.[1]?.[0]?.[1], block)
+                                }
                                 break
                             default:
                                 res[name] = properties[item][0][0] ?? ''
@@ -47,9 +50,8 @@ export function useDataBase<T>({ block }: iProps) {
                     }
                 }     
             })    
-            console.log('res', res)
             return res
         })
-    }, [blockIds, recordMap, schema])
+    }, [blockIds, recordMap, schema, multipleFile])
     return list
 }
