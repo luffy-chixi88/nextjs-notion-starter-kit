@@ -53,13 +53,15 @@ export function PasstoIntro(props) {
                 </ul>
               )}
 
+              {item.Link && item.ImageLayout !== 'Single' && PasstoLink(item)}
+
               {item.Image?.length && (
                 <>
                   {Array.from(Array(Math.ceil(item.Image.length / 3)).keys()).map((i) => {
                     switch (item.ImageLayout) {
                       case 'Single':
                         return (
-                          <div className='flex items-start'>
+                          <div key={i} className='flex items-start'>
                             {item.Link && PasstoLink(item)}
                             <div>
                               <img src={item.Image[i]} alt={item.Title} />
@@ -68,50 +70,44 @@ export function PasstoIntro(props) {
                         )
                       case 'Col':
                         return (
-                          <>
-                            {item.Link && PasstoLink(item)}
-                            <div className='flex mb-5'>
-                              <div className='flex-1'>
-                                <img src={item.Image[i]} alt={item.Title} />
-                              </div>
-                              {item.Image[i + 1] && (
-                                <div className='w-1/3 ml-8 flex flex-col justify-between'>
-                                  <div>
-                                    <img src={item.Image[i + 1]} alt={item.Title} />
-                                  </div>
-                                  {item.Image[i + 2] && (
-                                    <div className='mt-6'>
-                                      <img src={item.Image[i + 2]} alt={item.Title} />
-                                    </div>
-                                  )}
-                                </div>
-                              )}
+                          <div key={i} className='flex mb-5'>
+                            <div className='flex-1'>
+                              <img src={item.Image[i]} alt={item.Title} />
                             </div>
-                          </>
+                            {item.Image[i + 1] && (
+                              <div className='w-1/3 ml-8 flex flex-col justify-between'>
+                                <div>
+                                  <img src={item.Image[i + 1]} alt={item.Title} />
+                                </div>
+                                {item.Image[i + 2] && (
+                                  <div className='mt-6'>
+                                    <img src={item.Image[i + 2]} alt={item.Title} />
+                                  </div>
+                                )}
+                              </div>
+                            )}
+                          </div>
                         )
                       case 'Row':
                       default:
                         return (
-                          <>
-                            {item.Link && PasstoLink(item)}
+                          <div key={i} className='mb-5'>
                             <div className='mb-5'>
-                              <div className='mb-5'>
-                                <img src={item.Image[i]} alt={item.Title} />
-                              </div>
-                              {item.Image[i + 1] && (
-                                <div className='flex'>
-                                  <div>
-                                    <img src={item.Image[i + 1]} alt={item.Title} />
-                                  </div>
-                                  {item.Image[i + 2] && (
-                                    <div className='ml-6'>
-                                      <img src={item.Image[i + 2]} alt={item.Title} />
-                                    </div>
-                                  )}
-                                </div>
-                              )}
+                              <img src={item.Image[i]} alt={item.Title} />
                             </div>
-                          </>
+                            {item.Image[i + 1] && (
+                              <div className='flex'>
+                                <div>
+                                  <img src={item.Image[i + 1]} alt={item.Title} />
+                                </div>
+                                {item.Image[i + 2] && (
+                                  <div className='ml-6'>
+                                    <img src={item.Image[i + 2]} alt={item.Title} />
+                                  </div>
+                                )}
+                              </div>
+                            )}
+                          </div>
                         )
                     }
                   })}
