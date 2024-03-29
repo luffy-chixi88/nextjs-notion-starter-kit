@@ -75,16 +75,13 @@ const Code = dynamic(() =>
 )
 
 const Collection = dynamic(() =>
-  import('react-notion-x/build/third-party/collection').then(
-    (m) => m.Collection
-  )
+  import('react-notion-x/build/third-party/collection').then((m) => m.Collection)
 )
 
 const FormatCollection = (props) => {
   const { block } = props
   const { recordMap } = useNotionContext()
-  const componentName =
-    recordMap.collection_view?.[block.view_ids?.[0]]?.value?.name
+  const componentName = recordMap.collection_view?.[block.view_ids?.[0]]?.value?.name
   switch (componentName) {
     case 'PasstoScence':
       return <PasstoScence {...props} />
@@ -100,12 +97,9 @@ const FormatCollection = (props) => {
 const Equation = dynamic(() =>
   import('react-notion-x/build/third-party/equation').then((m) => m.Equation)
 )
-const Pdf = dynamic(
-  () => import('react-notion-x/build/third-party/pdf').then((m) => m.Pdf),
-  {
-    ssr: false
-  }
-)
+const Pdf = dynamic(() => import('react-notion-x/build/third-party/pdf').then((m) => m.Pdf), {
+  ssr: false
+})
 const Modal = dynamic(
   () =>
     import('react-notion-x/build/third-party/modal').then((m) => {
@@ -121,10 +115,7 @@ const Tweet = ({ id }: { id: string }) => {
   return <TweetEmbed tweetId={id} />
 }
 
-const propertyLastEditedTimeValue = (
-  { block, pageHeader },
-  defaultFn: () => React.ReactNode
-) => {
+const propertyLastEditedTimeValue = ({ block, pageHeader }, defaultFn: () => React.ReactNode) => {
   if (pageHeader && block?.last_edited_time) {
     return `Last updated ${formatDate(block?.last_edited_time, {
       month: 'long'
@@ -134,10 +125,7 @@ const propertyLastEditedTimeValue = (
   return defaultFn()
 }
 
-const propertyDateValue = (
-  { data, schema, pageHeader },
-  defaultFn: () => React.ReactNode
-) => {
+const propertyDateValue = ({ data, schema, pageHeader }, defaultFn: () => React.ReactNode) => {
   if (pageHeader && schema?.name?.toLowerCase() === 'published') {
     const publishDate = data?.[0]?.[1]?.[0]?.[1]?.start_date
 
@@ -151,10 +139,7 @@ const propertyDateValue = (
   return defaultFn()
 }
 
-const propertyTextValue = (
-  { schema, pageHeader },
-  defaultFn: () => React.ReactNode
-) => {
+const propertyTextValue = ({ schema, pageHeader }, defaultFn: () => React.ReactNode) => {
   if (pageHeader && schema?.name?.toLowerCase() === 'author') {
     return <b>{defaultFn()}</b>
   }
@@ -201,12 +186,7 @@ const Callout = (props) => {
   )
 }
 
-export const NotionPage: React.FC<types.PageProps> = ({
-  site,
-  recordMap,
-  error,
-  pageId
-}) => {
+export const NotionPage: React.FC<types.PageProps> = ({ site, recordMap, error, pageId }) => {
   const router = useRouter()
   const lite = useSearchParam('lite')
 
@@ -245,16 +225,13 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
   // const isRootPage =
   //   parsePageId(block?.id) === parsePageId(site?.rootNotionPageId)
-  const isBlogPost =
-    block?.type === 'page' && block?.parent_table === 'collection'
+  const isBlogPost = block?.type === 'page' && block?.parent_table === 'collection'
 
   const showTableOfContents = !!isBlogPost
   const minTableOfContentsItems = 3
 
   const pageAside = React.useMemo(
-    () => (
-      <PageAside block={block} recordMap={recordMap} isBlogPost={isBlogPost} />
-    ),
+    () => <PageAside block={block} recordMap={recordMap} isBlogPost={isBlogPost} />,
     [block, recordMap, isBlogPost]
   )
 
@@ -284,8 +261,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
     g.block = block
   }
 
-  const canonicalPageUrl =
-    !config.isDev && getCanonicalPageUrl(site, recordMap)(pageId)
+  const canonicalPageUrl = !config.isDev && getCanonicalPageUrl(site, recordMap)(pageId)
 
   const socialImage = mapImageUrl(
     getPageProperty<string>('Social Image', block, recordMap) ||
@@ -295,8 +271,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
   )
 
   const socialDescription =
-    getPageProperty<string>('Description', block, recordMap) ||
-    config.description
+    getPageProperty<string>('Description', block, recordMap) || config.description
 
   return (
     <>
@@ -310,10 +285,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
       />
 
       <NotionRenderer
-        bodyClassName={cs(
-          styles.notion,
-          pageId === site.rootNotionPageId && 'index-page'
-        )}
+        bodyClassName={cs(styles.notion, pageId === site.rootNotionPageId && 'index-page')}
         darkMode={false}
         components={components}
         recordMap={recordMap}
