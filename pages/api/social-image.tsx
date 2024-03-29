@@ -1,10 +1,9 @@
 import * as React from 'react'
 import { NextRequest } from 'next/server'
 
-import { ImageResponse } from '@vercel/og'
-
 import { api, apiHost, rootNotionPageId } from '@/lib/config'
 import { NotionPageInfo } from '@/lib/types'
+import { ImageResponse } from '@vercel/og'
 
 const interRegularFontP = fetch(
   new URL('../../public/fonts/Inter-Regular.ttf', import.meta.url)
@@ -24,7 +23,6 @@ export default async function OGImage(req: NextRequest) {
   if (!pageId) {
     return new Response('Invalid notion page id', { status: 400 })
   }
-
   const pageInfoRes = await fetch(`${apiHost}${api.getNotionPageInfo}`, {
     method: 'POST',
     body: JSON.stringify({ pageId }),
@@ -36,12 +34,8 @@ export default async function OGImage(req: NextRequest) {
     return new Response(pageInfoRes.statusText, { status: pageInfoRes.status })
   }
   const pageInfo: NotionPageInfo = await pageInfoRes.json()
-  console.log(pageInfo)
 
-  const [interRegularFont, interBoldFont] = await Promise.all([
-    interRegularFontP,
-    interBoldFontP
-  ])
+  const [interRegularFont, interBoldFont] = await Promise.all([interRegularFontP, interBoldFontP])
 
   return new ImageResponse(
     (
@@ -109,9 +103,7 @@ export default async function OGImage(req: NextRequest) {
               textAlign: 'center'
             }}
           >
-            {pageInfo.detail && (
-              <div style={{ fontSize: 32, opacity: 0 }}>{pageInfo.detail}</div>
-            )}
+            {pageInfo.detail && <div style={{ fontSize: 32, opacity: 0 }}>{pageInfo.detail}</div>}
 
             <div
               style={{
@@ -123,11 +115,7 @@ export default async function OGImage(req: NextRequest) {
               {pageInfo.title}
             </div>
 
-            {pageInfo.detail && (
-              <div style={{ fontSize: 32, opacity: 0.6 }}>
-                {pageInfo.detail}
-              </div>
-            )}
+            {pageInfo.detail && <div style={{ fontSize: 32, opacity: 0.6 }}>{pageInfo.detail}</div>}
           </div>
         </div>
 

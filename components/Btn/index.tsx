@@ -45,8 +45,10 @@ function Btn({ size, className, type, disabled, block, onClick, children, href }
   } else if (href && !href.startsWith('http')) {
     // 相对路径
     return (
-      <Link className={formatClsx} onClick={handleClick} href={href}>
-        {children}
+      <Link href={href}>
+        <a onClick={handleClick} className={formatClsx}>
+          {children}
+        </a>
       </Link>
     )
   } else {

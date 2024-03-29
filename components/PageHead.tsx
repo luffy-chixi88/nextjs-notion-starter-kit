@@ -55,17 +55,15 @@ export const PageHead: React.FC<
         </>
       )}
 
-      {config.twitter && (
-        <meta name='twitter:creator' content={`@${config.twitter}`} />
-      )}
+      {config.twitter && <meta name='twitter:creator' content={`@${config.twitter}`} />}
 
-      {description && (
+      {/* {description && (
         <>
           <meta name='description' content={description} />
           <meta property='og:description' content={description} />
           <meta name='twitter:description' content={description} />
         </>
-      )}
+      )} */}
 
       {socialImageUrl ? (
         <>
@@ -85,12 +83,7 @@ export const PageHead: React.FC<
         </>
       )}
 
-      <link
-        rel='alternate'
-        type='application/rss+xml'
-        href={rssFeedUrl}
-        title={site?.name}
-      />
+      <link rel='alternate' type='application/rss+xml' href={rssFeedUrl} title={site?.name} />
 
       <meta property='og:title' content={title} />
       <meta name='twitter:title' content={title} />

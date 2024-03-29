@@ -49,6 +49,9 @@ export function useDataBase<T>({ block, multipleFile = false }: iProps) {
                 break
               default:
                 res[name] = properties[item][0][0] ?? ''
+                if (properties[item]?.[0]?.[1]?.[0]?.[0] === 'a') {
+                  res[name + 'Url'] = properties[item]?.[0]?.[1]?.[0]?.[1] || ''
+                }
             }
           }
         }

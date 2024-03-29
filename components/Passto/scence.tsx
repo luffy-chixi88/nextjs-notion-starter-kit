@@ -2,46 +2,25 @@ import Image from 'next/image'
 import React, { useMemo, useState } from 'react'
 
 import Btn from '@/components/Btn'
+import { useDataBase } from '@/hooks/useDataBase'
 import { mapImageUrl } from '@/lib/map-image-url'
 import cs from 'classnames'
 
+interface iTableSchema {
+  Title: string // 标题
+  Description: string // 描述
+  LinkText: string // 链接【联系我们】
+  LinkTextUrl: string // 链接地址
+  TabIcon: string // 图标
+  TabIconAct: string // 选中图标
+  TabTitle: string // tab标题
+  VideoUrl: string // video地址
+}
+
 // 收款场景组件
 export function PasstoScence(props) {
-  const { block, className, ctx } = props
-  const { recordMap } = ctx
-  const component = recordMap.collection_view[block.view_ids[0]]?.value
-  const collectId = component?.format?.collection_pointer?.id
-
-  const blockIds = useMemo(() => {
-    return (
-      recordMap.collection_query?.[collectId]?.[component.id]?.collection_group_results?.blockIds ??
-      []
-    )
-  }, [recordMap, collectId, component.id])
-
-  // 数据表结构
-  const schema = recordMap.collection?.[collectId]?.value?.schema
-  // 列表
-  const list = useMemo(() => {
-    return blockIds.map((blockId) => {
-      const res = {}
-      const block = recordMap.block[blockId].value
-      const { properties } = block
-      Object.keys(properties).forEach((item) => {
-        if (schema[item]) {
-          const { type, name } = schema[item]
-          if (type && name) {
-            const value =
-              type === 'title' || type === 'text' || type === 'url'
-                ? properties[item][0][0]
-                : mapImageUrl(properties[item][0][1][0][1], block)
-            res[name] = value ?? ''
-          }
-        }
-      })
-      return res
-    })
-  }, [blockIds, recordMap, schema])
+  const { block, className } = props
+  const list = useDataBase<iTableSchema>({ block, multipleFile: false })
 
   const [index, setIndex] = useState(0)
 
@@ -104,7 +83,7 @@ export function PasstoScence(props) {
                 <p className={cs('notion-text notion-gray text-[color:var(--gray)]')}>
                   {selectItem.Description}
                 </p>
-                <Btn href={selectItem.Link} className='notion-link mt-6'>
+                <Btn href={selectItem.LinkTextUrl} className='notion-link mt-6'>
                   <b
                     className={cs({
                       '!bg-[#1865FF]': index === 0,

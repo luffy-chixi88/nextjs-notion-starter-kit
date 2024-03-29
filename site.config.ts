@@ -11,10 +11,10 @@ export default siteConfig({
   // basic site info (required)
   name: 'PasstoPay',
   domain: 'passtopay-website.vercel.app',
-  author: 'Travis Fischer',
+  author: '',
 
   // open graph metadata (optional)
-  // description: 'Example Next.js Notion Starter Kit Site',
+  description: '',
 
   // social usernames (optional)
   // twitter: 'transitive_bs',
