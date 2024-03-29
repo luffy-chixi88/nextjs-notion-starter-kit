@@ -36,8 +36,9 @@ module.exports = withBundleAnalyzer({
   async rewrites() {
     return [
       {
-        source: '/reference/:path*',
-        destination: 'https://pass2pay-zh-hk.readme.io/reference/:path*'
+        source: '/readme/:path*',
+        destination: 'https://passto2pay.zapto.org/reference/:path*'
+        // destination: 'https://pass2pay-zh-hk.readme.io/reference/:path*'
       }
     ]
   }
