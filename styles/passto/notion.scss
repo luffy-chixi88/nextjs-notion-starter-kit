@@ -1,0 +1,134 @@
+.notion {
+  --notion-header-height: 80px;
+  --notion-gray_background_co: var(--bgGray);
+  --notion-blue_background_co: var(--light-primary);
+  --notion-gray: rgba(0, 0, 0, 0.5);
+}
+
+.notion-page-has-cover.notion-page-no-icon {
+  padding: 0;
+}
+
+.notion-page-cover-wrapper {
+  display: none;
+}
+
+.notion-page-no-cover {
+  margin-top: 0 !important;
+}
+
+.notion-full-page {
+  padding-bottom: 0;
+}
+
+.notion-full-width {
+  padding-left: 0;
+  padding-right: 0;
+
+  &.notion-page {
+    width: 100%;
+  }
+}
+
+.notion-header .notion-nav-header {
+  max-width: var(--max-width);
+  padding: 0 16px;
+}
+
+.notion-title {
+  display: none;
+}
+
+.notion-blank {
+  display: none;
+}
+
+.notion-callout {
+  margin: 0;
+  padding: 0;
+  border: none;
+  display: block;
+  border-radius: 0;
+
+  .notion-callout-content {
+    max-width: var(--max-width);
+    margin: 0 auto;
+
+    .notion-row > .notion-column {
+      padding: 0;
+    }
+    .notion-callout-text {
+      margin-left: 0;
+      white-space: inherit;
+      > b {
+        display: none;
+      }
+    }
+  }
+}
+
+.notion-page-content-inner > .notion-callout > .notion-callout-content {
+  padding: 0 16px;
+}
+
+.notion-link {
+  position: relative;
+  transition: unset;
+  border: none;
+  opacity: 1;
+
+  &:hover {
+    opacity: 0.7;
+  }
+  b {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    padding: 8px 36px;
+    border-radius: 4px;
+    background-color: var(--light-primary);
+    color: #fff;
+    font-weight: 400;
+  }
+}
+
+.notion-hash-link {
+  display: none;
+}
+
+.notion-asset-wrapper {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.notion-h {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+.notion-h1 {
+  font-size: 40px;
+}
+
+.notion-h2 {
+  font-size: 32px;
+}
+
+.notion-h3 {
+  font-size: 24px;
+}
+
+.notion-text {
+  margin: 0;
+  padding: 0;
+}
+
+.notion-blue_background_co {
+  color: #ffffff;
+
+  .notion-gray {
+    color: rgba(255, 255, 255, 0.5);
+  }
+}
