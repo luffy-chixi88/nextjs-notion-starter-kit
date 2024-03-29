@@ -13,12 +13,11 @@ import 'prismjs/plugins/line-numbers/prism-line-numbers.min.css'
 import 'prismjs/themes/prism-tomorrow.css'
 // core styles shared by all of react-notion-x (required)
 import 'react-notion-x/src/styles.css'
-import 'styles/custom.scss'
+// 自定义主题样式
 import 'styles/global.css'
 import 'styles/notion.scss'
-import 'styles/theme.scss'
-// global style overrides for notion
-import 'styles/variables.scss'
+import 'styles/passto/index.scss'
+// swiper 样式
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'

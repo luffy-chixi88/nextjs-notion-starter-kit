@@ -1,34 +1,3 @@
-.notion-h {
-  display: block;
-}
-.notion-hash-link {
-  display: none;
-}
-.notion-blank {
-  display: none;
-}
-
-.notion-callout {
-  border: 0;
-}
-.notion-callout-content .notion-page-icon-inline {
-  display: none;
-}
-.notion-full-page {
-  padding-bottom: 0;
-}
-
-.notion-h1 {
-  font-size: 40px;
-  margin: 0;
-}
-.notion-h2 {
-  font-size: 32px;
-}
-.notion-h3 {
-  font-size: 24px;
-}
-
 // 重写 li 样式
 ul {
   list-style-type: none !important;
@@ -43,42 +12,24 @@ ul {
   }
 }
 
+// 导航栏
 .pt-nav {
-  padding: 0;
-  margin: 0;
   height: var(--notion-header-height);
 
   .notion-nav-header > .notion-row {
     justify-content: space-between;
   }
-
-  .notion-callout-content {
-    margin: 0;
-    padding: 0;
-    max-width: 100%;
-  }
-
-  .notion-callout {
-    margin: 0;
-    padding: 0;
-  }
-
-  > .notion-callout-content > .notion-callout-text > .notion-row {
-    justify-content: space-between;
-  }
-
-  .notion-column {
-    padding: 0;
-    width: auto !important;
-    justify-content: center;
-  }
-  .notion-spacer {
-    display: none;
+  .notion-row {
+    > .notion-spacer {
+      display: none;
+    }
+    > .notion-column {
+      width: auto !important;
+      justify-content: center;
+    }
   }
   .logo {
-    .notion-asset-wrapper {
-      width: 169px;
-    }
+    width: 169px;
   }
   .lang {
     display: none;
@@ -104,51 +55,54 @@ ul {
   }
 }
 
+// 主界面
 .pt-banner {
-  padding: 0;
-  .notion-callout-content {
-    padding: 0;
+  > .notion-callout-content {
+    padding: 0 !important;
     max-width: 100%;
+
     > .notion-callout-text > .notion-row {
-      color: #fff;
-      justify-content: space-between;
-      .notion-spacer {
+      height: calc(100vh - var(--notion-header-height));
+
+      > .notion-spacer {
         display: none;
       }
       > .notion-column {
         width: 50% !important;
-        padding: 0;
+        justify-content: center;
+
         &:first-child {
-          padding-top: 200px;
-          padding-left: calc(((100% - 1256px) / 2) + 16px);
-          padding-right: 60px;
+          padding-left: calc((100vw - var(--max-width)) / 2);
 
           .notion-h3 {
-            margin: 0;
             font-weight: normal;
-            margin-top: 0;
           }
           .notion-h1 {
-            margin: 20px 0 60px 0;
-            .notion-h-title {
-              font-size: 48px;
-            }
+            margin-top: 12px;
+            margin-bottom: 60px;
+            font-size: 48px;
           }
+          .payment-list {
+            margin-top: 240px;
 
-          .notion-row {
-            margin-top: 140px;
-            .notion-column {
-              width: 44px !important;
-              margin-right: 48px;
+            .notion-row {
+              > .notion-column {
+                width: 40px !important;
+              }
+              > .notion-spacer {
+                width: 48px;
+              }
             }
           }
         }
         &:nth-child(3) {
-          padding: 120px 0px;
-          background: #075aff url(/banner-bg.png) 24px 24px no-repeat;
+          background: var(--primary) url(/banner-bg.png) 24px 24px no-repeat;
           background-size: cover;
+
           .notion-asset-wrapper {
-            > div {
+            flex-direction: row;
+            div {
+              width: calc(var(--max-width) / 2) !important;
               align-items: center;
             }
             img {
@@ -157,19 +111,16 @@ ul {
           }
         }
       }
-      .notion-gray {
-        color: rgba(255, 255, 255, 0.5);
-      }
-      .notion-link {
-        margin-right: 15px;
 
+      .notion-link {
         b {
+          margin-right: 15px;
           font-weight: 600;
-          background-color: #0e31cc;
+          background-color: var(--dark-primary);
         }
         &:last-child {
           b {
-            background-color: #fff;
+            background-color: #ffffff;
             color: var(--primary);
           }
         }
@@ -185,7 +136,7 @@ ul {
   }
 }
 
-.pt-banner-reverse.pt-banner {
+.pt-banner-reverse {
   .notion-callout-content {
     > .notion-callout-text > .notion-row {
       > .notion-column {
@@ -205,6 +156,122 @@ ul {
         .notion-list:last-of-type {
           margin-bottom: 20px;
         }
+      }
+    }
+  }
+}
+
+// 客户付款
+.pt-payment {
+  padding-top: 120px;
+  padding-bottom: 40px;
+
+  > .notion-callout-content > .notion-callout-text {
+    > .notion-h1 {
+      margin-bottom: 40px;
+    }
+    > .notion-row > .notion-column {
+      width: auto !important;
+
+      .left {
+        width: 496px;
+      }
+      .right > .notion-callout-content > .notion-callout-text {
+        > .notion-row > .notion-column {
+          justify-content: center;
+          width: auto !important;
+
+          .notion-h2 {
+            margin-top: 12px;
+            margin-bottom: 32px;
+          }
+          .payment-list {
+            .notion-row {
+              > .notion-column {
+                width: 40px !important;
+              }
+              > .notion-spacer {
+                width: 24px;
+              }
+            }
+          }
+          > .notion-asset-wrapper {
+            width: 244px;
+          }
+        }
+      }
+      &:nth-child(3) {
+        background-color: #ffffff;
+        border-radius: 8px;
+        justify-content: center;
+        padding: 32px;
+      }
+    }
+  }
+}
+
+// 二维码
+.pt-pay-code {
+  padding-bottom: 40px;
+
+  > .notion-callout-content > .notion-callout-text > .notion-row {
+    background-color: #ffffff;
+
+    > .notion-spacer {
+      display: none;
+    }
+    > .notion-column {
+      justify-content: center;
+
+      &:first-child {
+        width: 496px !important;
+        padding: 32px;
+
+        > .notion-asset-wrapper {
+          > div {
+            width: 32px !important;
+            height: 32px;
+          }
+          margin-bottom: 8px;
+        }
+      }
+      &:nth-child(3) {
+        flex: 1;
+        padding: 5vw 4px 4px 0;
+      }
+    }
+  }
+}
+
+// POS机
+.pt-pay-pos {
+  padding-bottom: 120px;
+
+  > .notion-callout-content > .notion-callout-text {
+    > .notion-row > .notion-column {
+      &:first-child {
+        background-color: #ffffff;
+        justify-content: center;
+        border-radius: 8px;
+        flex: 1;
+        padding: 32px;
+
+        .notion-row > .notion-column {
+          &:first-child {
+            justify-content: center;
+
+            > .notion-asset-wrapper {
+              > div {
+                width: 32px !important;
+                height: 32px;
+              }
+              margin-bottom: 8px;
+            }
+          }
+        }
+      }
+      &:nth-child(3) {
+        width: 392px !important;
       }
     }
   }
@@ -891,9 +958,72 @@ ul {
   }
 }
 
-.notion-page-has-cover.notion-page-no-icon {
-  padding: 0;
-}
-.notion-page-cover-wrapper {
-  display: none;
+// 底部导航
+.pt-footer {
+  background-color: var(--bgNight);
+  padding-top: 116px;
+  padding-bottom: 87px;
+  color: #6f7489;
+
+  > .notion-callout-content {
+    padding-left: 32px;
+
+    > .notion-callout-text > .notion-row {
+      > .notion-spacer {
+        display: none;
+      }
+      > .notion-column:nth-last-of-type(2) {
+        flex: 1;
+        width: auto !important;
+      }
+      .footerLogo {
+        width: 430px;
+        .notion-link {
+          color: #ffffff;
+        }
+      }
+      .shareLinks {
+        width: 260px;
+        margin-top: 30px;
+
+        > .notion-callout-content > .notion-callout-text {
+          display: flex;
+          justify-content: space-between;
+          width: 100%;
+
+          .notion-asset-wrapper {
+            min-width: auto;
+
+            img {
+              cursor: pointer;
+              &:hover {
+                opacity: 0.8;
+              }
+            }
+          }
+        }
+      }
+      .footerMenu {
+        min-width: 150px;
+
+        > .notion-callout-content > .notion-callout-text {
+          font-size: 14px;
+          .notion-text {
+            b {
+              color: #ffffff;
+              margin-bottom: 24px;
+              display: block;
+              font-size: 16px;
+            }
+          }
+          .notion-link {
+            display: block;
+            &:hover {
+              color: #ffffff;
+            }
+          }
+        }
+      }
+    }
+  }
 }
