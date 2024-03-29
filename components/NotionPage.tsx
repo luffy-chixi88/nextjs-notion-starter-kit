@@ -15,6 +15,7 @@ import Nav from '@/components/Nav'
 import { PasstoCode } from '@/components/Passto/code'
 import { PasstoForm } from '@/components/Passto/form'
 import { PasstoIntro } from '@/components/Passto/introduce'
+import { PasstoReadme } from '@/components/Passto/readme'
 import { PasstoScence } from '@/components/Passto/scence'
 import { PasstoStep } from '@/components/Passto/step'
 import TDK from '@/components/TDK'
@@ -25,8 +26,7 @@ import { searchNotion } from '@/lib/search-notion'
 import cs from 'classnames'
 import { PageBlock } from 'notion-types'
 import { formatDate, getBlockTitle, getPageProperty } from 'notion-utils'
-import { NotionRenderer, Text } from 'react-notion-x'
-import { useNotionContext } from 'react-notion-x'
+import { NotionRenderer, Text, useNotionContext } from 'react-notion-x'
 import TweetEmbed from 'react-tweet-embed'
 import { useSearchParam } from 'react-use'
 
@@ -85,8 +85,6 @@ const FormatCollection = (props) => {
   switch (componentName) {
     case 'PasstoScence':
       return <PasstoScence {...props} />
-    // case 'PasstoStep':
-    //   return <PasstoStep {...props} />
     case 'PasstoIntro':
       return <PasstoIntro {...props} />
     default:
@@ -162,6 +160,8 @@ const Callout = (props) => {
         return <PasstoForm {...props} meta={titleInfo.meta} />
       case 'PasstoStep':
         return <PasstoStep {...props} meta={titleInfo.meta} />
+      case 'PasstoReadme':
+        return <PasstoReadme {...props} meta={titleInfo.meta} />
       default:
         return (
           <div className='notion-callout-text'>
