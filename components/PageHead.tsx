@@ -19,7 +19,7 @@ export const PageHead: React.FC<
   description = description ?? site?.description
 
   const socialImageUrl =
-    'https://file.notion.so/f/f/051f60fb-dc08-4c67-bc1d-cd505d23195d/c891583c-ebec-476d-8742-f94e8fa676b9/Untitled.png?id=0ee8bf82-76c6-43c4-9de4-e572aa649d1f&table=block&spaceId=051f60fb-dc08-4c67-bc1d-cd505d23195d&expirationTimestamp=1711783504421&signature=Iz0Rc2dZ87QWYZmZdq7u699u0FLinmCW9Tp0yOl6an0&downloadName=Untitled.png' //getSocialImageUrl(pageId) || image
+    'https://nextjs-notion-starter-kit.transitivebullsh.it/api/social-image?id=7875426197cf461698809def95960ebf' //getSocialImageUrl(pageId) || image
 
   return (
     <Head>
