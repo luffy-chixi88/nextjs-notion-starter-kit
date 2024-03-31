@@ -34,7 +34,7 @@ export function PasstoScence(props) {
             <div
               key={i}
               className={cs(
-                'cursor-pointer flex items-center justify-center flex-1 border border-white/10 rounded mr-4 last:mr-0 py-8',
+                'cursor-pointer flex flex-col items-center justify-center flex-1 border max-lg:border-none border-white/10 rounded mr-4 last:mr-0 py-8',
                 {
                   'border-b-2': index === i,
                   'border-b-[#1865FF]': i === 0 && index === i,
@@ -47,37 +47,35 @@ export function PasstoScence(props) {
               )}
               onClick={() => setIndex(i)}
             >
-              <div>
-                <div className='relative flex items-center w-[56px] h-[56px]'>
-                  <Image
-                    src={index === i ? item.TabIconAct : item.TabIcon}
-                    alt={item.TabTitle}
-                    layout='fill'
-                  />
-                  {/* 预加载图片 */}
-                  <Image
-                    className='hidden'
-                    src={index !== i ? item.TabIconAct : item.TabIcon}
-                    alt={item.TabTitle}
-                    layout='fill'
-                  />
-                </div>
-                <p
-                  className={cs('text-[color:var(--gray)] mt-4', {
-                    'text-white': index === i
-                  })}
-                >
-                  {item.TabTitle}
-                </p>
+              <div className='relative flex items-center w-[56px] h-[56px] max-lg:w-[32px] max-lg:h-[32px]'>
+                <Image
+                  src={index === i ? item.TabIconAct : item.TabIcon}
+                  alt={item.TabTitle}
+                  layout='fill'
+                />
+                {/* 预加载图片 */}
+                <Image
+                  className='hidden'
+                  src={index !== i ? item.TabIconAct : item.TabIcon}
+                  alt={item.TabTitle}
+                  layout='fill'
+                />
               </div>
+              <p
+                className={cs('text-[color:var(--gray)] mt-4', {
+                  'text-white': index === i
+                })}
+              >
+                {item.TabTitle}
+              </p>
             </div>
           )
         })}
       </div>
       {selectItem && (
-        <div className='my-8'>
-          <div className={cs('flex')}>
-            <div className='max-w-[380px] mr-8 flex flex-wrap items-center'>
+        <div className='my-8  max-lg:my-0'>
+          <div className={cs('flex max-lg:flex-col')}>
+            <div className='max-w-[380px] mr-8 max-lg:mr-0 max-lg:mb-8 flex flex-wrap items-center'>
               <div>
                 <h3 className='notion-h2'>{selectItem.Title}</h3>
                 <p className={cs('notion-text notion-gray text-[color:var(--gray)]')}>
@@ -98,7 +96,7 @@ export function PasstoScence(props) {
               </div>
             </div>
             <div className='flex-1'>
-              <div className='relative w-[100%] h-[454px]'>
+              <div className='relative w-[100%] h-[454px]  max-lg:h-[192px]'>
                 <video src={selectItem.VideoUrl} muted autoPlay />
               </div>
             </div>

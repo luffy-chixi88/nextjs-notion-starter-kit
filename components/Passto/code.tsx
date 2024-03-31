@@ -52,7 +52,7 @@ export function PasstoCode({ block, className }: iProps) {
             <a
               key={i}
               onClick={() => setAct(i)}
-              className={cs('cursor-pointer p-4 text-sm', {
+              className={cs('cursor-pointer p-4 max-lg:p-3 text-sm', {
                 'text-[color:white] border-b-2 border-b-[color:white]': act === i,
                 'text-[color:#6D6D82]': act !== i
               })}

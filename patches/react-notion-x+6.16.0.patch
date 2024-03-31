@@ -1,9 +1,18 @@
 diff --git a/node_modules/react-notion-x/.DS_Store b/node_modules/react-notion-x/.DS_Store
 new file mode 100644
-index 0000000..18f574e
-Binary files /dev/null and b/node_modules/react-notion-x/.DS_Store differ
+index 0000000..e69de29
+diff --git a/node_modules/react-notion-x/build/index.d.ts b/node_modules/react-notion-x/build/index.d.ts
+index 9caf1c9..b158795 100644
+--- a/node_modules/react-notion-x/build/index.d.ts
++++ b/node_modules/react-notion-x/build/index.d.ts
+@@ -1,4 +1,4 @@
+-export { NotionRenderer } from './renderer';
++export { NotionRenderer, NotionBlockRenderer } from './renderer';
+ export * from './types';
+ export * from './utils';
+ export * from './context';
 diff --git a/node_modules/react-notion-x/build/index.js b/node_modules/react-notion-x/build/index.js
-index a18bcfd..ddef15b 100644
+index a18bcfd..5f5e5df 100644
 --- a/node_modules/react-notion-x/build/index.js
 +++ b/node_modules/react-notion-x/build/index.js
 @@ -1720,8 +1720,8 @@ var Asset = ({ block, zoomable = true, children }) => {
@@ -27,3 +36,11 @@ index a18bcfd..ddef15b 100644
          });
        } else {
          return /* @__PURE__ */ React28.createElement("div", {
+@@ -2738,6 +2739,7 @@ function getMediumZoomMargin() {
+   }
+ }
+ export {
++  NotionBlockRenderer,
+   Breadcrumbs,
+   Header,
+   NotionContextConsumer,

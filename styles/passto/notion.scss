@@ -1,5 +1,4 @@
 .notion {
-  --notion-header-height: 80px;
   --notion-gray_background_co: var(--bgGray);
   --notion-blue_background_co: var(--light-primary);
   --notion-gray: rgba(0, 0, 0, 0.5);
@@ -130,5 +129,17 @@
 
   .notion-gray {
     color: rgba(255, 255, 255, 0.5);
+  }
+}
+
+@media (max-width: 1024px) {
+  .notion-h1 {
+    font-size: 30px;
+  }
+  .notion-h2 {
+    font-size: 20px;
+  }
+  .notion-h3 {
+    font-size: 16px;
   }
 }
