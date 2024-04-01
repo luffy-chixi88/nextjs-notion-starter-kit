@@ -1,11 +1,23 @@
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 import React, { useMemo } from 'react'
 
+import Btn from '../Btn'
 import { getBlockType } from '@/hooks/useBlockType'
+import { useDataBase } from '@/hooks/useDataBase'
+import { useMediaQuery } from '@/hooks/useMediaQuery'
 import cs from 'classnames'
 import { CalloutBlock, ExtendedRecordMap } from 'notion-types'
 import Modal from 'react-modal'
 import { NotionBlockRenderer, useNotionContext } from 'react-notion-x'
+
+interface iTableSchema {
+  Name: string
+  Title: string // 链接名称
+  TitleUrl: string // 链接
+  Icon: string // 默认图标
+  IconAct: string // 选中图标
+}
 
 export function findCalloutInContent<T extends string>(props: {
   block: any
@@ -22,6 +34,8 @@ export function findCalloutInContent<T extends string>(props: {
     if (names.includes(blockType)) {
       result[blockType] = block
     }
+  } else if (block?.type === 'collection_view') {
+    result['PasstoNavLink'] = block
   }
   if (block.content) {
     block.content.forEach((item) => {
@@ -63,10 +77,15 @@ export default function Nav(props) {
   const callouts = findCalloutInContent({
     block,
     recordMap,
-    names: ['Logo', 'Language', 'NavLink', 'NavButton', 'NavButtonMobile']
+    names: ['Logo', 'Language', 'NavButton', 'NavButtonMobile', 'PasstoNavLink']
   })
+  const router = useRouter()
+
   const [modalIsOpen, setIsOpen] = React.useState(false)
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  const navList = useDataBase<iTableSchema>({ block: callouts.PasstoNavLink })
   const toggleModal = () => {
     setIsOpen((isOpen) => !isOpen)
   }
@@ -74,10 +93,25 @@ export default function Nav(props) {
   function closeModal() {
     setIsOpen(false)
   }
-
   const navLink = useMemo(() => {
-    return callouts['NavLink'].id ? <NotionBlockRenderer blockId={callouts['NavLink'].id} /> : null
-  }, [callouts])
+    return navList.map((item, i) => {
+      // 是否已选中
+      const isActive = router?.asPath === item.TitleUrl
+      return (
+        <Btn key={i} className={cs('notion-link', { active: isActive })} href={item.TitleUrl}>
+          <div className='icon-nav mr-4 lg:hidden flex items-center'>
+            <Image
+              src={isActive ? item.IconAct : item.Icon}
+              width={24}
+              height={24}
+              alt={item.Title}
+            />
+          </div>
+          <p className='title'>{item.Title}</p>
+        </Btn>
+      )
+    })
+  }, [navList, router.asPath])
 
   return (
     <header className={cs('notion-header', className)}>
@@ -85,12 +119,14 @@ export default function Nav(props) {
         <div className='flex items-center'>
           {callouts['Logo'] && (
             <div className='logo'>
-              <NotionBlockRenderer blockId={callouts['Logo'].id} />
+              <Btn href='/'>
+                <NotionBlockRenderer blockId={callouts['Logo'].id} />
+              </Btn>
             </div>
           )}
         </div>
         <div className='option flex items-center justify-end flex-1 max-lg:hidden'>
-          <div>{navLink}</div>
+          <div className='pt-nav-link'>{navLink}</div>
           {callouts['NavButton'] && (
             <div>
               <NotionBlockRenderer blockId={callouts['NavButton'].id} />
@@ -117,7 +153,7 @@ export default function Nav(props) {
             onRequestClose={closeModal}
             ariaHideApp={false}
           >
-            {navLink}
+            <div className='pt-nav-link'>{navLink}</div>
             {callouts['NavButton'] && (
               <div>
                 <NotionBlockRenderer blockId={callouts['NavButton'].id} />

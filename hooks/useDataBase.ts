@@ -12,7 +12,7 @@ interface iProps {
 // 读取block自定义类型
 export function useDataBase<T>({ block, multipleFile = false }: iProps) {
   const { recordMap } = useNotionContext()
-  const component = recordMap.collection_view[block.view_ids?.[0]]?.value
+  const component = recordMap.collection_view[block?.view_ids?.[0]]?.value
   const collectId = component?.format?.collection_pointer?.id
 
   const blockIds = useMemo(() => {
@@ -20,7 +20,7 @@ export function useDataBase<T>({ block, multipleFile = false }: iProps) {
       recordMap.collection_query?.[collectId]?.[component.id]?.collection_group_results?.blockIds ??
       []
     )
-  }, [recordMap, collectId, component.id])
+  }, [recordMap, collectId, component])
 
   // 数据表结构
   const schema = recordMap.collection?.[collectId]?.value?.schema
@@ -59,5 +59,8 @@ export function useDataBase<T>({ block, multipleFile = false }: iProps) {
       return res
     })
   }, [blockIds, recordMap, schema, multipleFile])
+
+  if (!component || !blockIds) return null
+
   return list
 }

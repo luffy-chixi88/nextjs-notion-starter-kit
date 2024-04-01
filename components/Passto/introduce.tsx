@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 
 import Btn from '@/components/Btn'
 import { useDataBase } from '@/hooks/useDataBase'
+import { useMediaQuery } from '@/hooks/useMediaQuery'
 import cs from 'classnames'
 
 interface iTableSchema {
@@ -15,7 +16,7 @@ interface iTableSchema {
 
 function PasstoLink(item) {
   return (
-    <div className='shrink-0 mr-16 mb-4'>
+    <div className='shrink-0 mr-16 mb-4 link'>
       <Btn href={item.Link} className='text-[#1865FF]'>
         <b>
           <span className='mr-2'>{item.LinkText || 'View'}</span>
@@ -30,17 +31,27 @@ export function PasstoIntro(props) {
   const [activeIndex, setActiveIndex] = useState(0)
 
   const dataList = useDataBase<iTableSchema>({ block, multipleFile: true })
+  const isPC = useMediaQuery('(min-width: 1024px)')
+
+  const handleActiveIndex = (index) => {
+    console.log('activeIndex', activeIndex, index)
+    if (activeIndex === index && !isPC) {
+      setActiveIndex(-1)
+      return
+    }
+    setActiveIndex(index)
+  }
 
   return (
-    <div className={cs(className, 'intro-list flex')}>
+    <div className={cs(className, 'intro-list flex  max-lg:flex-col')}>
       {dataList.map((item, index) => {
         return (
           <div
             key={index}
-            className={cs('intro-item overflow-hidden', {
+            className={cs('intro-item ', {
               active: index == activeIndex
             })}
-            onClick={() => setActiveIndex(index)}
+            onClick={() => handleActiveIndex(index)}
             onMouseEnter={() => setActiveIndex(index)}
           >
             <p className='title'>{item.Title}</p>
@@ -75,12 +86,12 @@ export function PasstoIntro(props) {
                               <img src={item.Image[i]} alt={item.Title} />
                             </div>
                             {item.Image[i + 1] && (
-                              <div className='w-1/3 ml-8 flex flex-col justify-between'>
+                              <div className='w-1/3 ml-8 flex flex-col justify-between max-lg:ml-2.5'>
                                 <div>
                                   <img src={item.Image[i + 1]} alt={item.Title} />
                                 </div>
                                 {item.Image[i + 2] && (
-                                  <div className='mt-6'>
+                                  <div>
                                     <img src={item.Image[i + 2]} alt={item.Title} />
                                   </div>
                                 )}

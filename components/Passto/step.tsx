@@ -2,9 +2,11 @@ import React, { useMemo, useRef, useState } from 'react'
 
 import { getBlockType } from '@/hooks/useBlockType'
 import { useDataBase } from '@/hooks/useDataBase'
+import { useMediaQuery } from '@/hooks/useMediaQuery'
 import cs from 'classnames'
 import { useNotionContext } from 'react-notion-x'
 import { Autoplay } from 'swiper/modules'
+import { Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 interface iTableschema {
@@ -16,7 +18,6 @@ interface iTableschema {
 export function PasstoStep(props) {
   const { block, className, children } = props
   const { recordMap } = useNotionContext()
-  console.log('block', block, children)
 
   // 指定callout内容返回
   const content = useMemo(() => {
@@ -58,6 +59,8 @@ export function PasstoStepSwiper(props) {
   const swiper = useRef(null)
   const [index, setIndex] = useState(0)
 
+  // true为pc false为小尺寸
+  const isPC = useMediaQuery('(min-width: 1024px)')
   const handleSlideTo = (currentIndex) => {
     if (swiper.current.swiper) {
       swiper.current.swiper.slideTo(currentIndex, 1000, false)
@@ -65,18 +68,29 @@ export function PasstoStepSwiper(props) {
     }
   }
   return (
-    <div className={cs('flex pt-20', className)}>
+    <div className={cs('flex pt-20 max-lg:flex-col', className)}>
       <div className='flex items-center justify-center'>
         <Swiper
+          pagination={
+            isPC
+              ? false
+              : {
+                  clickable: true
+                }
+          }
           ref={swiper}
-          modules={[Autoplay]}
-          className='w-[600px] h-[648px]'
-          direction={'vertical'}
-          autoplay={{
-            pauseOnMouseEnter: true,
-            disableOnInteraction: false,
-            delay: 3000
-          }}
+          modules={[Autoplay, Pagination]}
+          className='w-[600px] h-[648px] max-lg:h-[416px]'
+          direction={isPC ? 'vertical' : 'horizontal'}
+          autoplay={
+            isPC
+              ? {
+                  pauseOnMouseEnter: true,
+                  disableOnInteraction: false,
+                  delay: 3000
+                }
+              : false
+          }
           loop={true}
           onSlideChangeTransitionEnd={(swiper) => {
             setIndex(swiper.activeIndex)
@@ -91,22 +105,25 @@ export function PasstoStepSwiper(props) {
           })}
         </Swiper>
       </div>
-      <div className='ml-32'>
+      <div className='ml-32 max-lg:ml-0'>
         {list.map((item, i) => {
           return (
             <div
               key={i}
-              className={cs('flex mb-10 cursor-pointer', { 'opacity-40': index !== i })}
+              className={cs('flex max-lg:flex-col mb-10 cursor-pointer max-lg:mb-5', {
+                'opacity-40': index !== i,
+                hidden: index !== i && !isPC
+              })}
               onClick={() => handleSlideTo(i)}
             >
               <div className='mr-2'>
-                <div className='bg-[var(--primary)] text-white rounded-full w-11 h-11 leading-[44px] text-center'>
+                <div className='bg-[var(--primary)] text-white rounded-full w-11 h-11 leading-[44px] text-center max-lg:w-6 max-lg:h-6 max-lg:leading-6'>
                   {i + 1}
                 </div>
               </div>
               <div>
                 <h5
-                  className='notion-h notion-h3 m-0'
+                  className='notion-h notion-h3 m-0 max-lg:!my-4 max-lg:!text-xl'
                   dangerouslySetInnerHTML={{ __html: item.Name }}
                 ></h5>
                 <p className='notion-text notion-gray !p-0'>{item.Description}</p>
@@ -114,8 +131,7 @@ export function PasstoStepSwiper(props) {
             </div>
           )
         })}
-
-        <div className='flex'>{children}</div>
+        <div className='flex max-lg:hidden'>{children}</div>
       </div>
     </div>
   )
