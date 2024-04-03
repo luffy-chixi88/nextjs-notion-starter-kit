@@ -111,7 +111,7 @@ export default function Nav(props) {
         </Btn>
       )
     })
-  }, [navList, router.asPath])
+  }, [navList, router])
 
   return (
     <header className={cs('notion-header', className)}>
