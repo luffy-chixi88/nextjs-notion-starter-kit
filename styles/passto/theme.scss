@@ -125,7 +125,7 @@
 
         &:first-child {
           padding-left: calc((100vw - var(--max-width)) / 2);
-          padding-right: 60px;
+          padding-right: 80px;
 
           .notion-h3 {
             font-weight: normal;
@@ -312,7 +312,17 @@
               li {
                 padding: 0;
                 font-size: 14px;
+                line-height: 32px;
               }
+              &:first-of-type {
+                margin-top: 40px;
+              }
+              &:last-of-type {
+                margin-bottom: 40px;
+              }
+            }
+            .notion-asset-wrapper img {
+              width: 300px;
             }
           }
         }
@@ -1075,8 +1085,16 @@
       }
       > .notion-column {
         width: 100% !important;
+
+        .left,
         .right {
           text-align: left;
+          background-color: #ffffff;
+
+          .notion-callout-content {
+            padding-left: 0;
+            padding-right: 0;
+          }
         }
       }
     }
