@@ -26,7 +26,7 @@ export default async function handler(req: Request, res: NextApiResponse) {
         }
       }
     }
-    console.log('data', data)
+    console.log('data', data, process.env.NOTION_SECRET)
     const result = await fetch(url, {
       method: 'POST',
       headers: {
