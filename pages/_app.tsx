@@ -5,8 +5,10 @@ import { useRouter } from 'next/router'
 
 import * as Fathom from 'fathom-client'
 import { fathomConfig, fathomId, posthogConfig, posthogId } from '@/lib/config'
+import { SnackbarUtilsConfig } from '@/lib/toast'
 // used for rendering equations (optional)
 import 'katex/dist/katex.min.css'
+import { SnackbarProvider } from 'notistack'
 import posthog from 'posthog-js'
 import 'prismjs/plugins/line-numbers/prism-line-numbers.min.css'
 // used for code syntax highlighting (optional)
@@ -51,5 +53,10 @@ export default function App({ Component, pageProps }: AppProps) {
     }
   }, [router.events])
 
-  return <Component {...pageProps} />
+  return (
+    <SnackbarProvider maxSnack={3}>
+      <SnackbarUtilsConfig />
+      <Component {...pageProps} />
+    </SnackbarProvider>
+  )
 }

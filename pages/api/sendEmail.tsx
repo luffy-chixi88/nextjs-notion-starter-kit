@@ -22,7 +22,7 @@ export default async function handler(req: Request, res: NextApiResponse) {
         Email: { email: email },
         CreateTime: {
           // 2020-12-08T12:00:00Z'
-          date: { start: dayjs().format('YYYY-MM-DDTHH:mm:ss') + 'Z' }
+          date: { start: dayjs().format('YYYY-MM-DDThh:mm:ss') + 'Z' }
         }
       }
     }

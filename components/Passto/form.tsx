@@ -1,12 +1,20 @@
 import React, { useMemo, useState } from 'react'
 
+import Toast from '@/lib/toast'
 import cs from 'classnames'
 import { useNotionContext } from 'react-notion-x'
 
+function isValidEmail(email) {
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+  return emailRegex.test(email)
+}
+
 export function PasstoForm(props) {
-  const { className, block } = props
+  const { block, className } = props
   const { recordMap } = useNotionContext()
-  const [formData, setFormData] = useState({})
+  const [formData, setFormData] = useState({
+    email: ''
+  })
   const [submitText, setSubmitText] = useState('Submit')
 
   const DataList = useMemo(() => {
@@ -50,7 +58,26 @@ export function PasstoForm(props) {
   // 提交
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log('formData', formData)
+    if (!formData.email || !isValidEmail(formData.email)) {
+      return Toast.error('郵箱格式不對')
+    }
+    fetch('/api/sendEmail', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ email: formData.email })
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          formData.email = ''
+        }
+        Toast.info(data.success ? '提交成功' : '提交失敗')
+      })
+      .catch((error) => {
+        Toast.error('提交失敗')
+      })
   }
 
   return (
@@ -59,7 +86,12 @@ export function PasstoForm(props) {
         {DataList.map((item, i) => {
           return (
             <div key={i} className='form-item'>
-              <input name={item.Name} onChange={handleChange} placeholder={item.Placeholder} />
+              <input
+                value={formData[item.Name]}
+                name={item.Name}
+                onChange={handleChange}
+                placeholder={item.Placeholder}
+              />
             </div>
           )
         })}
