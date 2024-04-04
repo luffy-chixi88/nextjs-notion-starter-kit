@@ -1,63 +1,45 @@
 import { NextApiResponse } from 'next'
-import { NextResponse } from 'next/server'
 
-export async function POST(req: Request) {
+import dayjs from 'dayjs'
+
+function isValidEmail(email) {
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+  return emailRegex.test(email)
+}
+
+export default async function handler(req: Request, res: NextApiResponse) {
   try {
-    if (req.method !== 'POST') {
-      return NextResponse.json(
-        { error: 'Method Not Allowed' },
-        {
-          status: 405
-        }
-      )
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    const email = req.body?.email || ''
+    if (!isValidEmail(email)) {
+      throw new Error('email error')
     }
-
-    // Enable body parsing middleware
-    const body = await req.json()
-    const { name, email } = body
-    const notionDatabaseId = process.env.NOTION_DB_ID
-    const integrationToken = process.env.NOTION_SECRET
-
     const url = `https://api.notion.com/v1/pages`
-
     const data = {
-      parent: { database_id: notionDatabaseId },
+      parent: { database_id: process.env.NOTION_DB_ID },
       properties: {
-        Name: { title: [{ text: { content: name } }] },
-        Email: { email: email }
-        // Add more properties based on your Notion database schema
+        Email: { email: email },
+        CreateTime: {
+          // 2020-12-08T12:00:00Z'
+          date: { start: dayjs().format('YYYY-MM-DDTHH:mm:ss') + 'Z' }
+        }
       }
     }
-
     const result = await fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${integrationToken}`,
+        Authorization: `Bearer ${process.env.NOTION_SECRET}`,
         'Notion-Version': '2021-08-16'
       },
       body: JSON.stringify(data)
     })
-
     if (result.status !== 200) {
-      const error = await result.json()
-      console.error('Got error saving data', error)
-      return NextResponse.json(
-        { message: error.message },
-        {
-          status: 500
-        }
-      )
+      throw new Error('failure')
     }
-
-    return NextResponse.json({ message: 'Data saved to Notion!' })
-  } catch (error) {
-    console.error(error)
-    NextResponse.json(
-      { message: 'Internal Server Error' },
-      {
-        status: 500
-      }
-    )
+    res.status(200).json({ success: true, msg: '' })
+  } catch (err) {
+    res.status(200).json({ success: false })
   }
 }
