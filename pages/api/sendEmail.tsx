@@ -19,11 +19,11 @@ export default async function handler(req: Request, res: NextApiResponse) {
     const data = {
       parent: { database_id: process.env.NOTION_DB_ID },
       properties: {
-        Email: { email: email },
-        CreateTime: {
-          // 2020-12-08T12:00:00Z dayjs().format('YYYY-MM-DDThh:mm:ss') + 'Z'
-          date: { start: dayjs().format('YYYY-MM-DDThh:mm:ss') + 'Z' }
-        }
+        Email: { email: email }
+        // CreateTime: {
+        // 2020-12-08T12:00:00Z dayjs().format('YYYY-MM-DDThh:mm:ss') + 'Z'
+        // date: { start: dayjs().format('YYYY-MM-DDThh:mm:ss') + 'Z' }
+        // }
       }
     }
     console.log('data', data, process.env.NOTION_SECRET)
