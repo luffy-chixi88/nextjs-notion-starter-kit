@@ -71,7 +71,6 @@
   }
 }
 
-// 导航
 @media (max-width: 1024px) {
   .pt-nav {
     .logo {
@@ -151,17 +150,6 @@
         &:nth-child(3) {
           background: var(--primary) url(/banner-bg.png) 24px 24px no-repeat;
           background-size: cover;
-
-          .notion-asset-wrapper {
-            flex-direction: row;
-            div {
-              width: calc(var(--max-width) / 2) !important;
-              align-items: center;
-            }
-            img {
-              width: 375px;
-            }
-          }
         }
       }
 
@@ -200,6 +188,75 @@
           margin-bottom: 20px;
         }
       }
+    }
+    .banner-pay {
+      background-color: #fff;
+      border-radius: 16px;
+      width: 375px;
+      height: 720px;
+      margin-left: 136px;
+      padding: 0 16px;
+      .notion-callout-text {
+        > .notion-asset-wrapper-image {
+          &:first-of-type {
+            display: block;
+            margin: 36px 0;
+            > div {
+              width: 135px !important;
+            }
+          }
+          &:nth-of-type(2) {
+            height: 343px;
+            > div {
+              img {
+                border-radius: 16px;
+              }
+            }
+          }
+        }
+      }
+
+      .notion-row {
+        margin: 32px 0 16px 0;
+        color: #000;
+        justify-content: space-between;
+        h3 {
+          font-size: 32px;
+        }
+        .notion-text {
+          font-size: 14px;
+          padding: 16px 0;
+        }
+        .notion-gray {
+          color: #999;
+        }
+        .notion-column {
+          width: auto !important;
+        }
+        .notion-asset-wrapper-image {
+          > div {
+            margin-top: 8px;
+            width: 24px !important;
+          }
+        }
+      }
+      .notion-link {
+        b {
+          display: flex;
+          color: #fff !important;
+          background-color: var(--dark-primary) !important;
+          margin-bottom: 40px;
+        }
+      }
+    }
+  }
+}
+
+// 导航
+@media (max-width: 1440px) {
+  .pt-banner {
+    > .notion-callout-content > .notion-callout-text > .notion-row {
+      padding-left: 16px;
     }
   }
 }
@@ -257,6 +314,14 @@
         background: none;
         margin: 36px 0;
       }
+    }
+    > .notion-callout-content .banner-pay {
+      margin-left: 0;
+      width: 100%;
+      height: auto;
+    }
+    > .notion-callout-content > .notion-callout-text > .notion-row {
+      padding-left: 0;
     }
   }
 }
@@ -832,35 +897,44 @@
     display: none;
   }
 
-  > .notion-callout-content .notion-callout-text > .notion-row > .notion-column {
-    justify-content: center;
+  > .notion-callout-content .notion-callout-text {
+    > .notion-row > .notion-column {
+      justify-content: center;
 
-    .settle-list {
-      .notion-h1 {
-        margin-bottom: 40px;
-        display: block;
-      }
+      .settle-list {
+        .notion-h1 {
+          margin-bottom: 40px;
+          display: block;
+        }
 
-      > .notion-callout-content > .notion-callout-text > .notion-row > .notion-column {
-        width: 228px !important;
+        > .notion-callout-content > .notion-callout-text > .notion-row > .notion-column {
+          width: 228px !important;
 
-        > .notion-callout {
-          border-radius: 8px;
-          border: 1px solid #cccccc;
-          padding: 8px;
+          > .notion-callout {
+            border-radius: 8px;
+            border: 1px solid #cccccc;
+            padding: 8px;
 
-          > .notion-callout-content .notion-callout-text {
-            text-align: center;
+            > .notion-callout-content .notion-callout-text {
+              text-align: center;
+            }
           }
         }
       }
+      .notion-text {
+        // color: #666666;
+      }
+      > .notion-text {
+        margin-top: 24px;
+      }
+      .notion-column {
+        width: 100% !important;
+      }
     }
-    .notion-text {
-      // color: #666666;
-    }
-    > .notion-text {
-      margin-top: 24px;
-    }
+  }
+  .pt-video {
+    max-width: 496px;
+    margin: 24px auto;
   }
 }
 

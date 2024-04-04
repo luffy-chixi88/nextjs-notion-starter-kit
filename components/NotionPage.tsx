@@ -19,6 +19,7 @@ import { PasstoReadme } from '@/components/Passto/readme'
 import { PasstoScence } from '@/components/Passto/scence'
 import { PasstoStep } from '@/components/Passto/step'
 import TDK from '@/components/TDK'
+import VideoAutoPlay from '@/components/Video/autoPlay'
 import { useBlockType } from '@/hooks/useBlockType'
 import { mapImageUrl } from '@/lib/map-image-url'
 import { getCanonicalPageUrl, mapPageUrl } from '@/lib/map-page-url'
@@ -162,6 +163,8 @@ const Callout = (props) => {
         return <PasstoStep {...props} meta={titleInfo.meta} />
       case 'PasstoReadme':
         return <PasstoReadme {...props} meta={titleInfo.meta} />
+      case 'PasstoVideoAutoPlay':
+        return <VideoAutoPlay {...props} meta={titleInfo.meta} />
       default:
         return (
           <div className='notion-callout-text'>
