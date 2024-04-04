@@ -26,6 +26,7 @@ export default async function handler(req: Request, res: NextApiResponse) {
         }
       }
     }
+    console.log('data', data)
     const result = await fetch(url, {
       method: 'POST',
       headers: {
@@ -40,6 +41,7 @@ export default async function handler(req: Request, res: NextApiResponse) {
     }
     res.status(200).json({ success: true, msg: '' })
   } catch (err) {
+    console.log('eee', err)
     res.status(200).json({ success: false })
   }
 }

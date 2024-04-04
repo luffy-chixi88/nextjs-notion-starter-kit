@@ -95,7 +95,7 @@ export default function Nav(props) {
   const navLink = useMemo(() => {
     return navList.map((item, i) => {
       // 是否已选中
-      const isActive = router?.asPath?.split('?')?.[0] === item.TitleUrl
+      const isActive = router?.asPath === item.TitleUrl
       return (
         <Btn key={i} className={cs('notion-link', { active: isActive })} href={item.TitleUrl}>
           <div className='icon-nav mr-4 lg:hidden flex items-center'>
