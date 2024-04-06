@@ -11,6 +11,7 @@ import { Page404 } from './Page404'
 import { PageAside } from './PageAside'
 import { PageHead } from './PageHead'
 import styles from './styles.module.css'
+import FAQ from '@/components/FAQ'
 import Nav from '@/components/Nav'
 import { PasstoCode } from '@/components/Passto/code'
 import { PasstoForm } from '@/components/Passto/form'
@@ -157,6 +158,8 @@ const Callout = (props) => {
         return <PasstoCode {...props} meta={titleInfo.meta} />
       case 'TDK':
         return <TDK {...props} meta={titleInfo.meta} />
+      case 'FAQ':
+        return <FAQ {...props} meta={titleInfo.meta} />
       case 'PasstoForm':
         return <PasstoForm {...props} meta={titleInfo.meta} />
       case 'PasstoStep':

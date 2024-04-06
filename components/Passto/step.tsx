@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useState } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 
 import { getBlockType } from '@/hooks/useBlockType'
 import { useDataBase } from '@/hooks/useDataBase'
@@ -61,10 +61,14 @@ export function PasstoStepSwiper(props) {
 
   // true为pc false为小尺寸
   const isPC = useMediaQuery('(min-width: 1024px)')
+
   const handleSlideTo = (currentIndex) => {
-    if (swiper.current.swiper) {
-      swiper.current.swiper.slideTo(currentIndex, 1000, false)
+    const currentSwiper = swiper.current.swiper
+    if (currentSwiper) {
+      currentSwiper.autoplay.stop()
+      currentSwiper.slideTo(currentIndex, 1000, false)
       setIndex(currentIndex)
+      currentSwiper.autoplay.start()
     }
   }
   return (
@@ -93,7 +97,7 @@ export function PasstoStepSwiper(props) {
           }
           loop={true}
           onSlideChangeTransitionEnd={(swiper) => {
-            setIndex(swiper.activeIndex)
+            setIndex(swiper.realIndex)
           }}
         >
           {list.map((item, i) => {

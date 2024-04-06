@@ -2,6 +2,7 @@
 import * as React from 'react'
 import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
+import Script from 'next/script'
 
 import * as Fathom from 'fathom-client'
 import { fathomConfig, fathomId, posthogConfig, posthogId } from '@/lib/config'
@@ -57,6 +58,19 @@ export default function App({ Component, pageProps }: AppProps) {
     <SnackbarProvider maxSnack={3}>
       <SnackbarUtilsConfig />
       <Component {...pageProps} />
+      <Script>
+        {`
+        if(document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded',opentoggles);
+        } else {
+          opentoggles();
+        }
+        function opentoggles() {
+          var detailsElements = document.querySelector(".pt-faq .notion-toggle");
+          detailsElements && detailsElements.setAttribute("open", true);
+        }
+        `}
+      </Script>
     </SnackbarProvider>
   )
 }
