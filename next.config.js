@@ -6,6 +6,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 module.exports = withBundleAnalyzer({
   // output: 'standalone',
   staticPageGenerationTimeout: 300,
+  cleanDistDir: false,
   images: {
     // unoptimized: true,
     domains: [
@@ -20,27 +21,5 @@ module.exports = withBundleAnalyzer({
     formats: ['image/avif', 'image/webp'],
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;"
-  },
-  async headers() {
-    return [
-      {
-        source: '/reference/:path*',
-        headers: [
-          {
-            key: 'X-Frame-Options',
-            value: 'SAMEORIGIN'
-          }
-        ]
-      }
-    ]
-  },
-  async rewrites() {
-    return [
-      {
-        source: '/readme/:path*',
-        destination: 'https://passto2pay.zapto.org/reference/:path*'
-        // destination: 'https://pass2pay-zh-hk.readme.io/reference/:path*'
-      }
-    ]
   }
 })
