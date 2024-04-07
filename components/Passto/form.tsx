@@ -69,7 +69,7 @@ export function PasstoForm(props) {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ email: formData.email })
+      body: JSON.stringify({ email: formData.email, source: 0 })
     })
       .then((response) => response.json())
       .then((data) => {
@@ -106,7 +106,7 @@ export function PasstoForm(props) {
           )
         })}
         <div className='submit-btn'>
-          <Btn type='primary' disabled={loading} onClick={handleSubmit}>
+          <Btn type='primary' loading={loading} onClick={handleSubmit}>
             {submitText}
           </Btn>
         </div>

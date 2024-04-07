@@ -1357,7 +1357,9 @@
                     color: #ffffff;
                     border-radius: 8px;
                     text-align: center;
-                    display: inline-block;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
                   }
                 }
               }
@@ -1411,7 +1413,8 @@
           }
           .submit-btn {
             a {
-              max-width: 100px;
+              min-width: 100px;
+              padding: 10px 0;
             }
           }
         }

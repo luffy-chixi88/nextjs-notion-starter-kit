@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import React from 'react'
+import React, { useMemo } from 'react'
 
 import clsx from 'classnames'
 import { useNotionContext } from 'react-notion-x'
@@ -13,12 +13,13 @@ interface IBtn {
   block?: boolean
   className?: string
   size?: string // default small large
+  loading?: boolean
 }
 
-function Btn({ size, className, type, disabled, block, onClick, children, href }: IBtn) {
+function Btn({ size, className, type, disabled, block, onClick, children, href, loading }: IBtn) {
   const { components, mapPageUrl } = useNotionContext()
   const handleClick = () => {
-    if (disabled) return
+    if (disabled || loading) return
     onClick?.()
   }
   const formatClsx = clsx([
@@ -30,16 +31,26 @@ function Btn({ size, className, type, disabled, block, onClick, children, href }
       'w-full flex': block,
       'inline-flex': !block,
       'cursor-pointer': !disabled,
-      'opacity-50 cursor-not-allowed': disabled,
+      'opacity-50 cursor-not-allowed': disabled || loading,
       'text-light': type,
       'bg-[var(--primary)]': type === 'primary'
     }
   ])
+
+  const formatChildren = useMemo(() => {
+    return (
+      <>
+        {loading && <div className='spinner mr-3'></div>}
+        {children}
+      </>
+    )
+  }, [loading, children])
+
   // notion page id
   if (href && !href.startsWith('/') && !href.startsWith('http')) {
     return (
       <components.PageLink href={mapPageUrl(href)} className={formatClsx}>
-        {children}
+        {formatChildren}
       </components.PageLink>
     )
   } else if (href && !href.startsWith('http')) {
@@ -47,7 +58,7 @@ function Btn({ size, className, type, disabled, block, onClick, children, href }
     return (
       <Link href={href}>
         <a onClick={handleClick} className={formatClsx}>
-          {children}
+          {formatChildren}
         </a>
       </Link>
     )
@@ -59,7 +70,7 @@ function Btn({ size, className, type, disabled, block, onClick, children, href }
     }
     return (
       <a onClick={handleClick} className={formatClsx} {...otherProps}>
-        {children}
+        {formatChildren}
       </a>
     )
   }

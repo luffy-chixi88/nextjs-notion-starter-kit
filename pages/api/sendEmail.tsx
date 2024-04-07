@@ -1,17 +1,23 @@
-import { NextApiResponse } from 'next'
-
-import dayjs from 'dayjs'
+import { NextApiRequest, NextApiResponse } from 'next'
 
 function isValidEmail(email) {
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
   return emailRegex.test(email)
 }
 
-export default async function handler(req: Request, res: NextApiResponse) {
+const fromArr = ['PassTo Pay官網', 'PassTo Credit官網', 'Multi Markets官網']
+
+interface ExtendedNextApiRequest extends NextApiRequest {
+  body: {
+    email: string // 邮箱
+    source: number // 来源
+    phone?: string // 手机号码
+  }
+}
+
+export default async function handler(req: ExtendedNextApiRequest, res: NextApiResponse) {
   try {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    const email = req.body?.email || ''
+    const email = req.body.email || ''
     if (!isValidEmail(email)) {
       throw new Error('email error')
     }
@@ -19,14 +25,21 @@ export default async function handler(req: Request, res: NextApiResponse) {
     const data = {
       parent: { database_id: process.env.NOTION_DB_ID },
       properties: {
-        Email: { email: email },
-        CreateTime: {
-          // 2020-12-08T12:00:00Z dayjs().format('YYYY-MM-DDThh:mm:ss') + 'Z'
-          date: { start: dayjs(new Date()).format('YYYY-MM-DD[T]HH:mm:ss[Z]') }
+        email: { email: email },
+        source: {
+          select: {
+            name: fromArr[req.body.source] || fromArr[0]
+          }
         }
       }
     }
-    console.log('data', data)
+    if (req.body.phone) {
+      // @ts-ignore
+      data.properties.phone = {
+        phone_number: req.body.phone
+      }
+    }
+    console.log('data', data.properties)
     const result = await fetch(url, {
       method: 'POST',
       headers: {
