@@ -71,7 +71,9 @@ export function PasstoForm(props) {
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
-          formData.email = ''
+          setFormData({
+            email: ''
+          })
         }
         Toast.info(data.success ? '提交成功' : '提交失敗')
       })
@@ -91,6 +93,7 @@ export function PasstoForm(props) {
                 name={item.Name}
                 onChange={handleChange}
                 placeholder={item.Placeholder}
+                autoComplete='false'
               />
             </div>
           )
