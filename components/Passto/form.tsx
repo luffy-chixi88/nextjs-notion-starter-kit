@@ -2,13 +2,9 @@ import React, { useMemo, useState } from 'react'
 
 import Btn from '../Btn'
 import Toast from '@/lib/toast'
+import { isValidEmail } from '@/lib/utils'
 import cs from 'classnames'
 import { useNotionContext } from 'react-notion-x'
-
-function isValidEmail(email) {
-  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
-  return emailRegex.test(email)
-}
 
 export function PasstoForm(props) {
   const { block, className } = props
@@ -60,9 +56,8 @@ export function PasstoForm(props) {
   // 提交
   const handleSubmit = () => {
     if (!isValidEmail(formData.email)) {
-      return Toast.error('郵箱格式不對')
+      return Toast.error('郵箱格式不正確')
     }
-    console.log('sssss')
     setLoading(true)
     fetch('/api/sendEmail', {
       method: 'POST',
@@ -91,7 +86,7 @@ export function PasstoForm(props) {
 
   return (
     <div className={cs('form-box', className)}>
-      <form onSubmit={handleSubmit}>
+      <form>
         {DataList.map((item, i) => {
           return (
             <div key={i} className='form-item'>

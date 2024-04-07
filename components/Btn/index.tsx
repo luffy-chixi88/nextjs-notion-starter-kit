@@ -33,7 +33,7 @@ function Btn({ size, className, type, disabled, block, onClick, children, href, 
       'cursor-pointer': !disabled,
       'opacity-50 cursor-not-allowed': disabled || loading,
       'text-light': type,
-      'bg-[var(--primary)]': type === 'primary'
+      'bg-[var(--primary)] text-white': type === 'primary'
     }
   ])
 
