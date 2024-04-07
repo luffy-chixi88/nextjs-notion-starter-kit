@@ -82,7 +82,6 @@ export default function Nav(props) {
 
   const [modalIsOpen, setIsOpen] = React.useState(false)
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const navList = useDataBase<iTableSchema>({ block: callouts.PasstoNavLink })
   const toggleModal = () => {
@@ -95,7 +94,7 @@ export default function Nav(props) {
   const navLink = useMemo(() => {
     return navList.map((item, i) => {
       // 是否已选中
-      const isActive = router?.asPath === item.TitleUrl
+      const isActive = '/' + (router?.query?.pageId || '') === item.TitleUrl.split('?')[0]
       return (
         <Btn key={i} className={cs('notion-link', { active: isActive })} href={item.TitleUrl}>
           <div className='icon-nav mr-4 lg:hidden flex items-center'>
