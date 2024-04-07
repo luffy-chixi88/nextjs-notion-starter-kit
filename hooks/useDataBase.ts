@@ -29,7 +29,7 @@ export function useDataBase<T>({ block, multipleFile = false }: iProps) {
     return blockIds.map((blockId) => {
       const res = {} as T
       const block = recordMap.block[blockId].value
-      const { properties } = block
+      const properties = block?.properties || {}
       Object.keys(properties).forEach((item) => {
         if (schema[item]) {
           const { type, name } = schema[item]
