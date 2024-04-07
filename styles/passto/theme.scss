@@ -1350,13 +1350,14 @@
                     margin-right: 10px;
                   }
 
-                  .submit-btn button {
+                  .submit-btn a {
                     padding: 10px 30px;
                     min-width: 166px;
                     background-color: var(--light-primary);
                     color: #ffffff;
                     border-radius: 8px;
                     text-align: center;
+                    display: inline-block;
                   }
                 }
               }
@@ -1409,8 +1410,8 @@
             flex: 1;
           }
           .submit-btn {
-            button {
-              min-width: 100px;
+            a {
+              max-width: 100px;
             }
           }
         }

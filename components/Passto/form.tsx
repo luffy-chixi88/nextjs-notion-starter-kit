@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from 'react'
 
+import Btn from '../Btn'
 import Toast from '@/lib/toast'
 import cs from 'classnames'
 import { useNotionContext } from 'react-notion-x'
@@ -12,6 +13,7 @@ function isValidEmail(email) {
 export function PasstoForm(props) {
   const { block, className } = props
   const { recordMap } = useNotionContext()
+  const [loading, setLoading] = useState(false)
   const [formData, setFormData] = useState({
     email: ''
   })
@@ -56,11 +58,12 @@ export function PasstoForm(props) {
   }
 
   // 提交
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    if (!formData.email || !isValidEmail(formData.email)) {
+  const handleSubmit = () => {
+    if (!isValidEmail(formData.email)) {
       return Toast.error('郵箱格式不對')
     }
+    console.log('sssss')
+    setLoading(true)
     fetch('/api/sendEmail', {
       method: 'POST',
       headers: {
@@ -72,6 +75,7 @@ export function PasstoForm(props) {
       .then((data) => {
         if (data.success) {
           setFormData({
+            ...formData,
             email: ''
           })
         }
@@ -79,6 +83,9 @@ export function PasstoForm(props) {
       })
       .catch((error) => {
         Toast.error('提交失敗')
+      })
+      .finally(() => {
+        setLoading(false)
       })
   }
 
@@ -93,13 +100,15 @@ export function PasstoForm(props) {
                 name={item.Name}
                 onChange={handleChange}
                 placeholder={item.Placeholder}
-                autoComplete='false'
+                autoComplete='off'
               />
             </div>
           )
         })}
         <div className='submit-btn'>
-          <button type='submit'>{submitText}</button>
+          <Btn type='primary' disabled={loading} onClick={handleSubmit}>
+            {submitText}
+          </Btn>
         </div>
       </form>
     </div>
