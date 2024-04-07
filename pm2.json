@@ -1,0 +1,26 @@
+{
+  "apps": [
+    {
+      "name": "passtopay",
+      "script": "npm",
+      "args": "start",
+      "watch": false,
+      "exec_interpreter": "node",
+      "env_production": {
+        "NODE_ENV": "production",
+        "PORT": "3023"
+      }
+    },
+    {
+      "name": "passtopay-bak",
+      "script": "npm",
+      "args": "start",
+      "watch": false,
+      "exec_interpreter": "node",
+      "env_production": {
+        "NODE_ENV": "production",
+        "PORT": "3024"
+      }
+    }
+  ]
+}
