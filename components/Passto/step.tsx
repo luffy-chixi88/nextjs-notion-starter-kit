@@ -67,8 +67,8 @@ export function PasstoStepSwiper(props) {
     if (currentSwiper) {
       currentSwiper.autoplay.stop()
       currentSwiper.slideTo(currentIndex, 1000, false)
-      setIndex(currentIndex)
       currentSwiper.autoplay.start()
+      setIndex(currentIndex)
     }
   }
   return (
