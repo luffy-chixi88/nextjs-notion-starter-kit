@@ -9,6 +9,7 @@ const fromArr = ['PassTo Pay官網', 'PassTo Credit官網', 'Multi Markets官網
 
 interface ExtendedNextApiRequest extends NextApiRequest {
   body: {
+    name: string
     email: string // 邮箱
     source: number // 来源
     phone?: string // 手机号码
@@ -39,7 +40,20 @@ export default async function handler(req: ExtendedNextApiRequest, res: NextApiR
         phone_number: req.body.phone
       }
     }
-    console.log('data', data.properties)
+    if (req.body.name) {
+      // @ts-ignore
+      data.properties.name = {
+        title: [
+          {
+            type: 'text',
+            text: {
+              content: req.body.name
+            }
+          }
+        ]
+      }
+    }
+    console.log('data', data)
     const result = await fetch(url, {
       method: 'POST',
       headers: {

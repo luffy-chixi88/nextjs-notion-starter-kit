@@ -34,13 +34,17 @@ export default function PasstoForm(props) {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ email: formData.email, source: 0, phone: formData.phone })
+      body: JSON.stringify({
+        ...formData,
+        source: 0
+      })
     })
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
           setFormData({
             ...formData,
+            name: '',
             email: '',
             phone: ''
           })
