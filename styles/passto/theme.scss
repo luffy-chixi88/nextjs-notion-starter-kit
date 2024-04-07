@@ -740,10 +740,23 @@
             margin-top: 8px;
             margin-bottom: 24px;
           }
-          .notion-link {
-            display: block;
-            margin-top: 8vw;
-            margin-bottom: 34px;
+          > .notion-text {
+            margin-top: 6vw;
+            margin-bottom: 36px;
+            .notion-link {
+              display: block;
+              b {
+                width: 160px;
+                padding-left: 0;
+                padding-right: 0;
+              }
+              &:last-child {
+                b {
+                  background-color: #fff;
+                  color: var(--primary);
+                }
+              }
+            }
           }
         }
       }
