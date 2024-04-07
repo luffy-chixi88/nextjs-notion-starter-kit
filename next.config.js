@@ -3,6 +3,8 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true'
 })
 
+process.env.buildTime = new Date().toLocaleString()
+
 module.exports = withBundleAnalyzer({
   // output: 'standalone',
   staticPageGenerationTimeout: 300,

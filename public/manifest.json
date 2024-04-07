@@ -1,6 +1,6 @@
 {
-  "name": "Next.js Notion Starter Kit",
-  "short_name": "Starter Kit",
+  "name": "PASSTO PAY",
+  "short_name": "PASSTO PAY",
   "icons": [
     {
       "src": "/favicon.png",
@@ -18,7 +18,7 @@
       "sizes": "192x192"
     }
   ],
-  "theme_color": "#000000",
-  "background_color": "#000000",
+  "theme_color": "#0656f7",
+  "background_color": "#0656f7",
   "display": "standalone"
 }

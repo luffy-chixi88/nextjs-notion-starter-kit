@@ -10,7 +10,7 @@ export default siteConfig({
 
   // basic site info (required)
   name: 'PasstoPay',
-  domain: 'passtopay-website.vercel.app',
+  domain: 'www.passtopay.io',
   author: '',
 
   // open graph metadata (optional)
