@@ -1,17 +1,18 @@
+import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 
 import Btn from '@/components/Btn'
 import Toast from '@/lib/toast'
 import { isValidEmail } from '@/lib/utils'
 
-export default function PasstoForm(props) {
+export default function PasstoForm() {
   const [loading, setLoading] = useState(false)
   const [formData, setFormData] = useState({
     name: '', //姓名
     email: '', // 郵箱
     phone: '' //手機號碼
   })
-
+  const router = useRouter()
   // 值改变
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value.trim() })
@@ -36,7 +37,7 @@ export default function PasstoForm(props) {
       },
       body: JSON.stringify({
         ...formData,
-        source: 0
+        source: router.query?.source || 0
       })
     })
       .then((response) => response.json())
