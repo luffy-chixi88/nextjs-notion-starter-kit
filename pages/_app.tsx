@@ -57,6 +57,23 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <SnackbarProvider maxSnack={3}>
       <SnackbarUtilsConfig />
+      <Script id='track-script'>{`
+       ;(function (w, d, s, l, i) {
+        if (w.location.host.indexOf('passtopay.io') === -1) return
+        var script = d.createElement(s)
+        script.type = 'text/javascript'
+        script.async = true
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=' + i
+        var tmp = d.getElementsByTagName(s)[0]
+        tmp.parentNode.insertBefore(script, tmp)
+        w.dataLayer = w.dataLayer || []
+        w.gtag = function () {
+          w.dataLayer.push(arguments)
+        }
+        w.gtag('js', new Date())
+        w.gtag('config', i)
+      })(window, document, 'script', 'dataLayer', 'G-EVGK61NYDS')
+      `}</Script>
       <Component {...pageProps} />
       <Script>
         {`
