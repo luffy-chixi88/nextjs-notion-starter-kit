@@ -434,6 +434,20 @@
 
       .left {
         width: 496px;
+        border-radius: 8px;
+        position: relative;
+
+        > .notion-callout-content > .notion-callout-text .left-bottom {
+          position: absolute;
+          left: 32px;
+          bottom: 104px;
+          width: auto;
+
+          .notion-text {
+            color: #ffffff80;
+            margin-bottom: 8px;
+          }
+        }
       }
       .right > .notion-callout-content > .notion-callout-text {
         > .notion-row > .notion-column {
@@ -475,6 +489,11 @@
     padding-bottom: 20px;
     .notion-callout-content > .notion-callout-text > .notion-row > .notion-column .left {
       width: 100%;
+
+      > .notion-callout-content > .notion-callout-text .left-bottom {
+        left: 24px;
+        bottom: 56px;
+      }
     }
     > .notion-callout-content > .notion-callout-text > .notion-row > .notion-column:nth-child(3) {
       margin-top: 10px;
