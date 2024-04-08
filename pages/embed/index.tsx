@@ -63,10 +63,7 @@ export default function PasstoForm() {
   return (
     <form className='max-w-lg mx-auto p-4'>
       <div className='mb-5'>
-        <label
-          htmlFor='name'
-          className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
-        >
+        <label htmlFor='name' className='block mb-2 text-sm font-medium text-gray-900'>
           您的姓名：
         </label>
         <input
@@ -80,10 +77,7 @@ export default function PasstoForm() {
         />
       </div>
       <div className='mb-5'>
-        <label
-          htmlFor='email'
-          className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
-        >
+        <label htmlFor='email' className='block mb-2 text-sm font-medium text-gray-900'>
           您的郵箱：
         </label>
         <input
@@ -97,10 +91,7 @@ export default function PasstoForm() {
         />
       </div>
       <div className='mb-5'>
-        <label
-          htmlFor='phone'
-          className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
-        >
+        <label htmlFor='phone' className='block mb-2 text-sm font-medium text-gray-900'>
           您的手機號碼：
         </label>
         <input
@@ -113,7 +104,7 @@ export default function PasstoForm() {
           name='phone'
         />
       </div>
-      <div className='w-2/3 mx-auto my-6'>
+      <div className='w-2/3 mx-auto mt-12 my-6'>
         <Btn
           className='hover:opacity-80'
           type='primary'
