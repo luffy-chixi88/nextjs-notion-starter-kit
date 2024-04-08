@@ -1082,6 +1082,9 @@
             .notion-h {
               margin-top: 8px;
               margin-bottom: 16px;
+              + .notion-text {
+                min-height: 110px;
+              }
             }
             .notion-link {
               display: block;
