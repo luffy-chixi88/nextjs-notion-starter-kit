@@ -154,6 +154,7 @@
           > .notion-asset-wrapper-image {
             flex-direction: row;
             padding-left: 136px;
+            width: 375px;
             > div {
               display: block !important;
             }
@@ -1240,7 +1241,7 @@
   pre[class*='language-'] {
     background-color: transparent;
     border: none;
-    max-height: 560px;
+    max-height: 600px;
   }
 }
 

@@ -93,8 +93,12 @@ export function Code(props) {
   }, [language, defaultLanguage])
 
   return (
-    <pre className={cs('notion-code', className)}>
-      <code className={`language-${formatLang} line-numbers`} ref={codeRef}>
+    <pre className={cs('notion-code', className)} suppressHydrationWarning>
+      <code
+        className={`language-${formatLang} line-numbers`}
+        ref={codeRef}
+        suppressHydrationWarning
+      >
         {content}
       </code>
     </pre>
