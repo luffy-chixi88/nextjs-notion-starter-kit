@@ -74,6 +74,7 @@ export default function PasstoForm() {
           required
           onChange={handleChange}
           name='name'
+          value={formData.name}
         />
       </div>
       <div className='mb-5'>
@@ -88,6 +89,7 @@ export default function PasstoForm() {
           placeholder='輸入您的郵箱'
           onChange={handleChange}
           name='email'
+          value={formData.email}
         />
       </div>
       <div className='mb-5'>
@@ -102,6 +104,7 @@ export default function PasstoForm() {
           placeholder='輸入您的手機號碼'
           onChange={handleChange}
           name='phone'
+          value={formData.phone}
         />
       </div>
       <div className='w-2/3 mx-auto mt-12 my-6'>
