@@ -59,12 +59,6 @@ export function PasstoStepSwiper(props) {
   const swiper = useRef(null)
   const [index, setIndex] = useState(0)
 
-  const [isInit, setInit] = useState(false)
-
-  useEffect(() => {
-    setInit(true)
-  }, [])
-
   // true为pc false为小尺寸
   const isPC = useMediaQuery('(min-width: 1024px)')
 
@@ -99,7 +93,6 @@ export function PasstoStepSwiper(props) {
                 }
               : false
           }
-          loop={isInit}
           onSlideChangeTransitionEnd={(swiper) => {
             setIndex(swiper.realIndex)
           }}
