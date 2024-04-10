@@ -69,6 +69,7 @@ export function PasstoStepSwiper(props) {
       setIndex(currentIndex)
     }
   }
+  return null
   return (
     <div className={cs('flex pt-20 max-lg:flex-col', className)}>
       <div className='flex items-center justify-center'>
