@@ -55,8 +55,9 @@ function Btn({ size, className, type, disabled, block, onClick, children, href, 
     )
   } else if (href && !href.startsWith('http')) {
     // 相对路径
+    const newHref = href.indexOf('?pvs') === -1 ? href : mapPageUrl(href)
     return (
-      <Link href={href}>
+      <Link href={newHref}>
         <a onClick={handleClick} className={formatClsx}>
           {formatChildren}
         </a>

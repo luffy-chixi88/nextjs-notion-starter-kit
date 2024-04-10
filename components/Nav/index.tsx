@@ -72,7 +72,7 @@ const customStyles = {
 
 export default function Nav(props) {
   const { block, className } = props
-  const { recordMap } = useNotionContext()
+  const { recordMap, mapPageUrl } = useNotionContext()
   const callouts = findCalloutInContent({
     block,
     recordMap,
@@ -94,7 +94,9 @@ export default function Nav(props) {
   const navLink = useMemo(() => {
     return navList.map((item, i) => {
       // 是否已选中
-      const isActive = '/' + (router?.query?.pageId || '') === item.TitleUrl.split('?')[0]
+      const newHref =
+        item.TitleUrl.indexOf('?pvs') === -1 ? item.TitleUrl : mapPageUrl(item.TitleUrl)
+      const isActive = '/' + (router?.query?.pageId || '') === newHref
       return (
         <Btn key={i} className={cs('notion-link', { active: isActive })} href={item.TitleUrl}>
           <div className='icon-nav mr-4 lg:hidden flex items-center'>
@@ -109,7 +111,7 @@ export default function Nav(props) {
         </Btn>
       )
     })
-  }, [navList, router])
+  }, [navList, router, mapPageUrl])
 
   return (
     <header className={cs('notion-header', className)}>
