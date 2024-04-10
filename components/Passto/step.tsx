@@ -59,6 +59,12 @@ export function PasstoStepSwiper(props) {
   const swiper = useRef(null)
   const [index, setIndex] = useState(0)
 
+  const [isInit, setInit] = useState(false)
+
+  useEffect(() => {
+    setInit(true)
+  }, [])
+
   // true为pc false为小尺寸
   const isPC = useMediaQuery('(min-width: 1024px)')
 
@@ -69,7 +75,6 @@ export function PasstoStepSwiper(props) {
       setIndex(currentIndex)
     }
   }
-  return null
   return (
     <div className={cs('flex pt-20 max-lg:flex-col', className)}>
       <div className='flex items-center justify-center'>
@@ -94,7 +99,7 @@ export function PasstoStepSwiper(props) {
                 }
               : false
           }
-          loop={true}
+          loop={isInit}
           onSlideChangeTransitionEnd={(swiper) => {
             setIndex(swiper.realIndex)
           }}
