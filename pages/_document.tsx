@@ -8,7 +8,7 @@ export default class MyDocument extends Document {
     const buildTime = process.env.buildTime
     return (
       <IconContext.Provider value={{ style: { verticalAlign: 'middle' } }}>
-        <Html lang='en' data-buildtime={buildTime}>
+        <Html lang='zh-HK' data-buildtime={buildTime}>
           <Head>
             <link rel='shortcut icon' href='/favicon.ico' />
             <link rel='icon' type='image/png' sizes='32x32' href='favicon.png' />

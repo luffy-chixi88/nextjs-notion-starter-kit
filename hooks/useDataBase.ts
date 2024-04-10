@@ -11,7 +11,7 @@ interface iProps {
 
 // 读取block自定义类型
 export function useDataBase<T>({ block, multipleFile = false }: iProps) {
-  const { recordMap } = useNotionContext()
+  const { recordMap, mapPageUrl } = useNotionContext()
   const component = recordMap.collection_view[block?.view_ids?.[0]]?.value
   const collectId = component?.format?.collection_pointer?.id
 
@@ -50,7 +50,8 @@ export function useDataBase<T>({ block, multipleFile = false }: iProps) {
               default:
                 res[name] = properties[item][0][0] ?? ''
                 if (properties[item]?.[0]?.[1]?.[0]?.[0] === 'a') {
-                  res[name + 'Url'] = properties[item]?.[0]?.[1]?.[0]?.[1] || ''
+                  const originHref = properties[item]?.[0]?.[1]?.[0]?.[1]
+                  res[name + 'Url'] = originHref ? mapPageUrl(originHref) : ''
                 }
             }
           }
@@ -58,7 +59,7 @@ export function useDataBase<T>({ block, multipleFile = false }: iProps) {
       })
       return res
     })
-  }, [blockIds, recordMap, schema, multipleFile])
+  }, [blockIds, recordMap, schema, multipleFile, mapPageUrl])
 
   if (!component || !blockIds) return null
 
