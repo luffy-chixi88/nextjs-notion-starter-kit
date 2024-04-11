@@ -75,7 +75,7 @@ export function PasstoScence(props) {
       {selectItem && (
         <div className='my-8  max-lg:my-0'>
           <div className={cs('flex max-lg:flex-col')}>
-            <div className='max-w-[380px] mr-8 max-lg:mr-0 max-lg:mb-8 flex flex-wrap items-center'>
+            <div className='max-w-full w-[380px] mr-8 max-lg:mr-0 max-lg:mb-8 flex flex-wrap items-center'>
               <div>
                 <h3 className='notion-h2'>{selectItem.Title}</h3>
                 <p className={cs('notion-text notion-gray text-[color:var(--gray)]')}>
