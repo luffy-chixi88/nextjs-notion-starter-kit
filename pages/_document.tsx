@@ -5,7 +5,7 @@ import { IconContext } from '@react-icons/all-files'
 
 export default class MyDocument extends Document {
   render() {
-    const buildTime = process.env.buildTime
+    const buildTime = process.env.NEXT_PUBLIC_buildTime
     return (
       <IconContext.Provider value={{ style: { verticalAlign: 'middle' } }}>
         <Html lang='zh-HK' data-buildtime={buildTime}>
