@@ -10,7 +10,7 @@ export default siteConfig({
 
   // basic site info (required)
   name: 'PasstoPay',
-  domain: 'www.passtopay.io',
+  domain: 'passtopay.io',
   author: '',
 
   // open graph metadata (optional)

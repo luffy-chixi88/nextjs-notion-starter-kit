@@ -59,6 +59,12 @@ export function PasstoStepSwiper(props) {
   const swiper = useRef(null)
   const [index, setIndex] = useState(0)
 
+  // 处理swiper报错问题
+  const [isInit, setInit] = useState(false)
+  useEffect(() => {
+    setInit(true)
+  }, [])
+
   // true为pc false为小尺寸
   const isPC = useMediaQuery('(min-width: 1024px)')
 
@@ -72,39 +78,41 @@ export function PasstoStepSwiper(props) {
   return (
     <div className={cs('flex pt-20 max-lg:flex-col', className)}>
       <div className='flex items-center justify-center'>
-        <Swiper
-          pagination={
-            isPC
-              ? false
-              : {
-                  clickable: true
-                }
-          }
-          ref={swiper}
-          modules={[Autoplay, Pagination]}
-          className='w-[600px] h-[648px] max-lg:h-[416px]'
-          direction={isPC ? 'vertical' : 'horizontal'}
-          autoplay={
-            isPC
-              ? {
-                  pauseOnMouseEnter: true,
-                  disableOnInteraction: false,
-                  delay: 3000
-                }
-              : false
-          }
-          onSlideChangeTransitionEnd={(swiper) => {
-            setIndex(swiper.realIndex)
-          }}
-        >
-          {list.map((item, i) => {
-            return (
-              <SwiperSlide key={i} className='slide'>
-                <img src={item.Image} />
-              </SwiperSlide>
-            )
-          })}
-        </Swiper>
+        {isInit && (
+          <Swiper
+            pagination={
+              isPC
+                ? false
+                : {
+                    clickable: true
+                  }
+            }
+            ref={swiper}
+            modules={[Autoplay, Pagination]}
+            className='w-[600px] h-[648px] max-lg:h-[416px]'
+            direction={isPC ? 'vertical' : 'horizontal'}
+            autoplay={
+              isPC
+                ? {
+                    pauseOnMouseEnter: true,
+                    disableOnInteraction: false,
+                    delay: 3000
+                  }
+                : false
+            }
+            onSlideChangeTransitionEnd={(swiper) => {
+              setIndex(swiper.realIndex)
+            }}
+          >
+            {list.map((item, i) => {
+              return (
+                <SwiperSlide key={i} className='slide'>
+                  <img src={item.Image} />
+                </SwiperSlide>
+              )
+            })}
+          </Swiper>
+        )}
       </div>
       <div className='ml-32 max-lg:ml-0'>
         {list.map((item, i) => {
