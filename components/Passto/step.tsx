@@ -69,8 +69,6 @@ export function PasstoStepSwiper(props) {
   // true为pc false为小尺寸
   const isPC = useMediaQuery('(min-width: 1024px)')
 
-  return null
-
   const handleSlideTo = (currentIndex) => {
     const currentSwiper = swiper.current?.swiper
     if (currentSwiper) {
@@ -78,52 +76,54 @@ export function PasstoStepSwiper(props) {
       setIndex(currentIndex)
     }
   }
+
   return (
     <div className={cs('flex pt-20 max-lg:flex-col ', className)}>
       <div className='flex items-center justify-center'>
-        {isInit && (
-          <Swiper
-            pagination={
-              isPC
-                ? false
-                : {
-                    clickable: true
-                  }
+        <Swiper
+          pagination={
+            isPC
+              ? false
+              : {
+                  clickable: true
+                }
+          }
+          ref={swiper}
+          modules={[Autoplay, Pagination]}
+          breakpoints={{
+            1024: {
+              width: 600
+            },
+            768: {
+              width: undefined
             }
-            ref={swiper}
-            modules={[Autoplay, Pagination]}
-            breakpoints={{
-              1024: {
-                width: 600
-              },
-              768: {
-                width: undefined
-              }
-            }}
-            className='h-[648px] max-lg:h-[416px]'
-            direction={isPC ? 'vertical' : 'horizontal'}
-            autoplay={
-              isPC
-                ? {
-                    pauseOnMouseEnter: true,
-                    disableOnInteraction: false,
-                    delay: 3000
-                  }
-                : false
-            }
-            onSlideChangeTransitionEnd={(swiper) => {
-              setIndex(swiper.realIndex)
-            }}
-          >
-            {list.map((item, i) => {
-              return (
-                <SwiperSlide key={i} className='slide'>
-                  <img src={item.Image} />
-                </SwiperSlide>
-              )
-            })}
-          </Swiper>
-        )}
+          }}
+          className='h-[648px] max-lg:h-[416px]'
+          direction={isPC ? 'vertical' : 'horizontal'}
+          autoplay={
+            isPC
+              ? {
+                  pauseOnMouseEnter: true,
+                  disableOnInteraction: false,
+                  delay: 3000
+                }
+              : false
+          }
+          onSlideChangeTransitionEnd={(swiper) => {
+            setIndex(swiper.realIndex)
+          }}
+          onResize={(swiper) => {
+            swiper.update()
+          }}
+        >
+          {list.map((item, i) => {
+            return (
+              <SwiperSlide key={i} className='slide'>
+                <img src={item.Image} />
+              </SwiperSlide>
+            )
+          })}
+        </Swiper>
       </div>
       <div className='ml-32 max-lg:ml-0'>
         {list.map((item, i) => {
@@ -132,7 +132,7 @@ export function PasstoStepSwiper(props) {
               key={i}
               className={cs('flex max-lg:flex-col mb-10 cursor-pointer max-lg:mb-5', {
                 'opacity-40': index !== i,
-                hidden: index !== i && !isPC
+                ['max-lg:hidden']: index !== i
               })}
               onClick={() => handleSlideTo(i)}
             >
