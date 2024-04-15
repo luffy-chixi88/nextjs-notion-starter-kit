@@ -56,6 +56,7 @@ export function PasstoStep(props) {
 export function PasstoStepSwiper(props) {
   const { block, className, children } = props
   const list = useDataBase<iTableschema>({ block })
+  console.log('PasstoStepSwiper', list)
   const swiper = useRef(null)
   const [index, setIndex] = useState(0)
 
@@ -68,15 +69,17 @@ export function PasstoStepSwiper(props) {
   // true为pc false为小尺寸
   const isPC = useMediaQuery('(min-width: 1024px)')
 
+  return null
+
   const handleSlideTo = (currentIndex) => {
-    const currentSwiper = swiper.current.swiper
+    const currentSwiper = swiper.current?.swiper
     if (currentSwiper) {
       currentSwiper.slideToLoop(currentIndex, 1000, false)
       setIndex(currentIndex)
     }
   }
   return (
-    <div className={cs('flex pt-20 max-lg:flex-col', className)}>
+    <div className={cs('flex pt-20 max-lg:flex-col ', className)}>
       <div className='flex items-center justify-center'>
         {isInit && (
           <Swiper
@@ -89,7 +92,17 @@ export function PasstoStepSwiper(props) {
             }
             ref={swiper}
             modules={[Autoplay, Pagination]}
-            className='w-[600px] h-[648px] max-lg:h-[416px]'
+            // observer={true}
+            // observeParents={true}
+            breakpoints={{
+              1024: {
+                width: 600
+              },
+              768: {
+                width: undefined
+              }
+            }}
+            className='h-[648px] max-lg:h-[416px]'
             direction={isPC ? 'vertical' : 'horizontal'}
             autoplay={
               isPC
