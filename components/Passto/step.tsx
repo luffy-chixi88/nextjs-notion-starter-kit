@@ -92,8 +92,6 @@ export function PasstoStepSwiper(props) {
             }
             ref={swiper}
             modules={[Autoplay, Pagination]}
-            // observer={true}
-            // observeParents={true}
             breakpoints={{
               1024: {
                 width: 600
