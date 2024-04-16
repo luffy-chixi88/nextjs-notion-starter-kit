@@ -652,37 +652,15 @@
 }
 
 .pt-manager {
-  padding-top: 120px;
-  padding-bottom: 106px;
+  padding-top: 100px;
+  padding-bottom: 100px;
 
   > .notion-callout-content > .notion-callout-text {
     .notion-h {
       margin-top: 0;
       margin-bottom: 10px;
-    }
-    .notion-h1 {
-      margin-bottom: 40px;
-    }
-    .demo {
-      > .notion-callout-content {
-        padding: 0;
-
-        .notion-row {
-          .notion-spacer {
-            width: 80px;
-          }
-          .notion-column {
-            width: auto !important;
-            justify-content: center;
-            padding: 0;
-          }
-        }
-      }
-    }
-    .notion-link {
-      b {
-        height: 40px;
-        padding: 8px 26px;
+      &.notion-h1 {
+        text-align: center;
       }
     }
     .swiper {
@@ -730,10 +708,10 @@
       }
     }
     .notion-asset-wrapper-image {
-      margin-top: 32px;
-      margin-bottom: 48px;
+      margin: 32px 0;
     }
     .list {
+      margin: 0 128px;
       > .notion-callout-content > .notion-callout-text > .notion-row > .notion-column {
         .notion-asset-wrapper-image {
           flex-direction: row;
@@ -897,8 +875,6 @@
 }
 
 .pt-contact {
-  background-color: var(--bgNight);
-
   > .notion-callout-content {
     max-width: 1472px;
     padding: 0;
@@ -1138,17 +1114,13 @@
 
 // 其他服务
 .pt-promotion {
-  background-color: var(--bgNight);
   padding-top: 120px;
-  padding-bottom: 120px;
+  padding-bottom: 100px;
 
   > .notion-callout-content > .notion-callout-text {
     .notion-h1 {
       margin-top: 0;
       margin-bottom: 3vw;
-    }
-    .notion-h {
-      color: #ffffff;
     }
     .notion-text {
       color: #ffffff80;
@@ -1159,8 +1131,12 @@
         height: 100%;
 
         > .notion-callout-content > .notion-callout-text {
-          > .notion-asset-wrapper-image > div {
-            width: auto !important;
+          > .notion-asset-wrapper-image {
+            > div {
+              width: auto !important;
+              border-radius: 8px;
+              overflow: hidden;
+            }
           }
           > .notion-callout > .notion-callout-content {
             padding: 32px 40px 48px;
@@ -1180,7 +1156,30 @@
         }
       }
       > .notion-gray_background_co {
-        background-color: #181825;
+        background-color: #fff;
+      }
+    }
+  }
+
+  .pt-promotion-row {
+    > .notion-callout-content > .notion-callout-text {
+      background-color: #fff;
+      border-radius: 8px;
+      margin: 32px 0;
+      padding: 32px;
+      .notion-row {
+        align-items: center;
+      }
+      .notion-asset-wrapper-image > div {
+        max-width: 480px !important;
+        align-self: flex-start !important;
+      }
+      .notion-h {
+        margin-top: 8px;
+        margin-bottom: 16px;
+        + .notion-text {
+          min-height: 110px;
+        }
       }
     }
   }
@@ -1566,8 +1565,6 @@
 // 首页FAQ
 .pt-faq {
   padding: 60px 0 120px 0;
-  background-color: var(--bgNight);
-  color: #fff;
   .notion-h1 {
     margin-bottom: 64px;
   }
@@ -1784,19 +1781,18 @@
 
 // 底部导航
 .pt-footer {
-  background-color: var(--bgNight);
-  padding-top: 116px;
+  padding-top: 100px;
   padding-bottom: 87px;
-  color: #6f7489;
+  color: #666666;
 
   > .notion-callout-content {
     .footer-link {
-      padding: 48px 0;
+      padding-bottom: 48px;
       .notion-callout-text {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
-        border: 1px solid #6f7489;
+        border: 1px solid #efefef;
         border-left-width: 0;
         border-right-width: 0;
         .notion-text {
@@ -1807,7 +1803,7 @@
           color: inherit;
           font-size: 16px;
           &:hover {
-            color: #fff !important;
+            color: #000 !important;
             background: none;
             opacity: 1;
           }
@@ -1836,7 +1832,7 @@
           }
         }
         .notion-link {
-          color: #ffffff;
+          color: #000;
         }
       }
       .shareLinks {
@@ -1868,8 +1864,9 @@
         > .notion-callout-content > .notion-callout-text {
           font-size: 14px;
           .notion-text {
+            white-space: normal;
             b {
-              color: #ffffff;
+              color: #000;
               margin-bottom: 24px;
               display: block;
               font-size: 16px;
@@ -1877,8 +1874,9 @@
           }
           .notion-link {
             display: block;
+            margin-bottom: 24px;
             &:hover {
-              color: #ffffff;
+              color: #000;
               opacity: 1;
             }
           }

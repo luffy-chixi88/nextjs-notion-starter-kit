@@ -39,12 +39,11 @@ export function PasstoManager(props) {
   }
 
   return (
-    <div className={cs('pt-20 relative', className)}>
+    <div className={cs('pt-12 pb-8 relative', className)}>
       <div className='flex'>
         <div className='mx-32 flex-1 min-w-0'>
           <Swiper
             loop
-            slidesPerView={1}
             pagination={{
               clickable: true
             }}
