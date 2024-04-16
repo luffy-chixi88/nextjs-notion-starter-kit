@@ -16,6 +16,7 @@ import Nav from '@/components/Nav'
 import { PasstoCode } from '@/components/Passto/code'
 import { PasstoForm } from '@/components/Passto/form'
 import { PasstoIntro } from '@/components/Passto/introduce'
+import { PasstoManager } from '@/components/Passto/manager'
 import { PasstoReadme } from '@/components/Passto/readme'
 import { PasstoScence } from '@/components/Passto/scence'
 import { PasstoStep } from '@/components/Passto/step'
@@ -89,6 +90,8 @@ const FormatCollection = (props) => {
       return <PasstoScence {...props} />
     case 'PasstoIntro':
       return <PasstoIntro {...props} />
+    case 'PasstoManager':
+      return <PasstoManager {...props} />
     default:
       return <Collection {...props} />
   }
