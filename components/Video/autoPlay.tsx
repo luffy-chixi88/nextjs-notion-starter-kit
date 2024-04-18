@@ -1,21 +1,55 @@
-import React from 'react'
+import React, { useEffect, useMemo, useRef } from 'react'
 
 import cs from 'classnames'
-import { NotionBlockRenderer, useNotionContext } from 'react-notion-x'
+import { useNotionContext } from 'react-notion-x'
 
 export default function VideoAutoPlay({ block, className, meta }) {
   const { recordMap } = useNotionContext()
-  let url = ''
-  block.content?.some((item) => {
-    if (recordMap.signed_urls[item]) {
-      url = recordMap.signed_urls[item]
-      return true
+  const videoRef = useRef(null)
+  // 滚动自动播放
+  useEffect(() => {
+    if (meta.scrollAutoPlay === '1') {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            videoRef.current.play()
+          } else {
+            videoRef.current.pause()
+          }
+        })
+      })
+      observer.observe(videoRef.current)
+      return () => observer?.disconnect()
     }
-  })
-  if (!url) return null
+  }, [meta])
+
+  // 视频地址
+  const URL = useMemo(() => {
+    let url = ''
+    block.content?.some((item) => {
+      if (recordMap.signed_urls[item]) {
+        url = recordMap.signed_urls[item]
+        return true
+      }
+    })
+    return url
+  }, [block, recordMap])
+
+  if (!URL) return null
   return (
     <div className={cs('pt-video', className)}>
-      <video autoPlay src={url} muted loop={meta.loop ?? true} />
+      <video
+        ref={videoRef}
+        autoPlay={meta.autoPlay === '0' ? false : true}
+        src={URL}
+        loop={meta.loop === '0' ? false : true}
+        muted={meta.muted === '0' ? false : true}
+        // eslint-disable-next-line react/no-unknown-property
+        webkit-playsInline={true}
+        // eslint-disable-next-line react/no-unknown-property
+        x5-playsInline={true}
+        playsInline={true}
+      />
     </div>
   )
 }

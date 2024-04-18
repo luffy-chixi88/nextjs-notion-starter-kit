@@ -441,6 +441,57 @@
   }
 }
 
+// 首屏
+.pt-bannerv2 {
+  display: block !important;
+  padding: 100px 0;
+  .notion-blue {
+    color: var(--light-primary);
+  }
+  .hader {
+    text-align: center;
+    .notion-h1 {
+      font-size: 64px;
+      padding: 24px 0;
+    }
+    .notion-h3 {
+      font-size: 24px;
+    }
+    .notion-text {
+      font-size: 16px;
+      color: #161c2d;
+    }
+    .notion-link {
+      b {
+        margin: 64px 0;
+        font-size: 14px;
+        padding: 12px 36px;
+      }
+      &:first-child {
+        b {
+          background: transparent;
+          border: 1px solid var(--light-primary);
+          color: var(--light-primary);
+        }
+        margin-right: 24px;
+      }
+    }
+  }
+  .passtoBannerVideo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .pt-video {
+    padding: 0 130px;
+    margin: 0 auto;
+    video {
+      width: 360px;
+      height: 740px;
+    }
+  }
+}
+
 // 客户付款
 .pt-payment {
   padding-top: 120px;

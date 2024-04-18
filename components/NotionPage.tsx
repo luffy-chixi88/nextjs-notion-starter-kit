@@ -13,6 +13,7 @@ import { PageHead } from './PageHead'
 import styles from './styles.module.css'
 import FAQ from '@/components/FAQ'
 import Nav from '@/components/Nav'
+import { PasstoBannerVideo } from '@/components/Passto/bannerVideo'
 import { PasstoCode } from '@/components/Passto/code'
 import { PasstoForm } from '@/components/Passto/form'
 import { PasstoIntro } from '@/components/Passto/introduce'
@@ -171,6 +172,8 @@ const Callout = (props) => {
         return <PasstoReadme {...props} meta={titleInfo.meta} />
       case 'PasstoVideoAutoPlay':
         return <VideoAutoPlay {...props} meta={titleInfo.meta} />
+      case 'PasstoBannerVideo':
+        return <PasstoBannerVideo {...props} meta={titleInfo.meta} />
       default:
         return (
           <div className='notion-callout-text'>
