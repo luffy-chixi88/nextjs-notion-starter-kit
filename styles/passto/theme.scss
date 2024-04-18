@@ -1784,8 +1784,10 @@
   padding-top: 100px;
   padding-bottom: 87px;
   color: #666666;
+  font-size: 14px;
 
   > .notion-callout-content {
+    padding: 0 16px;
     .footer-link {
       padding-bottom: 48px;
       .notion-callout-text {
@@ -1797,11 +1799,10 @@
         border-right-width: 0;
         .notion-text {
           width: auto;
-          margin: 32px 0;
+          margin: 24px 0;
         }
         .notion-link {
           color: inherit;
-          font-size: 16px;
           &:hover {
             color: #000 !important;
             background: none;
