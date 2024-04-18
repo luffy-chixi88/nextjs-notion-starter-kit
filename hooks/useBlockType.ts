@@ -19,16 +19,7 @@ export interface iBlockType {
 // 读取block自定义类型
 export function useBlockType({ block }: iProps) {
   const res = useMemo(() => {
-    const currentTitle = (block.properties?.title?.[0]?.[0] || '').split('\n')
-    const title = currentTitle[0].split('|')
-    const meta = qs.parse(title[1]) || {}
-    if (title[0]) {
-      return {
-        title: title[0],
-        meta
-      }
-    }
-    return {}
+    return getCalloutAttr(block)
   }, [block])
   return res
 }
@@ -38,4 +29,18 @@ export const getBlockType = (block: blockType) => {
   const currentTitle = (block.properties?.title?.[0]?.[0] || '').split('\n')
   const title = currentTitle[0].split('|')
   return title[0]
+}
+
+// 获取callout属性
+export const getCalloutAttr = (block: blockType) => {
+  const currentTitle = (block.properties?.title?.[0]?.[0] || '').split('\n')
+  const title = currentTitle[0].split('|')
+  const meta = qs.parse(title[1]) || {}
+  if (title[0]) {
+    return {
+      title: title[0],
+      meta
+    }
+  }
+  return {}
 }

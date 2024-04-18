@@ -109,6 +109,7 @@
 
 // 主界面
 .pt-banner {
+  display: none;
   > .notion-callout-content {
     padding: 0 !important;
     max-width: 100%;
@@ -372,7 +373,7 @@
         &:first-child {
           padding-left: calc((100vw - var(--max-width)) / 2);
           padding-right: 40px;
-          background: var(--primary) url(/banner-bg.png);
+          background: var(--primary) url(/banner-bg.png) 24px 24px no-repeat;
           background-size: cover;
           .notion-list {
             display: none;
@@ -448,7 +449,7 @@
   .notion-blue {
     color: var(--light-primary);
   }
-  .hader {
+  .header {
     text-align: center;
     .notion-h1 {
       font-size: 64px;
@@ -477,228 +478,156 @@
       }
     }
   }
-  .passtoBannerVideo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .pt-video {
-    padding: 0 130px;
-    margin: 0 auto;
-    video {
-      width: 360px;
+  .content {
+    .banner-video {
+      width: 740px;
       height: 740px;
-    }
-  }
-}
-
-// 客户付款
-.pt-payment {
-  padding-top: 120px;
-  padding-bottom: 40px;
-
-  > .notion-callout-content > .notion-callout-text {
-    > .notion-h1 {
-      margin-bottom: 40px;
-    }
-    > .notion-row > .notion-column {
-      width: auto !important;
-
-      .left {
-        width: 496px;
-        border-radius: 8px;
-        position: relative;
-
-        > .notion-callout-content > .notion-callout-text .left-bottom {
-          position: absolute;
-          left: 32px;
-          bottom: 104px;
-          width: auto;
-
-          .notion-text {
-            color: #ffffff80;
-            margin-bottom: 8px;
-          }
-        }
-      }
-      .right > .notion-callout-content > .notion-callout-text {
-        > .notion-row > .notion-column {
-          justify-content: center;
-          width: auto !important;
-
-          .notion-h2 {
-            margin-top: 12px;
-            margin-bottom: 32px;
-          }
-          .payment-list {
-            .notion-row {
-              > .notion-column {
-                width: 40px !important;
-              }
-              > .notion-spacer {
-                width: 24px;
-              }
-            }
-          }
-          > .notion-asset-wrapper {
-            width: 244px;
-          }
-        }
-      }
-      &:nth-child(3) {
-        background-color: #ffffff;
-        border-radius: 8px;
-        justify-content: center;
-        padding: 32px;
-      }
-    }
-  }
-}
-
-@media (max-width: 1024px) {
-  .pt-payment {
-    padding-top: 60px;
-    padding-bottom: 20px;
-    .notion-callout-content > .notion-callout-text > .notion-row > .notion-column .left {
-      width: 100%;
-
-      > .notion-callout-content > .notion-callout-text .left-bottom {
-        left: 24px;
-        bottom: 56px;
-      }
-    }
-    > .notion-callout-content > .notion-callout-text > .notion-row > .notion-column:nth-child(3) {
-      margin-top: 10px;
-    }
-    .payment-list {
-      .notion-row {
-        flex-direction: row;
-        gap: 24px;
-        margin-bottom: 24px;
-        .notion-column {
-          width: auto !important;
-        }
-      }
-    }
-  }
-}
-
-// 二维码
-.pt-pay-code {
-  padding-bottom: 40px;
-
-  > .notion-callout-content > .notion-callout-text > .notion-row {
-    background-color: #ffffff;
-    border-radius: 8px;
-
-    > .notion-spacer {
-      display: none;
-    }
-    > .notion-column {
+      margin: 0 auto;
+      position: relative;
+      display: flex;
       justify-content: center;
 
-      &:first-child {
-        width: 496px !important;
-        padding: 32px;
-
-        > .notion-asset-wrapper {
-          > div {
-            width: 32px !important;
-            height: 32px;
-          }
-          margin-bottom: 8px;
-        }
-      }
-      &:nth-child(3) {
-        flex: 1;
-        padding: 5vw 4px 4px 0;
-      }
-    }
-  }
-}
-@media (max-width: 1024px) {
-  .pt-pay-code {
-    padding-bottom: 15px;
-
-    > .notion-callout-content > .notion-callout-text > .notion-row > .notion-column {
-      &:nth-child(3) {
-        padding: 5vw 0 15px 15px;
-      }
-    }
-  }
-}
-
-// POS机
-.pt-pay-pos {
-  padding-bottom: 120px;
-
-  > .notion-callout-content > .notion-callout-text {
-    > .notion-row > .notion-column {
-      &:first-child {
-        background-color: #ffffff;
+      &::before,
+      &::after {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        height: 90%;
+        position: absolute;
+        border: 3px solid #ededed66;
+        border-radius: 100%;
+        content: '';
+        display: flex;
+        align-items: center;
         justify-content: center;
-        border-radius: 8px;
-        flex: 1;
-        padding: 32px;
-
-        .notion-row > .notion-column {
-          &:first-child {
-            justify-content: center;
-
-            > .notion-asset-wrapper {
-              > div {
-                width: 32px !important;
-                height: 32px;
-              }
-              margin-bottom: 8px;
-            }
-          }
-        }
       }
-      &:nth-child(3) {
-        width: 392px !important;
+
+      &::after {
+        width: 70%;
+        height: 70%;
+      }
+
+      .pt-video {
+        position: relative;
+        z-index: 2;
+        width: 360px;
+        height: 740px;
+        background: url(/home/phone.webp) top center no-repeat;
+        background-size: cover;
+        overflow: hidden;
+        padding: 24px 0 40px 0;
+        video {
+          width: 100%;
+          height: 100%;
+          margin: 16px 0;
+          display: block;
+        }
       }
     }
   }
-  .right {
-    padding: 32px;
-    border-radius: 8px;
-    height: 100%;
-    .notion-asset-wrapper-image > div {
-      width: 233px !important;
-      margin: 16px 0 40px 0;
-    }
-    .notion-h3 {
-      padding: 12px 0 24px 0;
-    }
-    .notion-link b {
-      text-align: center;
-      background-color: #fff;
-      color: var(--primary);
+  .pt-list {
+    display: flex;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    flex-wrap: wrap;
+    z-index: 2;
+    .item {
+      display: flex;
+      align-items: center;
+      width: 50%;
+      .item-content {
+        display: flex;
+        align-items: center;
+        width: 320px;
+      }
+      &:nth-child(2n) {
+        justify-content: flex-end;
+        img {
+          margin-right: 24px;
+        }
+      }
+      &:nth-child(2n-1) {
+        img {
+          margin-left: 24px;
+        }
+        .item-content {
+          flex-direction: row-reverse;
+        }
+      }
+      &:nth-child(1),
+      &:nth-child(2) {
+        .item-content {
+          position: relative;
+          top: 80px;
+        }
+      }
+      &:nth-child(3),
+      &:nth-child(4) {
+        .item-content {
+          position: relative;
+          bottom: 80px;
+        }
+      }
     }
   }
 }
 
-@media (max-width: 1024px) {
-  .pt-pay-pos {
-    padding-bottom: 40px;
-
-    > .notion-callout-content > .notion-callout-text {
-      > .notion-row > .notion-column {
+// 代付
+.pt-payout {
+  padding: 140px 0;
+  .notion-h2 {
+    margin-bottom: 20px;
+  }
+  .pt-todo {
+    margin: 40px 0;
+    .notion-callout-text {
+      display: flex;
+      flex-wrap: wrap;
+      .notion-to-do {
+        width: 50%;
+        margin-bottom: 18px;
+      }
+    }
+  }
+  > .notion-callout-content > .notion-callout-text {
+    .notion-row {
+      justify-content: space-between;
+      .notion-column {
+        max-width: 760px;
         &:first-child {
-          padding-left: 24px;
-          padding-right: 0;
-
-          .notion-row {
-            flex-direction: row;
-          }
-        }
-        &:nth-child(3) {
-          width: auto !important;
-          margin-top: 10px;
+          max-width: 440px;
         }
       }
     }
+  }
+}
+.pt-todo {
+  .notion-property-checkbox-checked {
+    background: var(--light-primary);
+    border-radius: 4px;
+    svg {
+      width: 10px;
+      height: 10px;
+      left: 3px;
+      top: 3px;
+    }
+  }
+}
+.pt-alltime {
+  text-align: center;
+  background: var(--light-primary) url(/banner-bg.png) 24px 24px no-repeat;
+  background-size: contain;
+  padding: 60px 0;
+  img {
+    width: 48px;
+    height: 48px;
+  }
+  .notion-h2 {
+    padding: 24px 0;
   }
 }
 
@@ -1580,7 +1509,6 @@
 // 解决方案-收款
 .pt-step {
   padding: 100px 0 120px 0;
-  background-color: var(--bgGray);
   .notion-callout-content {
     .notion-callout-content {
       padding: 0;
