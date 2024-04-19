@@ -9,8 +9,8 @@ import cs from 'classnames'
 interface iTableSchema {
   Title: string // 标题
   Description: string // 描述
-  LinkText: string // 链接【联系我们】
-  LinkTextUrl: string // 链接地址
+  Link: string // 链接【联系我们】
+  LinkUrl: string // 链接地址
   TabIcon: string // 图标
   TabIconAct: string // 选中图标
   TabTitle: string // tab标题
@@ -81,7 +81,7 @@ export function PasstoScence(props) {
                 <p className={cs('notion-text notion-gray text-[color:var(--gray)]')}>
                   {selectItem.Description}
                 </p>
-                <Btn href={selectItem.LinkTextUrl} className='notion-link mt-6'>
+                <Btn href={selectItem.LinkUrl} className='notion-link mt-6'>
                   <b
                     className={cs({
                       '!bg-[var(--light-primary)]': index === 0,
@@ -89,8 +89,8 @@ export function PasstoScence(props) {
                       '!bg-[#5B3BEA]': index === 2
                     })}
                   >
-                    <span className='mr-2 '>{selectItem.LinkText}</span>
-                    <Image src='/icon/arrow.svg' alt={selectItem.LinkText} width={16} height={14} />
+                    <span className='mr-2 '>{selectItem.Link}</span>
+                    <Image src='/icon/arrow.svg' alt={selectItem.Link} width={16} height={14} />
                   </b>
                 </Btn>
               </div>

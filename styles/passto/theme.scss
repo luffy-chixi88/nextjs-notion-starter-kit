@@ -58,7 +58,9 @@
       &:first-of-type {
         margin-left: 0;
         b {
-          background-color: var(--primary);
+          background: transparent;
+          color: var(--light-primary);
+          border: 1px solid var(--light-primary);
         }
       }
     }
@@ -446,8 +448,11 @@
 .pt-bannerv2 {
   display: block !important;
   padding: 100px 0;
-  background: url(/home/banner-wave.png) no-repeat center center;
-  background-size: cover;
+
+  &.pt-bannerv2-wave {
+    background: url(/home/banner-wave.png) no-repeat center center;
+    background-size: cover;
+  }
   .notion-blue {
     color: var(--light-primary);
   }
@@ -1209,13 +1214,15 @@
 // 愿景
 .pt-vision {
   padding-top: 120px;
-  padding-bottom: 120px;
+  padding-bottom: 80px;
 
   > .notion-callout-content > .notion-callout-text {
-    .notion-h1 {
-      margin-bottom: 2.5vw;
+    .notion-h2 {
+      margin-bottom: 60px;
+      text-align: center;
     }
     > .notion-row {
+      margin-bottom: 40px;
       > .notion-spacer {
         width: 0;
       }
@@ -1327,9 +1334,21 @@
 
 // 服务
 .pt-service {
-  background-color: var(--bgNight);
+  background: var(--bgNight);
   padding-top: 12vw;
   padding-bottom: 12vw;
+  position: relative;
+
+  &::after {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    content: '';
+    opacity: 0.15;
+    background: url(/service-bg.png) no-repeat top center;
+  }
 
   > .notion-callout-content > .notion-callout-text {
     .notion-h,
@@ -1658,7 +1677,6 @@
 
 // 介绍 - 业界领先
 .pt-introduce {
-  padding-top: 92px;
   padding-bottom: 120px;
 
   > .notion-callout-content > .notion-callout-text {
@@ -1719,7 +1737,7 @@
         &.active {
           padding-right: 32px;
           width: 600px;
-          background-color: #ffffff;
+          background-color: var(--bgGray);
 
           .title {
             color: var(--light-primary);
@@ -1922,5 +1940,20 @@
         }
       }
     }
+  }
+}
+
+// 机器人
+#maxkb {
+  .maxkb-chat-button svg {
+    width: 62px;
+    height: 74px;
+  }
+  .maxkb-chat-button {
+    bottom: 40px !important;
+  }
+  #maxkb-chat-container:not(.maxkb-enlarge) {
+    bottom: 40px !important;
+    right: 70px !important;
   }
 }

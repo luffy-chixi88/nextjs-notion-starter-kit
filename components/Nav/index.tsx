@@ -76,11 +76,13 @@ export default function Nav(props) {
   const callouts = findCalloutInContent({
     block,
     recordMap,
-    names: ['Logo', 'Language', 'NavButton', 'NavButtonMobile', 'PasstoNavLink']
+    names: ['Logo', 'Language', 'NavButton', 'NavButtonMobile', 'PasstoNavLink', 'SolutionNavlist']
   })
   const router = useRouter()
 
   const [modalIsOpen, setIsOpen] = React.useState(false)
+
+  console.log('callouts', callouts)
 
   // @ts-ignore
   const navList = useDataBase<iTableSchema>({ block: callouts.PasstoNavLink })
@@ -91,6 +93,7 @@ export default function Nav(props) {
   function closeModal() {
     setIsOpen(false)
   }
+  console.log('navListnavList', navList)
   const navLink = useMemo(() => {
     return navList.map((item, i) => {
       // 是否已选中
