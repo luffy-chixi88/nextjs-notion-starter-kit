@@ -37,10 +37,10 @@ export function PasstoScence(props) {
                 'cursor-pointer flex flex-col items-center justify-center flex-1 border max-lg:border-none border-white/10 rounded mr-4 last:mr-0 py-8',
                 {
                   'border-b-2': index === i,
-                  'border-b-[#1865FF]': i === 0 && index === i,
+                  'border-b-[var(--light-primary)]': i === 0 && index === i,
                   'border-b-[#009444]': i === 1 && index === i,
                   'border-b-[#5B3BEA]': i === 2 && index === i,
-                  'hover:border-[#1865FF]': i === 0,
+                  'hover:border-[var(--light-primary)]': i === 0,
                   'hover:border-[#009444]': i === 1,
                   'hover:border-[#5B3BEA]': i === 2
                 }
@@ -84,7 +84,7 @@ export function PasstoScence(props) {
                 <Btn href={selectItem.LinkTextUrl} className='notion-link mt-6'>
                   <b
                     className={cs({
-                      '!bg-[#1865FF]': index === 0,
+                      '!bg-[var(--light-primary)]': index === 0,
                       '!bg-[#009444]': index === 1,
                       '!bg-[#5B3BEA]': index === 2
                     })}

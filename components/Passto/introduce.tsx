@@ -17,7 +17,7 @@ interface iTableSchema {
 function PasstoLink(item) {
   return (
     <div className='shrink-0 mr-16 mb-4 link'>
-      <Btn href={item.Link} className='text-[#1865FF]'>
+      <Btn href={item.Link} className='text-[var(--light-primary)]'>
         <b>
           <span className='mr-2'>{item.LinkText || 'View'}</span>
         </b>

@@ -37,7 +37,7 @@ function Banner(props) {
 
   return (
     <div className={cs(props.className, className)}>
-      <div className='mb-28'>{content.header}</div>
+      <div className='mb-36'>{content.header}</div>
       <div className='flex justify-center relative '>
         <div className='content'>
           <div className='banner-video'>{content.video}</div>

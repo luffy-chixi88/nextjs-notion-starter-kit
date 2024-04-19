@@ -74,6 +74,11 @@ export default function App({ Component, pageProps }: AppProps) {
         w.gtag('config', i)
       })(window, document, 'script', 'dataLayer', 'G-EVGK61NYDS')
       `}</Script>
+      <Script
+        async
+        defer
+        src='https://maxkb.zapto.org/api/application/embed?protocol=https&host=maxkb.zapto.org&token=18d20fd8c7303ca7'
+      ></Script>
       <Component {...pageProps} />
       <Script>
         {`

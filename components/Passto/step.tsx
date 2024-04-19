@@ -136,17 +136,23 @@ export function PasstoStepSwiper(props) {
               })}
               onClick={() => handleSlideTo(i)}
             >
-              <div className='mr-2'>
-                <div className='bg-[var(--primary)] text-white rounded-full w-11 h-11 leading-[44px] text-center max-lg:w-6 max-lg:h-6 max-lg:leading-6'>
+              <div className='mr-4'>
+                <div className='bg-[var(--light-primary)] text-white rounded-full w-11 h-11 leading-[44px] text-center max-lg:w-6 max-lg:h-6 max-lg:leading-6'>
                   {i + 1}
                 </div>
               </div>
               <div>
                 <h5
-                  className='notion-h notion-h3 m-0 max-lg:!my-4 max-lg:!text-xl'
+                  className='notion-h notion-h3 !mt-1 !mb-3 max-lg:!my-4 max-lg:!text-xl'
                   dangerouslySetInnerHTML={{ __html: item.Name }}
                 ></h5>
-                <p className='notion-text notion-gray !p-0'>{item.Description}</p>
+                <p
+                  className={cs('notion-text !p-0 text-sm', {
+                    'notion-gray': index !== i
+                  })}
+                >
+                  {item.Description}
+                </p>
               </div>
             </div>
           )
