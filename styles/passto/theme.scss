@@ -33,6 +33,7 @@
     display: none;
   }
   .pt-nav-link {
+    display: flex;
     .notion-link {
       margin: 0 12px;
       padding: 0 10px;
@@ -515,7 +516,7 @@
         height: 70%;
       }
 
-      .pt-video {
+      .banner-video-content {
         position: relative;
         z-index: 2;
         width: 360px;
@@ -579,6 +580,50 @@
           bottom: 80px;
         }
       }
+    }
+  }
+
+  @media (max-width: 1024px) {
+    padding-bottom: 24px;
+    &.pt-bannerv2-wave {
+      background-position: top -0px left -400px;
+    }
+    .header {
+      .notion-h1 {
+        font-size: 28px;
+      }
+      .notion-h3 {
+        font-size: 20px;
+      }
+      .notion-text {
+        font-size: 14px;
+        white-space: normal;
+      }
+      .notion-link {
+        b {
+          margin: 48px 0 0 0;
+          padding: 12px 36px;
+          min-width: 160px;
+        }
+        &:first-child {
+          margin-right: 16px;
+        }
+      }
+    }
+    .content {
+      .banner-video {
+        width: 270px;
+        height: 548px;
+        .banner-video-content {
+          width: 100%;
+          height: 100%;
+          background-size: contain;
+        }
+      }
+    }
+    .pt-list {
+      display: none;
+      position: unset;
     }
   }
 }
@@ -721,16 +766,15 @@
     padding-bottom: 60px;
 
     > .notion-callout-content > .notion-callout-text {
-      .demo {
-        .notion-gray {
-          margin: 12px 0;
-        }
+      .swiper-button-prev,
+      .swiper-button-next {
+        display: none;
       }
       > .notion-asset-wrapper {
         display: none;
       }
       .list {
-        margin-top: 40px;
+        margin: 40px 0;
 
         > .notion-callout-content > .notion-callout-text > .notion-row > .notion-column {
           margin-top: 24px;
@@ -1024,7 +1068,7 @@
       }
     }
   }
-  .pt-video {
+  .banner-video-content {
     max-width: 496px;
     margin: 24px auto;
   }
@@ -1280,7 +1324,14 @@
 
 @media (max-width: 1024px) {
   .pt-vision {
-    padding: 40px 0;
+    padding: 40px 0 20px 0;
+    > .notion-callout-content > .notion-callout-text {
+      .notion-h2 {
+        margin-bottom: 20px;
+        font-size: 24px;
+        text-align: left;
+      }
+    }
     > .notion-callout-content > .notion-callout-text .notion-h1 {
       font-size: 24px;
       padding-bottom: 20px;
@@ -1940,20 +1991,5 @@
         }
       }
     }
-  }
-}
-
-// 机器人
-#maxkb {
-  .maxkb-chat-button svg {
-    width: 62px;
-    height: 74px;
-  }
-  .maxkb-chat-button {
-    bottom: 40px !important;
-  }
-  #maxkb-chat-container:not(.maxkb-enlarge) {
-    bottom: 40px !important;
-    right: 70px !important;
   }
 }

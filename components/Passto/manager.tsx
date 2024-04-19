@@ -24,14 +24,6 @@ export function PasstoManager(props) {
   // true为pc false为小尺寸
   const isPC = useMediaQuery('(min-width: 1024px)')
 
-  const handleSlideTo = (currentIndex) => {
-    const currentSwiper = swiper.current?.swiper
-    if (currentSwiper) {
-      currentSwiper.slideToLoop(currentIndex, 1000, false)
-      setIndex(currentIndex)
-    }
-  }
-
   const handleNavigation = (type) => {
     const currentSwiper = swiper.current?.swiper
     if (!currentSwiper) return
@@ -41,7 +33,7 @@ export function PasstoManager(props) {
   return (
     <div className={cs('pt-12 pb-8 relative', className)}>
       <div className='flex'>
-        <div className='mx-32 flex-1 min-w-0'>
+        <div className='mx-32 max-lg:mx-0 flex-1 min-w-0'>
           <Swiper
             loop
             pagination={{
@@ -75,9 +67,13 @@ export function PasstoManager(props) {
               return (
                 <SwiperSlide key={i} className='slide'>
                   <img src={item.Image} />
-                  <div className='absolute left-0 right-0 bottom-0  bg-gradient-to-t from-black p-8 text-white'>
-                    <h3 className='text-2xl pb-2'>{item.Name}</h3>
-                    <p className='text-sm whitespace-pre-line	'>{item.Description}</p>
+                  <div className='absolute left-0 right-0 bottom-0  lg:bg-gradient-to-t lg:from-black p-8 text-white max-lg:relative max-lg:text-black max-lg:pt-8 max-lg:pb-0 max-lg:px-0'>
+                    <h3 className='text-2xl pb-2 max-lg:text-2xl max-lg:text-center'>
+                      {item.Name}
+                    </h3>
+                    <p className='text-sm whitespace-pre-line	max-lg:text-base  max-lg:text-center'>
+                      {item.Description}
+                    </p>
                   </div>
                 </SwiperSlide>
               )

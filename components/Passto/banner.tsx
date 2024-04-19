@@ -33,14 +33,14 @@ function Banner(props) {
     return res
   }, [block, recordMap, children])
 
-  console.log('coccc', content.list)
-
   return (
     <div className={cs(props.className, className)}>
       <div className='mb-36'>{content.header}</div>
-      <div className='flex justify-center relative '>
+      <div className='flex justify-center relative max-lg:flex-col'>
         <div className='content'>
-          <div className='banner-video'>{content.video}</div>
+          <div className='banner-video'>
+            <div className='banner-video-content'>{content.video}</div>
+          </div>
         </div>
         {content.list}
       </div>

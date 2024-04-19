@@ -101,17 +101,19 @@ export default function Nav(props) {
         item.TitleUrl.indexOf('?pvs') === -1 ? item.TitleUrl : mapPageUrl(item.TitleUrl)
       const isActive = '/' + (router?.query?.pageId || '') === newHref
       return (
-        <Btn key={i} className={cs('notion-link', { active: isActive })} href={item.TitleUrl}>
-          <div className='icon-nav mr-4 lg:hidden flex items-center'>
-            <Image
-              src={isActive ? item.IconAct : item.Icon}
-              width={24}
-              height={24}
-              alt={item.Title}
-            />
-          </div>
-          <p className='title'>{item.Title}</p>
-        </Btn>
+        <div key={i} className='relative'>
+          <Btn className={cs('notion-link', { active: isActive })} href={item.TitleUrl}>
+            <div className='icon-nav mr-4 lg:hidden flex items-center'>
+              <Image
+                src={isActive ? item.IconAct : item.Icon}
+                width={24}
+                height={24}
+                alt={item.Title}
+              />
+            </div>
+            <p className='title'>{item.Title}</p>
+          </Btn>
+        </div>
       )
     })
   }, [navList, router, mapPageUrl])

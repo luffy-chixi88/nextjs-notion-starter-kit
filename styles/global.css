@@ -71,6 +71,9 @@ body {
   display: none !important;
 }
 
+.ReactModal__Overlay {
+  z-index: 99;
+}
 .ReactModal__Body--open {
   overflow-y: hidden;
 }
@@ -93,4 +96,18 @@ body {
   100% {
     transform: rotate(360deg);
   }
+}
+
+/* 机器人 */
+#maxkb .maxkb-chat-button svg {
+  width: 62px;
+  height: 74px;
+}
+#maxkb .maxkb-chat-button {
+  bottom: 40px !important;
+  z-index: 50;
+}
+#maxkb #maxkb-chat-container:not(.maxkb-enlarge) {
+  bottom: 40px !important;
+  right: 70px !important;
 }
