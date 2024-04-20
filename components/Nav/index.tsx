@@ -54,13 +54,14 @@ export function findCalloutInContent<T extends string>(props: {
 const customStyles = {
   overlay: {
     backgroundColor: 'rgba(0,0,0,.6)',
+    borderRadius: '0px 0px 16px 16px',
     top: 'var(--notion-header-height)'
   },
   content: {
     top: 0,
     left: '0',
     right: '0',
-    bottom: 'auto',
+    bottom: '0',
     transform: 'none',
     position: 'absolute',
     border: 'none',
@@ -81,8 +82,7 @@ export default function Nav(props) {
   const router = useRouter()
 
   const [modalIsOpen, setIsOpen] = React.useState(false)
-
-  console.log('callouts', callouts)
+  const [isSolutionAct, setIsSolution] = React.useState(false)
 
   // @ts-ignore
   const navList = useDataBase<iTableSchema>({ block: callouts.PasstoNavLink })
@@ -90,19 +90,38 @@ export default function Nav(props) {
     setIsOpen((isOpen) => !isOpen)
   }
 
-  function closeModal() {
+  const closeModal = () => {
     setIsOpen(false)
   }
-  console.log('navListnavList', navList)
+  const handleSolution = () => {
+    setIsSolution((isOpen) => !isOpen)
+  }
+
   const navLink = useMemo(() => {
     return navList.map((item, i) => {
       // 是否已选中
       const newHref =
         item.TitleUrl.indexOf('?pvs') === -1 ? item.TitleUrl : mapPageUrl(item.TitleUrl)
       const isActive = '/' + (router?.query?.pageId || '') === newHref
+      const isSolution = item.Name === 'solution'
       return (
-        <div key={i} className='relative'>
-          <Btn className={cs('notion-link', { active: isActive })} href={item.TitleUrl}>
+        <div
+          key={i}
+          className={cs('relative', {
+            solutionItem: isSolution,
+            solutionItemAct: isSolution && isSolutionAct
+          })}
+        >
+          <Btn
+            className={cs('notion-link', { active: isActive })}
+            href={item.TitleUrl}
+            onClick={() => {
+              console.log('isSolution', isSolution)
+              if (isSolution) {
+                handleSolution()
+              }
+            }}
+          >
             <div className='icon-nav mr-4 lg:hidden flex items-center'>
               <Image
                 src={isActive ? item.IconAct : item.Icon}
@@ -113,10 +132,15 @@ export default function Nav(props) {
             </div>
             <p className='title'>{item.Title}</p>
           </Btn>
+          {item.Name === 'solution' && (
+            <div className='detail'>
+              <NotionBlockRenderer blockId={callouts['SolutionNavlist'].id} />
+            </div>
+          )}
         </div>
       )
     })
-  }, [navList, router, mapPageUrl])
+  }, [navList, router, mapPageUrl, callouts, isSolutionAct])
 
   return (
     <header className={cs('notion-header', className)}>
@@ -130,7 +154,7 @@ export default function Nav(props) {
             </div>
           )}
         </div>
-        <div className='option flex items-center justify-end flex-1 max-lg:hidden'>
+        <div className='option flex items-center justify-end flex-1 max-lg:hidden self-stretch'>
           <div className='pt-nav-link'>{navLink}</div>
           {callouts['NavButton'] && (
             <div>

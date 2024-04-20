@@ -45,10 +45,10 @@ export default function VideoAutoPlay({ block, className, meta }) {
         loop={meta.loop === '0' ? false : true}
         muted={meta.muted === '0' ? false : true}
         // eslint-disable-next-line react/no-unknown-property
-        webkit-playsInline={true}
+        webkit-playsinline={true}
         // eslint-disable-next-line react/no-unknown-property
-        x5-playsInline={true}
-        playsInline={true}
+        x5-playsinline
+        playsInline
       />
     </div>
   )

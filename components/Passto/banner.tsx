@@ -35,7 +35,7 @@ function Banner(props) {
 
   return (
     <div className={cs(props.className, className)}>
-      <div className='mb-36'>{content.header}</div>
+      <div className='mb-36 max-lg:mb-20'>{content.header}</div>
       <div className='flex justify-center relative max-lg:flex-col'>
         <div className='content'>
           <div className='banner-video'>
@@ -72,11 +72,15 @@ function ListItem({ item }) {
     <div className='item'>
       <div className='item-content'>
         <div className='relative'>
-          <img src={item.Image} alt={item.Name} className='block w-[64px] h-[64px]' />
+          <img
+            src={item.Image}
+            alt={item.Name}
+            className='block w-[64px] h-[64px] max-lg:w-[48px] max-lg:h-[48px]'
+          />
         </div>
         <div className='flex-1'>
-          <h5 className='text-2xl'>{item.Name}</h5>
-          <p className='pt-2 text-sm text-[color:--gray]'>{item.Description}</p>
+          <h5 className='text-2xl  max-lg:text-xl'>{item.Name}</h5>
+          <p className='pt-2 text-sm text-[color:--gray] whitespace-pre-line'>{item.Description}</p>
         </div>
       </div>
     </div>

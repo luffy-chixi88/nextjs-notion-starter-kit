@@ -10,7 +10,8 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 
 interface iTableschema {
   Name: string // 名字
-  Image: string //
+  Image: string // pc封面
+  ImageMobile: string // 移动端图片
   Description: string
 }
 
@@ -66,9 +67,10 @@ export function PasstoManager(props) {
             {list.map((item, i) => {
               return (
                 <SwiperSlide key={i} className='slide'>
-                  <img src={item.Image} />
+                  <img className='max-lg:!hidden' src={item.Image} />
+                  <img className='lg:!hidden' src={item.ImageMobile} />
                   <div className='absolute left-0 right-0 bottom-0  lg:bg-gradient-to-t lg:from-black p-8 text-white max-lg:relative max-lg:text-black max-lg:pt-8 max-lg:pb-0 max-lg:px-0'>
-                    <h3 className='text-2xl pb-2 max-lg:text-2xl max-lg:text-center'>
+                    <h3 className='font-bold text-2xl pb-2 max-lg:text-2xl max-lg:text-center'>
                       {item.Name}
                     </h3>
                     <p className='text-sm whitespace-pre-line	max-lg:text-base  max-lg:text-center'>
