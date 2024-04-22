@@ -145,7 +145,9 @@
               margin-right: 8px;
             }
             .notion-h3 {
-              font-size: 16px;
+              font-size: 14px;
+              font-weight: normal;
+              color: #666;
             }
             .notion-text {
               width: 100%;
@@ -159,7 +161,7 @@
               display: block;
             }
             .notion-link {
-              font-size: 14px;
+              font-size: 16px;
               color: #000;
               width: 50%;
               margin-bottom: 10px;
@@ -243,7 +245,6 @@
 
 // 主界面
 .pt-banner {
-  display: none;
   > .notion-callout-content {
     padding: 0 !important;
     max-width: 100%;

@@ -114,9 +114,8 @@ export default function Nav(props) {
         >
           <Btn
             className={cs('notion-link', { active: isActive })}
-            href={item.TitleUrl}
+            href={isSolution ? '' : item.TitleUrl}
             onClick={() => {
-              console.log('isSolution', isSolution)
               if (isSolution) {
                 handleSolution()
               }
