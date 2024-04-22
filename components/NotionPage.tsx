@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import Script from 'next/script'
 
 import * as config from '@/lib/config'
 import * as types from '@/lib/types'
@@ -287,6 +288,13 @@ export const NotionPage: React.FC<types.PageProps> = ({ site, recordMap, error, 
 
   return (
     <>
+      <Script
+        id='maxkb-bot'
+        async
+        defer
+        src='https://maxkb.zapto.org/api/application/embed?protocol=https&host=maxkb.zapto.org&token=18d20fd8c7303ca7'
+      ></Script>
+
       <PageHead
         pageId={pageId}
         site={site}
