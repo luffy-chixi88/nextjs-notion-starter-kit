@@ -33,8 +33,8 @@ export function PasstoManager(props) {
   }
 
   return (
-    <div className={cs('pt-12 pb-8 relative', className)}>
-      <h1 className='notion-h notion-h1 !mb-12 max-lg:!mb-8 block text-center'>
+    <div className={cs('pt-12 max-lg:pt-0 pb-8 relative', className)}>
+      <h1 className='notion-h notion-h1 !mb-12 block text-center'>
         <span className='notion-h-title'>{list[index]?.Title || ''}</span>
       </h1>
       <div className='flex'>

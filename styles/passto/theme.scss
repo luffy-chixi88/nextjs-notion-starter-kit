@@ -1115,6 +1115,9 @@
           font-size: 15px;
         }
       }
+      .list {
+        margin-top: 32px;
+      }
     }
   }
 }
@@ -1588,6 +1591,11 @@
   color: #fff;
   .notion-h1 {
     margin-top: 120px;
+  }
+  @media (max-width: 1024px) {
+    .notion-h1 {
+      margin-top: 60px;
+    }
   }
 }
 

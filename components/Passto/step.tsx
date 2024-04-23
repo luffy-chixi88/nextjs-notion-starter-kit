@@ -121,7 +121,7 @@ export function PasstoStepSwiper(props) {
   }, [isPC, list])
 
   return (
-    <div className={cs('flex pt-20 max-lg:flex-col ', className)}>
+    <div className={cs('flex pt-20 max-lg:pt-8 max-lg:flex-col ', className)}>
       <div className='flex items-center justify-center'>{swiperList}</div>
       <div className='ml-32 max-lg:ml-0'>
         {list.map((item, i) => {

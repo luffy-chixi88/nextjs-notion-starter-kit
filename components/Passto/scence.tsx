@@ -28,7 +28,7 @@ export function PasstoScence(props) {
 
   return (
     <div className={cs(className)}>
-      <div className='flex items-center justify-center pt-10'>
+      <div className='flex items-center justify-center pt-10 max-lg:pt-8'>
         {list.map((item, i) => {
           return (
             <div
