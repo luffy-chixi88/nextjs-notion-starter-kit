@@ -5,6 +5,7 @@ import React, { useMemo } from 'react'
 import Btn from '../Btn'
 import { getBlockType } from '@/hooks/useBlockType'
 import { useDataBase } from '@/hooks/useDataBase'
+import { useMediaQuery } from '@/hooks/useMediaQuery'
 import cs from 'classnames'
 import { CalloutBlock, ExtendedRecordMap } from 'notion-types'
 import Modal from 'react-modal'
@@ -83,6 +84,7 @@ export default function Nav(props) {
 
   const [modalIsOpen, setIsOpen] = React.useState(false)
   const [isSolutionAct, setIsSolution] = React.useState(false)
+  const isPC = useMediaQuery('(min-width: 1024px)')
 
   // @ts-ignore
   const navList = useDataBase<iTableSchema>({ block: callouts.PasstoNavLink })
@@ -116,7 +118,7 @@ export default function Nav(props) {
             className={cs('notion-link', { active: isActive })}
             href={isSolution ? '' : item.TitleUrl}
             onClick={() => {
-              if (isSolution) {
+              if (isSolution && !isPC) {
                 handleSolution()
               }
             }}

@@ -77,54 +77,59 @@ export function PasstoStepSwiper(props) {
     }
   }
 
+  const swiperList = useMemo(() => {
+    return (
+      <Swiper
+        pagination={
+          isPC
+            ? false
+            : {
+                clickable: true
+              }
+        }
+        ref={swiper}
+        modules={[Autoplay, Pagination]}
+        breakpoints={{
+          1024: {
+            width: 600
+          },
+          768: {
+            width: undefined
+          }
+        }}
+        className='h-[648px] max-lg:h-[416px]'
+        direction={isPC ? 'vertical' : 'horizontal'}
+        autoplay={{
+          pauseOnMouseEnter: true,
+          disableOnInteraction: false,
+          delay: 3000
+        }}
+        onSlideChangeTransitionEnd={(swiper) => {
+          setIndex(swiper.realIndex)
+        }}
+        onResize={(swiper) => {
+          if (isPC) {
+            swiper.autoplay.start()
+          } else {
+            swiper.autoplay.stop()
+          }
+          swiper.update()
+        }}
+      >
+        {list.map((item, i) => {
+          return (
+            <SwiperSlide key={i} className='slide'>
+              <img src={item.Image} />
+            </SwiperSlide>
+          )
+        })}
+      </Swiper>
+    )
+  }, [isPC, list])
+
   return (
     <div className={cs('flex pt-20 max-lg:flex-col ', className)}>
-      <div className='flex items-center justify-center'>
-        <Swiper
-          pagination={
-            isPC
-              ? false
-              : {
-                  clickable: true
-                }
-          }
-          ref={swiper}
-          modules={[Autoplay, Pagination]}
-          breakpoints={{
-            1024: {
-              width: 600
-            },
-            768: {
-              width: undefined
-            }
-          }}
-          className='h-[648px] max-lg:h-[416px]'
-          direction={isPC ? 'vertical' : 'horizontal'}
-          autoplay={
-            isPC
-              ? {
-                  pauseOnMouseEnter: true,
-                  disableOnInteraction: false,
-                  delay: 3000
-                }
-              : false
-          }
-          onSlideChangeTransitionEnd={(swiper) => {
-            setIndex(swiper.realIndex)
-          }}
-          onResize={(swiper) => {
-            swiper.update()
-          }}
-        >
-          {list.map((item, i) => {
-            return (
-              <SwiperSlide key={i} className='slide'>
-                <img src={item.Image} />
-              </SwiperSlide>
-            )
-          })}
-        </Swiper>
-      </div>
+      <div className='flex items-center justify-center'>{swiperList}</div>
       <div className='ml-32 max-lg:ml-0'>
         {list.map((item, i) => {
           return (
