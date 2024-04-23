@@ -1460,7 +1460,7 @@
       > .notion-row {
         > .notion-spacer {
           display: block;
-          height: 40px;
+          height: 24px;
         }
         > .notion-column
           > .notion-callout
@@ -1470,6 +1470,11 @@
           > .notion-callout-content {
           padding: 20px 10px 32px;
         }
+      }
+    }
+    .pt-promotion-row {
+      > .notion-callout-content > .notion-callout-text {
+        margin-top: 0;
       }
     }
   }
