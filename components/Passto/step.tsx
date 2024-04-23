@@ -56,15 +56,8 @@ export function PasstoStep(props) {
 export function PasstoStepSwiper(props) {
   const { block, className, children } = props
   const list = useDataBase<iTableschema>({ block })
-  console.log('PasstoStepSwiper', list)
   const swiper = useRef(null)
   const [index, setIndex] = useState(0)
-
-  // 处理swiper报错问题
-  const [isInit, setInit] = useState(false)
-  useEffect(() => {
-    setInit(true)
-  }, [])
 
   // true为pc false为小尺寸
   const isPC = useMediaQuery('(min-width: 1024px)')

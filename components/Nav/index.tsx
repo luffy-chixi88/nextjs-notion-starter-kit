@@ -62,13 +62,14 @@ const customStyles = {
     top: 0,
     left: '0',
     right: '0',
-    bottom: '0',
+    bottom: 'auto',
     transform: 'none',
     position: 'absolute',
     border: 'none',
     borderRadius: '0 0 16px 16px',
     padding: 0,
-    paddingBottom: '16px'
+    paddingBottom: '16px',
+    maxHeight: '100%'
   }
 }
 
@@ -141,7 +142,7 @@ export default function Nav(props) {
         </div>
       )
     })
-  }, [navList, router, mapPageUrl, callouts, isSolutionAct])
+  }, [navList, router, mapPageUrl, callouts, isSolutionAct, isPC])
 
   return (
     <header className={cs('notion-header', className)}>
