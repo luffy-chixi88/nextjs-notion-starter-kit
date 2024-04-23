@@ -90,7 +90,7 @@ export function PasstoStepSwiper(props) {
             width: undefined
           }
         }}
-        className='h-[648px] max-lg:h-[416px]'
+        className='h-[648px] max-lg:h-[460px]'
         direction={isPC ? 'vertical' : 'horizontal'}
         autoplay={{
           pauseOnMouseEnter: true,

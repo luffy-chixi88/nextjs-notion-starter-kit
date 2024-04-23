@@ -1823,6 +1823,10 @@
       color: var(--light-primary);
     }
   }
+  .swiper-slide {
+    border-radius: 16px;
+    overflow: hidden;
+  }
   .pt-step-option {
     padding: 40px 0;
     .notion-link {
@@ -1851,6 +1855,9 @@
         width: 24px;
         border-radius: 4px;
       }
+    }
+    .swiper-slide {
+      border-radius: 12px;
     }
   }
 }
