@@ -9,6 +9,7 @@ import { Autoplay, Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 interface iTableschema {
+  Title: string // 标题
   Name: string // 名字
   Image: string // pc封面
   ImageMobile: string // 移动端图片
@@ -33,6 +34,9 @@ export function PasstoManager(props) {
 
   return (
     <div className={cs('pt-12 pb-8 relative', className)}>
+      <h1 className='notion-h notion-h1 !mb-12 max-lg:!mb-8 block text-center'>
+        <span className='notion-h-title'>{list[index]?.Title || ''}</span>
+      </h1>
       <div className='flex'>
         <div className='mx-32 max-lg:mx-0 flex-1 min-w-0'>
           <Swiper
