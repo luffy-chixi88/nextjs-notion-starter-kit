@@ -125,12 +125,7 @@ export default function Nav(props) {
             }}
           >
             <div className='icon-nav mr-4 lg:hidden flex items-center'>
-              <Image
-                src={isActive ? item.IconAct : item.Icon}
-                width={24}
-                height={24}
-                alt={item.Title}
-              />
+              <Image src={item.IconAct} width={24} height={24} alt={item.Title} />
             </div>
             <p className='title'>{item.Title}</p>
           </Btn>

@@ -138,8 +138,10 @@
             // 其他業務
             > .notion-row {
               flex-direction: row;
-              .notion-column {
-                width: 50% !important;
+              justify-content: space-between;
+              .notion-asset-wrapper-image {
+                width: 14px;
+                height: 12px;
               }
             }
             .notion-asset-wrapper-image {
@@ -233,6 +235,12 @@
       display: flex;
       justify-content: flex-start;
       align-items: center;
+      filter: opacity(0.5);
+      &.active,
+      &:active {
+        filter: none;
+        color: #000;
+      }
     }
   }
   .solutionItem {
