@@ -89,6 +89,9 @@
     .detail {
       display: block;
     }
+    .notion-link {
+      filter: none !important;
+    }
   }
   .title {
     &::after {
@@ -869,6 +872,9 @@
         }
         .notion-gray {
           color: var(--gray);
+        }
+        .notion-link b {
+          margin: 0 0 20px 0;
         }
         .pt-video {
           max-width: 760px;
