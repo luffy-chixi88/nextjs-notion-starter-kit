@@ -34,7 +34,7 @@ export function PasstoScence(props) {
             <div
               key={i}
               className={cs(
-                'cursor-pointer flex flex-col items-center justify-center flex-1 border max-lg:border-none border-white/10 rounded mr-4 last:mr-0 py-8',
+                'cursor-pointer flex flex-col items-center justify-center flex-1 border max-lg:border-none border-white/10 rounded mr-4 last:mr-0 py-5',
                 {
                   'border-b-2': index === i,
                   'border-b-[var(--light-primary)]': i === 0 && index === i,
@@ -47,7 +47,7 @@ export function PasstoScence(props) {
               )}
               onClick={() => setIndex(i)}
             >
-              <div className='relative flex items-center w-[56px] h-[56px] max-lg:w-[32px] max-lg:h-[32px]'>
+              <div className='relative flex items-center w-[48px] h-[48px] max-lg:w-[32px] max-lg:h-[32px]'>
                 <Image
                   src={index === i ? item.TabIconAct : item.TabIcon}
                   alt={item.TabTitle}
@@ -96,7 +96,7 @@ export function PasstoScence(props) {
               </div>
             </div>
             <div className='flex-1'>
-              <div className='relative w-[100%] h-[454px]  max-lg:h-[192px]'>
+              <div className='relative w-[100%] h-[400px] overflow-hidden  max-lg:h-[192px]'>
                 <video src={selectItem.VideoUrl} muted autoPlay />
               </div>
             </div>
