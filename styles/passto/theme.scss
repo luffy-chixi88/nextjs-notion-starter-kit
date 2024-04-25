@@ -837,7 +837,7 @@
   padding: 140px 0;
 
   .notion-h2 {
-    margin-bottom: 20px;
+    margin-bottom: 16px;
   }
   .pt-todo {
     margin: 40px 0;
@@ -854,10 +854,41 @@
   > .notion-callout-content > .notion-callout-text {
     .notion-row {
       justify-content: space-between;
-      .notion-column {
-        max-width: 760px;
+      .notion-spacer {
+        display: none;
+      }
+      > .notion-column {
+        width: 100% !important;
+
         &:first-child {
-          max-width: 440px;
+          max-width: 390px;
+          margin-right: 70px;
+        }
+        .notion-text {
+          font-size: 14px;
+        }
+        .notion-gray {
+          color: var(--gray);
+        }
+        .pt-video {
+          max-width: 760px;
+          video {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+      .notion-property-checkbox {
+        margin-right: 16px;
+      }
+      .notion-property-checkbox-checked {
+        width: 20px;
+        height: 20px;
+        svg {
+          width: 11px;
+          height: 11px;
+          top: 4px;
+          left: 4px;
         }
       }
     }
