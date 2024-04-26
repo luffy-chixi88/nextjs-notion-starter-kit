@@ -99,24 +99,24 @@ body {
 }
 
 /* 机器人 */
-#maxkb .maxkb-chat-button svg {
+#PasstoAI .PasstoAI-chat-button svg {
   width: 62px;
   height: 74px;
 }
-#maxkb .maxkb-chat-button {
+#PasstoAI .PasstoAI-chat-button {
   bottom: 40px !important;
   z-index: 50;
 }
-#maxkb #maxkb-chat-container:not(.maxkb-enlarge) {
+#PasstoAI #PasstoAI-chat-container:not(.PasstoAI-enlarge) {
   bottom: 40px !important;
   right: 70px !important;
 }
-#maxkb .maxkb-mask .maxkb-content {
+#PasstoAI .PasstoAI-mask .PasstoAI-content {
   width: 50px !important;
   height: 50px !important;
   bottom: 58px !important;
 }
-#maxkb .maxkb-tips {
+#PasstoAI .PasstoAI-tips {
   bottom: 44px !important;
   right: 64px !important;
 }
