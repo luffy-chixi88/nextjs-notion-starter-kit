@@ -108,8 +108,8 @@ body {
   z-index: 50;
 }
 #PasstoAI #PasstoAI-chat-container:not(.PasstoAI-enlarge) {
-  bottom: 40px !important;
-  right: 70px !important;
+  bottom: 40px;
+  right: 70px;
 }
 #PasstoAI .PasstoAI-mask .PasstoAI-content {
   width: 50px !important;
