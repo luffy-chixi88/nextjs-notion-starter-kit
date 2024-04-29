@@ -295,7 +295,7 @@ export const NotionPage: React.FC<types.PageProps> = ({ site, recordMap, error, 
         id='PassToAI'
         async
         defer
-        src='https://passtoai.co/api/application/embed?protocol=https&host=passtoai.co&token=18d20fd8c7303ca7'
+        src='https://passtoai.zapto.org/api/application/embed?protocol=https&host=passtoai.zapto.org&token=18d20fd8c7303ca7'
       ></Script>
 
       <PageHead
