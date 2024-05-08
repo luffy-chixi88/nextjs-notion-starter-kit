@@ -24,10 +24,12 @@ export function PasstoStep(props) {
     const res = { header: null, footer: null, swiper: null }
     block.content.forEach((item, i) => {
       const { type } = recordMap.block[item].value
-      if (type === 'callout') {
+      if (type === 'callout' || type === 'transclusion_container') {
+        // 获取blockId
+        const id = type === 'transclusion_container' ? recordMap.block[item].value.content[0] : item
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        const blockType = getBlockType(recordMap.block[item].value)
+        const blockType = getBlockType(recordMap.block[id].value)
         if (blockType === 'PasstoStepHeader') {
           res.header = children[i]
         } else if (blockType === 'PasstoStepOption') {
