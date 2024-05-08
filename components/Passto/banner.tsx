@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import React, { useMemo } from 'react'
 
 import VideoAutoPlay from '@/components/Video/autoPlay'
@@ -12,7 +11,7 @@ function Banner(props) {
   const { recordMap } = useNotionContext()
   // 指定callout内容返回
   const content = useMemo(() => {
-    const res = { header: null, video: null, list: null }
+    const res = { header: null, type: 'image', center: null, list: null }
     block.content.forEach((item, i) => {
       const currentBlock = recordMap.block[item].value
       const { type } = currentBlock
@@ -22,9 +21,13 @@ function Banner(props) {
         if (blockType?.title === 'BannerHead') {
           res.header = children[i]
         } else if (blockType?.title === 'PasstoBannerVideo') {
-          res.video = (
+          res.type = 'video'
+          res.center = (
             <VideoAutoPlay className={blockType.title} block={currentBlock} meta={blockType.meta} />
           )
+        } else if (blockType?.title === 'BannerImage') {
+          res.type = 'image'
+          res.center = children[i]
         }
       } else if (type === 'collection_view') {
         res.list = <List block={currentBlock} />
@@ -35,11 +38,11 @@ function Banner(props) {
 
   return (
     <div className={cs(props.className, className)}>
-      <div className='mb-36 max-lg:mb-20'>{content.header}</div>
+      <div>{content.header}</div>
       <div className='flex justify-center relative max-lg:flex-col'>
         <div className='content'>
-          <div className='banner-video'>
-            <div className='banner-video-content'>{content.video}</div>
+          <div className={content.type === 'video' ? 'banner-video' : 'banner-image'}>
+            <div className='banner-content'>{content.center}</div>
           </div>
         </div>
         {content.list}

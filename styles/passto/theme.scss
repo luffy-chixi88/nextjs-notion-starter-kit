@@ -654,7 +654,7 @@
   }
   .content {
     .banner-video {
-      margin: 0 auto;
+      margin: 136px auto 0;
       position: relative;
       display: flex;
       justify-content: center;
@@ -680,7 +680,7 @@
         height: calc(min(100vw, var(--max-width)) - 730px);
       }
 
-      .banner-video-content {
+      .banner-content {
         position: relative;
         z-index: 2;
         width: 360px;
@@ -688,17 +688,33 @@
         background: url(/home/phone.webp) top center no-repeat;
         background-size: cover;
         overflow: hidden;
+
         .pt-video {
           width: 87%;
+          height: 90%;
           overflow: hidden;
           border-radius: 16px;
           margin: 40px auto;
+          background: url(/home/video-cover.webp) top center no-repeat;
+          background-size: cover;
         }
         video {
           width: 100%;
           display: block;
         }
       }
+    }
+
+    .banner-image {
+      width: 576px;
+      height: 207px;
+      background: url(/home/banner-branch.webp) top center no-repeat;
+      background-size: cover;
+      margin-top: 48px;
+      margin-bottom: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
   .pt-list {
@@ -713,6 +729,7 @@
       display: flex;
       align-items: center;
       width: 50%;
+      position: relative;
       h5 {
         font-weight: bold;
       }
@@ -720,6 +737,7 @@
         display: flex;
         align-items: center;
         width: 320px;
+        position: absolute;
       }
       &:nth-child(2n) {
         justify-content: flex-end;
@@ -738,15 +756,13 @@
       &:nth-child(1),
       &:nth-child(2) {
         .item-content {
-          position: relative;
-          top: 80px;
+          bottom: 60px;
         }
       }
       &:nth-child(3),
       &:nth-child(4) {
         .item-content {
-          position: relative;
-          bottom: 80px;
+          top: 60px;
         }
       }
     }
@@ -794,7 +810,7 @@
         width: 270px;
         height: 548px;
 
-        .banner-video-content {
+        .banner-content {
           width: 100%;
           height: 100%;
           background-size: contain;
@@ -810,6 +826,17 @@
         &::after {
           width: 90vw;
           height: 90vw;
+        }
+      }
+      .banner-image {
+        width: 100%;
+        height: 100%;
+        background: none;
+        margin-bottom: 0;
+
+        .notion-asset-wrapper-image {
+          width: 56px;
+          height: 56px;
         }
       }
     }
@@ -1194,8 +1221,8 @@
 
 .pt-contact {
   > .notion-callout-content {
-    max-width: 1472px;
-    padding: 0;
+    // max-width: 1472px;
+    padding-bottom: 96px;
 
     > .notion-callout-text > .notion-row {
       justify-content: center;
@@ -1354,7 +1381,7 @@
       }
     }
   }
-  .banner-video-content {
+  .banner-content {
     max-width: 496px;
     margin: 24px auto;
   }
@@ -1656,16 +1683,17 @@
 
 // 收款场景
 .pt-scence {
-  background: var(--bgNight);
   background-size: cover;
-  color: #fff;
-  .notion-h1 {
-    margin-top: 120px;
+  padding-top: 96px;
+  padding-bottom: 96px;
+
+  &:not(.notion-gray_background_co) {
+    background: var(--bgNight);
+    color: #fff;
   }
   @media (max-width: 1024px) {
-    .notion-h1 {
-      margin-top: 60px;
-    }
+    padding-top: 60px;
+    padding-bottom: 60px;
   }
 }
 
@@ -2155,6 +2183,68 @@
         .intro-item:first-child {
           .content {
             margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+// 选择原因
+.pt-reasons {
+  padding-top: 96px;
+  padding-bottom: 60px;
+
+  > .notion-callout-content > .notion-callout-text {
+    text-align: center;
+
+    .pt-list {
+      margin-top: 64px;
+
+      > .notion-callout-content > .notion-callout-text > .notion-row {
+        > .notion-column {
+          margin-bottom: 24px;
+
+          > .notion-callout {
+            padding: 54px;
+            height: 100%;
+
+            .notion-asset-wrapper {
+              width: 80px;
+              height: 80px;
+              justify-content: center;
+            }
+            .notion-h3 {
+              margin-top: 16px;
+              margin-bottom: 16px;
+            }
+          }
+        }
+        .notion-spacer {
+          width: 24px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .pt-reasons {
+    padding-bottom: 30px;
+
+    > .notion-callout-content > .notion-callout-text .pt-list {
+      margin-top: 45px;
+
+      > .notion-callout-content > .notion-callout-text > .notion-row > .notion-column {
+        > .notion-callout {
+          padding: 24px;
+
+          .notion-asset-wrapper {
+            width: 48px;
+            height: 48px;
+          }
+          .notion-text {
+            white-space: normal;
           }
         }
       }
