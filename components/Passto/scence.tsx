@@ -62,8 +62,8 @@ export function PasstoScence(props) {
                 />
               </div>
               <p
-                className={cs('text-[color:var(--gray)] mt-4', {
-                  'text-white': index === i
+                className={cs('mt-4', {
+                  'text-[color:var(--gray)]': index !== i
                 })}
               >
                 {item.TabTitle}
@@ -77,7 +77,7 @@ export function PasstoScence(props) {
           <div className={cs('flex max-lg:flex-col')}>
             <div className='max-w-full w-[380px] mr-8 max-lg:mr-0 max-lg:mb-8 flex flex-wrap items-center'>
               <div>
-                <h3 className='notion-h2'>{selectItem.Title}</h3>
+                <h3 className='notion-h3 font-semibold'>{selectItem.Title}</h3>
                 <p className={cs('notion-text notion-gray text-[color:var(--gray)]')}>
                   {selectItem.Description}
                 </p>
