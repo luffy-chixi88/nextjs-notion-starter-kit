@@ -687,11 +687,15 @@
         background: url(/home/phone.webp) top center no-repeat;
         background-size: cover;
         overflow: hidden;
+
         .pt-video {
           width: 87%;
+          height: 90%;
           overflow: hidden;
           border-radius: 16px;
           margin: 40px auto;
+          background: url(/home/video-cover.webp) top center no-repeat;
+          background-size: cover;
         }
         video {
           width: 100%;
