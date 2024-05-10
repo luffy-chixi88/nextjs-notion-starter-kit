@@ -714,6 +714,20 @@
       display: flex;
       align-items: center;
       justify-content: center;
+
+      .banner-content {
+        > .notion-callout > .notion-callout-content > .notion-callout-text {
+          display: flex;
+          flex-direction: column;
+
+          .notion-asset-wrapper-image {
+            min-width: auto;
+            div {
+              width: 80px !important;
+            }
+          }
+        }
+      }
     }
   }
   .pt-list {
@@ -833,9 +847,20 @@
         background: none;
         margin-bottom: 0;
 
-        .notion-asset-wrapper-image {
-          width: 56px;
-          height: 56px;
+        .banner-content {
+          > .notion-callout > .notion-callout-content > .notion-callout-text {
+            flex-direction: row;
+
+            .notion-asset-wrapper-image {
+              margin-left: 20px;
+              div {
+                width: 56px !important;
+              }
+              &:first-child {
+                margin-left: 0;
+              }
+            }
+          }
         }
       }
     }
@@ -1686,6 +1711,10 @@
   padding-top: 96px;
   padding-bottom: 96px;
 
+  > .notion-callout-content {
+    padding: 0 16px;
+  }
+
   &:not(.notion-gray_background_co) {
     background: var(--bgNight);
     color: #fff;
@@ -2194,33 +2223,35 @@
   padding-top: 96px;
   padding-bottom: 60px;
 
-  > .notion-callout-content > .notion-callout-text {
-    text-align: center;
+  > .notion-callout-content {
+    padding: 0 16px;
 
-    .pt-list {
-      margin-top: 64px;
+    > .notion-callout-text {
+      text-align: center;
 
-      > .notion-callout-content > .notion-callout-text > .notion-row {
-        > .notion-column {
-          margin-bottom: 24px;
+      .pt-list {
+        margin-top: 64px;
 
-          > .notion-callout {
-            padding: 54px;
-            height: 100%;
+        > .notion-callout-content > .notion-callout-text > .notion-row {
+          > .notion-column {
+            margin-bottom: 24px;
 
-            .notion-asset-wrapper {
-              width: 80px;
-              height: 80px;
-              justify-content: center;
-            }
-            .notion-h3 {
-              margin-top: 16px;
-              margin-bottom: 16px;
+            > .notion-callout {
+              padding: 54px;
+              height: 100%;
+
+              .notion-asset-wrapper-image div {
+                width: 80px !important;
+              }
+              .notion-h3 {
+                margin-top: 16px;
+                margin-bottom: 16px;
+              }
             }
           }
-        }
-        .notion-spacer {
-          width: 24px;
+          .notion-spacer {
+            width: 24px;
+          }
         }
       }
     }
@@ -2238,10 +2269,6 @@
         > .notion-callout {
           padding: 24px;
 
-          .notion-asset-wrapper {
-            width: 48px;
-            height: 48px;
-          }
           .notion-text {
             white-space: normal;
           }
