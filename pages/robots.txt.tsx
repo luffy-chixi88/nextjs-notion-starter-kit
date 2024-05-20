@@ -19,21 +19,10 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   res.setHeader('Content-Type', 'text/plain')
 
   // only allow the site to be crawlable on the production deployment
-  if (process.env.VERCEL_ENV === 'production') {
-    res.write(`User-agent: *
-Allow: /
-Disallow: /api/get-tweet-ast/*
-Disallow: /api/search-notion
-
-Sitemap: ${host}/sitemap.xml
-`)
-  } else {
-    res.write(`User-agent: *
-Disallow: /
-
-Sitemap: ${host}/sitemap.xml
-`)
-  }
+  res.write(`User-agent: *
+    Allow: /
+    Sitemap: ${host}/sitemap.xml
+ `)
 
   res.end()
 
