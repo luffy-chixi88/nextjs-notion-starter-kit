@@ -53,7 +53,6 @@ export default async function handler(req: ExtendedNextApiRequest, res: NextApiR
         ]
       }
     }
-    console.log('data', data)
     const result = await fetch(url, {
       method: 'POST',
       headers: {

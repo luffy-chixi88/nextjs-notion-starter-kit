@@ -770,13 +770,13 @@
       &:nth-child(1),
       &:nth-child(2) {
         .item-content {
-          bottom: 60px;
+          bottom: 16px;
         }
       }
       &:nth-child(3),
       &:nth-child(4) {
         .item-content {
-          top: 60px;
+          top: 120px;
         }
       }
     }

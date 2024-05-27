@@ -106,7 +106,7 @@ export default function Nav(props) {
       const newHref =
         item.TitleUrl.indexOf('?pvs') === -1 ? item.TitleUrl : mapPageUrl(item.TitleUrl)
       const isActive = '/' + (router?.query?.pageId || '') === newHref
-      const isSolution = item.Name === 'solution'
+      const isSolution = item.Title === '解決方案'
       return (
         <div
           key={i}

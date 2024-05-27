@@ -20,7 +20,6 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
 
   // only allow the site to be crawlable on the production deployment
   res.write(`User-agent: *
-    Allow: /
     Sitemap: ${host}/sitemap.xml
  `)
 
