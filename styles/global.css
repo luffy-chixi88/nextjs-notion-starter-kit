@@ -63,9 +63,9 @@ body {
   background-color: var(--bg-color);
 }
 
-.hidden {
+/* .hidden {
   display: none !important;
-}
+} */
 
 .rm-Header-top {
   display: none !important;
