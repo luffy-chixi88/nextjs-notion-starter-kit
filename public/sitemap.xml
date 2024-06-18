@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://passtopay.io/</loc>
+  <lastmod>2024-06-18T10:53:49+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://passtopay.io/solution-a2c48bc8e3b9463f96e7540c5ff5cb20</loc>
+  <lastmod>2024-06-18T10:53:49+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://passtopay.io/third-party-payment-processor-61c257dda8b94b519382b4030950a9fb</loc>
+  <lastmod>2024-06-18T10:53:49+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://passtopay.io/credit-card-payment-gateway-b1cac3ed37e14fbbb72e972aa8d7aa0f</loc>
+  <lastmod>2024-06-18T10:53:49+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://passtopay.io/alipay-remittance-147f3fe9519a40e092e4dcf7772ab5da</loc>
+  <lastmod>2024-06-18T10:53:49+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://passtopay.io/unionpay-remittance-687830c72f724017aaa02ded36477ad4</loc>
+  <lastmod>2024-06-18T10:53:49+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://passtopay.io/china-authorized-payment-processor-7038642466f4467e952753eb18734e29</loc>
+  <lastmod>2024-06-18T10:53:49+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://passtopay.io/money-changer-remittance-0f63e836e68c46f29e20b16d15b221c4</loc>
+  <lastmod>2024-06-18T10:53:49+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://passtopay.io/corporate-cross-border-remittance-82753605bec249a292320f6e19fe902e</loc>
+  <lastmod>2024-06-18T10:53:49+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://passtopay.io/api-f70d29f5231b483da80c5c21d98cb594</loc>
+  <lastmod>2024-06-18T10:53:49+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://passtopay.io/about-us-04258a0438dd46a0a47ded55634efffd</loc>
+  <lastmod>2024-06-18T10:53:49+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://passtopay.io/cny-payment-solution-a5493e9bd5a24ac3a1afe25d5ace71a2</loc>
+  <lastmod>2024-06-18T10:53:49+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://passtopay.io/wechatpay-a2905a624c484bc183bf808a33bf13d8</loc>
+  <lastmod>2024-06-18T10:53:49+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://passtopay.io/reference/whats-passto-pay</loc>
+  <lastmod>2024-06-18T10:53:49+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://passtopay.io/login?redirect_uri=/reference/whats-passto-pay</loc>
+  <lastmod>2024-06-18T10:53:49+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://passtopay.io/reference/why-integrate-with-us</loc>
+  <lastmod>2024-06-18T10:53:49+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://passtopay.io/reference/request</loc>
+  <lastmod>2024-06-18T10:53:49+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://passtopay.io/reference/signing-a-request</loc>
+  <lastmod>2024-06-18T10:53:49+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://passtopay.io/reference/rate-limiting</loc>
+  <lastmod>2024-06-18T10:53:49+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://passtopay.io/reference/%E5%89%B5%E5%BB%BA%E6%94%B6%E9%93%B6%E5%8F%B0</loc>
+  <lastmod>2024-06-18T10:53:49+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://passtopay.io/reference/%E5%89%B5%E5%BB%BA%E6%94%B6%E9%8A%80%E5%8F%B0beta-copy</loc>
+  <lastmod>2024-06-18T10:53:49+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://passtopay.io/reference/create-payment-order</loc>
+  <lastmod>2024-06-18T10:53:49+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://passtopay.io/reference/query-payment-order</loc>
+  <lastmod>2024-06-18T10:53:49+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://passtopay.io/reference/cyptoorder</loc>
+  <lastmod>2024-06-18T10:53:49+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://passtopay.io/reference/create-transfer-order</loc>
+  <lastmod>2024-06-18T10:53:49+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://passtopay.io/reference/query-transfer-order</loc>
+  <lastmod>2024-06-18T10:53:49+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://passtopay.io/reference/payment-notify</loc>
+  <lastmod>2024-06-18T10:53:49+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://passtopay.io/reference/transfer-notify</loc>
+  <lastmod>2024-06-18T10:53:49+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://passtopay.io/reference/payment-method</loc>
+  <lastmod>2024-06-18T10:53:49+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://passtopay.io/reference/%E9%8A%80%E8%A1%8C%E7%B7%A8%E7%A2%BC</loc>
+  <lastmod>2024-06-18T10:53:49+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://passtopay.io/reference/%E5%8A%A0%E5%AF%86%E7%B6%B2%E8%B7%AF%E5%88%97%E8%A1%A8</loc>
+  <lastmod>2024-06-18T10:53:49+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://passtopay.io/reference/github</loc>
+  <lastmod>2024-06-18T10:53:49+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://passtopay.io/reference/general</loc>
+  <lastmod>2024-06-18T10:53:49+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://passtopay.io/reference/v110-20240117</loc>
+  <lastmod>2024-06-18T10:53:49+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://passtopay.io/reference/20240516</loc>
+  <lastmod>2024-06-18T10:53:49+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://passtopay.io/reference/20240528</loc>
+  <lastmod>2024-06-18T10:53:49+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+
+
+</urlset>
