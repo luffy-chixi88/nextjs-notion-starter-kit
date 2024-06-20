@@ -28,13 +28,13 @@ export function PasstoScence(props) {
 
   return (
     <div className={cs(className)}>
-      <div className='flex items-center justify-start pt-10 max-lg:pt-8 border-b border-b-dashed border-b-[#202030] overflow-x-auto'>
+      <div className='flex items-center justify-start pt-10 max-lg:pt-8 border-b border-b-dashed border-b-[#202030] overflow-hidden overflow-x-auto'>
         {list.map((item, i) => {
           return (
             <div
               key={i}
               className={cs(
-                'cursor-pointer text-center  border-white/10  mr-6 last:mr-0 py-5 min-w-[100px]',
+                'cursor-pointer whitespace-nowrap	text-center basis-28  border-white/10 mr-6 last:mr-0 py-5',
                 {
                   'border-b-2': index === i,
                   'border-b-[var(--light-primary)]': (i + 1) % 3 === 1 && index === i,
@@ -47,27 +47,29 @@ export function PasstoScence(props) {
               )}
               onClick={() => setIndex(i)}
             >
-              <div className='relative inline-flex items-center w-[32px] h-[32px]'>
-                <Image
-                  src={index === i ? item.TabIconAct : item.TabIcon}
-                  alt={item.TabTitle}
-                  layout='fill'
-                />
-                {/* 预加载图片 */}
-                <Image
-                  className='hidden'
-                  src={index !== i ? item.TabIconAct : item.TabIcon}
-                  alt={item.TabTitle}
-                  layout='fill'
-                />
+              <div>
+                <div className='relative inline-flex items-center w-[32px] h-[32px]'>
+                  <Image
+                    src={index === i ? item.TabIconAct : item.TabIcon}
+                    alt={item.TabTitle}
+                    layout='fill'
+                  />
+                  {/* 预加载图片 */}
+                  <Image
+                    className='hidden'
+                    src={index !== i ? item.TabIconAct : item.TabIcon}
+                    alt={item.TabTitle}
+                    layout='fill'
+                  />
+                </div>
+                <p
+                  className={cs('mt-1', 'text-sm', {
+                    'text-[color:var(--gray)]': index !== i
+                  })}
+                >
+                  {item.TabTitle}
+                </p>
               </div>
-              <p
-                className={cs('mt-1', {
-                  'text-[color:var(--gray)]': index !== i
-                })}
-              >
-                {item.TabTitle}
-              </p>
             </div>
           )
         })}

@@ -1113,8 +1113,13 @@
         margin: 40px 0;
         text-align: center;
 
+        .notion-h {
+          margin-bottom: 20px;
+        }
+
         > .notion-callout-content > .notion-callout-text > .notion-row > .notion-column {
           margin-bottom: 24px;
+          display: flex;
 
           .notion-asset-wrapper-image {
             margin-top: 0px;
