@@ -39,7 +39,7 @@ function Banner(props) {
   return (
     <div className={cs(props.className, className)}>
       <div>{content.header}</div>
-      <div className='flex justify-center relative max-lg:flex-col'>
+      <div className='flex justify-center relative max-lg:flex-col mt-[136px] max-md:mt-[100px] mb-[20px]'>
         <div className='content'>
           <div className={content.type === 'video' ? 'banner-video' : 'banner-image'}>
             <div className='banner-content'>{content.center}</div>

@@ -28,26 +28,26 @@ export function PasstoScence(props) {
 
   return (
     <div className={cs(className)}>
-      <div className='flex items-center justify-center pt-10 max-lg:pt-8'>
+      <div className='flex items-center justify-start pt-10 max-lg:pt-8 border-b border-b-dashed border-b-[#202030] overflow-x-auto'>
         {list.map((item, i) => {
           return (
             <div
               key={i}
               className={cs(
-                'cursor-pointer flex flex-col items-center justify-center flex-1 border max-lg:border-none border-white/10 rounded mr-4 last:mr-0 py-5',
+                'cursor-pointer text-center  border-white/10  mr-6 last:mr-0 py-5 min-w-[100px]',
                 {
                   'border-b-2': index === i,
-                  'border-b-[var(--light-primary)]': i === 0 && index === i,
-                  'border-b-[#009444]': i === 1 && index === i,
-                  'border-b-[#5B3BEA]': i === 2 && index === i,
-                  'hover:border-[var(--light-primary)]': i === 0,
-                  'hover:border-[#009444]': i === 1,
-                  'hover:border-[#5B3BEA]': i === 2
+                  'border-b-[var(--light-primary)]': (i + 1) % 3 === 1 && index === i,
+                  'border-b-[#009444]': (i + 1) % 3 === 2 && index === i,
+                  'border-b-[#5B3BEA]': (i + 1) % 3 === 0 && index === i,
+                  'hover:border-[var(--light-primary)]': (i + 1) % 3 === 1,
+                  'hover:border-b-[#009444]': (i + 1) % 3 === 2,
+                  'hover:border-b-[#5B3BEA]': (i + 1) % 3 === 0
                 }
               )}
               onClick={() => setIndex(i)}
             >
-              <div className='relative flex items-center w-[48px] h-[48px] max-lg:w-[32px] max-lg:h-[32px]'>
+              <div className='relative inline-flex items-center w-[32px] h-[32px]'>
                 <Image
                   src={index === i ? item.TabIconAct : item.TabIcon}
                   alt={item.TabTitle}
@@ -62,7 +62,7 @@ export function PasstoScence(props) {
                 />
               </div>
               <p
-                className={cs('mt-4', {
+                className={cs('mt-1', {
                   'text-[color:var(--gray)]': index !== i
                 })}
               >
