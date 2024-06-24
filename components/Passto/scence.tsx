@@ -34,7 +34,7 @@ export function PasstoScence(props) {
             <div
               key={i}
               className={cs(
-                'cursor-pointer whitespace-nowrap	text-center basis-28  border-white/10 mr-6 last:mr-0 py-5',
+                'cursor-pointer flex-1 whitespace-nowrap	text-center basis-28  border-white/10 mr-6 last:mr-0 py-5',
                 {
                   'border-b-2': index === i,
                   'border-b-[var(--light-primary)]': (i + 1) % 3 === 1 && index === i,
