@@ -1763,7 +1763,7 @@
   padding-bottom: 12vw;
   position: relative;
 
-  &::after {
+  &::before {
     position: absolute;
     left: 0;
     right: 0;
@@ -1772,6 +1772,12 @@
     content: '';
     opacity: 0.15;
     background: url(/service-bg.png) no-repeat top center;
+    z-index: 0;
+  }
+
+  > .notion-callout-content {
+    position: relative;
+    z-index: 11;
   }
 
   > .notion-callout-content > .notion-callout-text {
