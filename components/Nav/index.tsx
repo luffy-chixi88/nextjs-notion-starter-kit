@@ -115,7 +115,7 @@ export default function Nav(props) {
       const link = item.Title?.[0]?.url || ''
       const newHref = link.indexOf('?pvs') === -1 ? link : mapPageUrl(link)
       const isActive = '/' + (router?.query?.pageId || '') === newHref
-      const isSolution = item.Type[0] === 'Solution'
+      const isSolution = item?.Type?.[0] === 'Solution'
       const isSubMenu = Array.isArray(item.SubMenu) && item.SubMenu.length > 0
       return (
         <div
@@ -135,9 +135,9 @@ export default function Nav(props) {
             }}
           >
             <div className='icon-nav mr-4 lg:hidden flex items-center'>
-              <Image src={item.IconAct} width={24} height={24} alt={item.Title[0].title} />
+              <Image src={item.IconAct} width={24} height={24} alt={item.Title?.[0]?.title} />
             </div>
-            <p className='title'>{item.Title[0].title}</p>
+            <p className='title'>{item.Title?.[0]?.title}</p>
           </Btn>
           {isSolution && (
             <div className='detail w-[320px]'>

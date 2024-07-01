@@ -31,7 +31,6 @@ export function useDataBase<T>({ block, multipleFile = false, multipleLink = fal
       const res = {} as T
       const block = recordMap.block[blockId].value
       const properties = block?.properties || {}
-      console.log('properties', properties)
       Object.keys(properties).forEach((item) => {
         if (schema[item]) {
           const { type, name } = schema[item]
