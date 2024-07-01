@@ -7,10 +7,11 @@ import { useNotionContext } from 'react-notion-x'
 interface iProps {
   block: types.CollectionViewPageBlock
   multipleFile?: boolean // 是否多文件
+  multipleLink?: boolean // 是否多个链接
 }
 
 // 读取block自定义类型
-export function useDataBase<T>({ block, multipleFile = false }: iProps) {
+export function useDataBase<T>({ block, multipleFile = false, multipleLink = false }: iProps) {
   const { recordMap } = useNotionContext()
   const component = recordMap.collection_view[block?.view_ids?.[0]]?.value
   const collectId = component?.format?.collection_pointer?.id
@@ -30,6 +31,7 @@ export function useDataBase<T>({ block, multipleFile = false }: iProps) {
       const res = {} as T
       const block = recordMap.block[blockId].value
       const properties = block?.properties || {}
+      console.log('properties', properties)
       Object.keys(properties).forEach((item) => {
         if (schema[item]) {
           const { type, name } = schema[item]
@@ -48,10 +50,24 @@ export function useDataBase<T>({ block, multipleFile = false }: iProps) {
                 }
                 break
               default:
-                res[name] = properties[item][0][0] ?? ''
-                if (properties[item]?.[0]?.[1]?.[0]?.[0] === 'a') {
-                  const originHref = properties[item]?.[0]?.[1]?.[0]?.[1]
-                  res[name + 'Url'] = originHref || ''
+                if (multipleLink) {
+                  res[name] = properties[item]
+                    .filter((sitem) => (sitem[0].trim('') ? true : false))
+                    .map((sitem) => {
+                      if (sitem[1]?.[0]?.[0] === 'a') {
+                        return {
+                          title: sitem[0],
+                          url: sitem[1]?.[0]?.[1] || ''
+                        }
+                      }
+                      return sitem[0]
+                    })
+                } else {
+                  res[name] = properties[item][0][0] ?? ''
+                  if (properties[item]?.[0]?.[1]?.[0]?.[0] === 'a') {
+                    const originHref = properties[item]?.[0]?.[1]?.[0]?.[1]
+                    res[name + 'Url'] = originHref || ''
+                  }
                 }
             }
           }

@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import React, { useMemo } from 'react'
+import React, { useCallback, useMemo } from 'react'
 
 import Btn from '../Btn'
 import { getBlockType } from '@/hooks/useBlockType'
@@ -11,12 +11,17 @@ import { CalloutBlock, ExtendedRecordMap } from 'notion-types'
 import Modal from 'react-modal'
 import { NotionBlockRenderer, useNotionContext } from 'react-notion-x'
 
+interface ILink {
+  title: string
+  url: string
+}
 interface iTableSchema {
-  Name: string
-  Title: string // 链接名称
-  TitleUrl: string // 链接
+  Name: string[]
+  Title: ILink[] // 链接名称
   Icon: string // 默认图标
   IconAct: string // 选中图标
+  Type: string[] // 类型【数据判断用】
+  SubMenu: ILink[] // 导航列表
 }
 
 export function findCalloutInContent<T extends string>(props: {
@@ -84,11 +89,11 @@ export default function Nav(props) {
   const router = useRouter()
 
   const [modalIsOpen, setIsOpen] = React.useState(false)
-  const [isSolutionAct, setIsSolution] = React.useState(false)
+  const [isMenuAct, setIsMenu] = React.useState(-1)
   const isPC = useMediaQuery('(min-width: 1024px)')
 
   // @ts-ignore
-  const navList = useDataBase<iTableSchema>({ block: callouts.PasstoNavLink })
+  const navList = useDataBase<iTableSchema>({ block: callouts.PasstoNavLink, multipleLink: true })
   const toggleModal = () => {
     setIsOpen((isOpen) => !isOpen)
   }
@@ -96,48 +101,64 @@ export default function Nav(props) {
   const closeModal = () => {
     setIsOpen(false)
   }
-  const handleSolution = () => {
-    setIsSolution((isOpen) => !isOpen)
-  }
+  const handleMenu = useCallback(
+    (index) => {
+      if (index === isMenuAct) index = -1
+      setIsMenu(index)
+    },
+    [isMenuAct]
+  )
 
   const navLink = useMemo(() => {
     return navList.map((item, i) => {
       // 是否已选中
-      const newHref =
-        item.TitleUrl.indexOf('?pvs') === -1 ? item.TitleUrl : mapPageUrl(item.TitleUrl)
+      const link = item.Title?.[0]?.url || ''
+      const newHref = link.indexOf('?pvs') === -1 ? link : mapPageUrl(link)
       const isActive = '/' + (router?.query?.pageId || '') === newHref
-      const isSolution = item.Title === '解決方案'
+      const isSolution = item.Type[0] === 'Solution'
+      const isSubMenu = Array.isArray(item.SubMenu) && item.SubMenu.length > 0
       return (
         <div
           key={i}
           className={cs('relative', {
-            solutionItem: isSolution,
-            solutionItemAct: isSolution && isSolutionAct
+            navMenuItem: isSolution || isSubMenu,
+            navMenuItemAct: isMenuAct === i
           })}
         >
           <Btn
             className={cs('notion-link', { active: isActive })}
-            href={isSolution ? '' : item.TitleUrl}
+            href={isSolution || isSubMenu ? '' : link}
             onClick={() => {
-              if (isSolution && !isPC) {
-                handleSolution()
+              if ((isSolution || isSubMenu) && !isPC) {
+                handleMenu(i)
               }
             }}
           >
             <div className='icon-nav mr-4 lg:hidden flex items-center'>
-              <Image src={item.IconAct} width={24} height={24} alt={item.Title} />
+              <Image src={item.IconAct} width={24} height={24} alt={item.Title[0].title} />
             </div>
-            <p className='title'>{item.Title}</p>
+            <p className='title'>{item.Title[0].title}</p>
           </Btn>
-          {item.Name === 'solution' && (
-            <div className='detail'>
+          {isSolution && (
+            <div className='detail w-[320px]'>
               <NotionBlockRenderer blockId={callouts['SolutionNavlist'].id} />
+            </div>
+          )}
+          {isSubMenu && (
+            <div className='detail'>
+              {item.SubMenu.map((sitem, si) => {
+                return (
+                  <Btn key={si} href={sitem.url} className='w-full mb-4 min-w-[190px]'>
+                    {sitem.title}
+                  </Btn>
+                )
+              })}
             </div>
           )}
         </div>
       )
     })
-  }, [navList, router, mapPageUrl, callouts, isSolutionAct, isPC])
+  }, [navList, router, mapPageUrl, callouts, isMenuAct, isPC, handleMenu])
 
   return (
     <header className={cs('notion-header', className)}>
