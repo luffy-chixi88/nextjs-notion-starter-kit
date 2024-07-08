@@ -125,3 +125,7 @@ body {
     bottom: 0;
   }
 }
+
+.hide {
+  display: block !important;
+}

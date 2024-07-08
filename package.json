@@ -38,6 +38,7 @@
     "got": "^12.0.3",
     "isomorphic-unfetch": "^3.1.0",
     "lqip-modern": "^2.0.0",
+    "mermaid": "^10.9.1",
     "next": "12",
     "notion-client": "^6.16.0",
     "notion-types": "^6.16.0",

@@ -19,6 +19,7 @@ import { PasstoCode } from '@/components/Passto/code'
 import { PasstoForm } from '@/components/Passto/form'
 import { PasstoIntro } from '@/components/Passto/introduce'
 import { PasstoManager } from '@/components/Passto/manager'
+import { PasstoMermaid } from '@/components/Passto/mermaid'
 import { PasstoReadme } from '@/components/Passto/readme'
 import { PasstoScence } from '@/components/Passto/scence'
 import { PasstoStep } from '@/components/Passto/step'
@@ -162,6 +163,8 @@ const Callout = (props) => {
         return <Nav {...props} meta={titleInfo.meta} />
       case 'PasstoCode':
         return <PasstoCode {...props} meta={titleInfo.meta} />
+      case 'PasstoMermaid':
+        return <PasstoMermaid {...props} meta={titleInfo.meta} />
       case 'TDK':
         return <TDK {...props} meta={titleInfo.meta} />
       case 'FAQ':
