@@ -127,5 +127,5 @@ body {
 }
 
 .hide {
-  display: block !important;
+  /* display: block !important; */
 }

@@ -31,9 +31,5 @@ export function PasstoMermaid({ block, className }: iProps) {
     return res
   }, [block, recordMap])
 
-  return (
-    <div>
-      <Mermain chart={chart} />
-    </div>
-  )
+  return <Mermain chart={chart} />
 }
