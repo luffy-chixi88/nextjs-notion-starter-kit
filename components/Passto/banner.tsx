@@ -11,13 +11,14 @@ function Banner(props) {
   const { recordMap } = useNotionContext()
   // 指定callout内容返回
   const content = useMemo(() => {
-    const res = { header: null, type: 'image', center: null, list: null }
+    const res = { header: null, type: 'image', center: null, list: null, flowsheet: null }
     block.content.forEach((item, i) => {
       const currentBlock = recordMap.block[item].value
       const { type } = currentBlock
       if (type === 'callout') {
         // @ts-ignore
         const blockType = getCalloutAttr(currentBlock)
+        console.log('blockType', blockType)
         if (blockType?.title === 'BannerHead') {
           res.header = children[i]
         } else if (blockType?.title === 'PasstoBannerVideo') {
@@ -28,6 +29,8 @@ function Banner(props) {
         } else if (blockType?.title === 'BannerImage') {
           res.type = 'image'
           res.center = children[i]
+        } else if (blockType?.title === 'FlowSheet') {
+          res.flowsheet = children[i]
         }
       } else if (type === 'collection_view') {
         res.list = <List block={currentBlock} />
@@ -39,7 +42,8 @@ function Banner(props) {
   return (
     <div className={cs(props.className, className)}>
       <div>{content.header}</div>
-      <div className='flex justify-center relative max-lg:flex-col mt-[136px] max-md:mt-[100px] mb-[20px]'>
+      <div>{content.flowsheet}</div>
+      <div className='flex justify-center relative max-lg:flex-col mt-[60px] max-md:mt-[0] mb-[20px]'>
         <div className='content'>
           <div className={content.type === 'video' ? 'banner-video' : 'banner-image'}>
             <div className='banner-content'>{content.center}</div>

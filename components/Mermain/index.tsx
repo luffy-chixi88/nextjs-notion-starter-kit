@@ -18,6 +18,7 @@ mermaid.initialize({
     line{
       stroke-dasharray: 6 6;
       stroke: var(--bd-solid);
+      stroke-opacity: 0.5;
     }
     .messageText{
       font-size: 14px !important;

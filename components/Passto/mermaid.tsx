@@ -21,7 +21,6 @@ export function PasstoMermaid({ block, className }: iProps) {
     block.content.find((item) => {
       const currentBlock = recordMap.block[item].value
       const { type } = currentBlock
-      console.log('typetype', type)
       if (type === 'code') {
         res = currentBlock.properties?.title?.[0]?.[0] || ''
       } else {
