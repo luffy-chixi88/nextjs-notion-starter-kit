@@ -2652,12 +2652,16 @@
     border-radius: 8px;
     height: 40px;
     line-height: 40px;
+    padding-left: 16px;
+    padding-right: 16px;
+    display: flex;
+    align-items: center;
     figure > div {
-      width: 24px !important;
+      width: auto !important;
       height: 24px;
     }
     .notion-row {
-      width: 106px;
+      min-width: 106px;
     }
     .notion-spacer {
       width: 8px;
