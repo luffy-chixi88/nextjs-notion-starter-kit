@@ -127,6 +127,20 @@
       &:hover {
         opacity: 0.7;
       }
+      &::before {
+        content: '';
+        background: #333;
+        width: 6px;
+        height: 6px;
+        display: inline-block;
+        vertical-align: 2px;
+        margin-left: 4px;
+        margin-right: 8px;
+        border-radius: 100%;
+        line-height: 1;
+        overflow: hidden;
+        font-size: 6px;
+      }
     }
   }
   .pt-solution-list {
@@ -181,6 +195,21 @@
               margin-bottom: 16px;
               display: block;
               white-space: pre-wrap;
+
+              &::before {
+                content: '';
+                background: #333;
+                width: 6px;
+                height: 6px;
+                display: inline-block;
+                vertical-align: 2px;
+                margin-left: 4px;
+                margin-right: 8px;
+                border-radius: 100%;
+                line-height: 1;
+                overflow: hidden;
+                font-size: 6px;
+              }
             }
           }
         }
@@ -816,7 +845,7 @@
       }
       .notion-link {
         b {
-          margin: 48px 0 0 0;
+          margin: 48px 0 32px 0;
           padding: 12px 36px;
           min-width: 160px;
         }
@@ -2637,11 +2666,20 @@
 /* 带图标的按钮样式 */
 .pt-payBtnTagGroup {
   background-color: transparent;
-  margin-top: 8px;
+  margin-bottom: 24px;
 
   .notion-row {
     justify-content: center;
     align-items: center;
+    @media (max-width: 640px) {
+      flex-direction: row;
+      .notion-spacer {
+        display: block;
+        &:last-child {
+          display: none;
+        }
+      }
+    }
     .notion-column {
       width: auto !important;
     }
@@ -2662,6 +2700,7 @@
     }
     .notion-row {
       min-width: 106px;
+      flex-direction: row;
     }
     .notion-spacer {
       width: 8px;
