@@ -688,6 +688,102 @@
         margin-right: 24px;
       }
     }
+
+    /* 业务试用弹窗 start */
+    .pt-trialDialog {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 960px;
+      border-radius: 8px;
+      padding: 56px 60px;
+      background: #fff;
+      box-shadow: 0 0 0 999px rgba(0, 0, 0, 0.2);
+      .closeBtn {
+        position: absolute;
+        right: 24px;
+        top: 24px;
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+        background: url('/icon/closeRegular.svg') no-repeat center;
+        &:hover {
+          opacity: 0.5;
+        }
+      }
+      h3 {
+        font-size: 32px;
+        line-height: 1.5;
+        margin-bottom: 8px;
+        & + .notion-text {
+          color: var(--gray);
+        }
+      }
+      .subBanner {
+        margin-top: 24px;
+        padding-top: 48px;
+        height: 318px;
+        background: url('/home/banner-dialog-bg.png') no-repeat top;
+        background-size: 100% auto;
+        border-radius: 8px;
+        text-align: left;
+        padding-left: 140px;
+
+        .notion-asset-wrapper-image {
+          padding-top: 20px;
+          margin-bottom: 12px;
+          text-align: left;
+          flex-direction: row;
+          justify-content: flex-start;
+          align-items: flex-start;
+          & + .notion-text {
+            font-size: 20px;
+            color: #11365f;
+          }
+        }
+        .notion-text > b > .notion-link {
+          margin-top: 24px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          height: 48px;
+          padding: 8px 36px;
+          border-radius: 4px;
+          background-color: var(--light-primary);
+          color: #fff;
+          font-weight: 400;
+        }
+      }
+
+      @media (max-width: 980px) {
+        width: 345px;
+        padding: 48px 15px 18px;
+        h3 {
+          font-size: 24px;
+          & + .notion-text {
+            margin: 0 22px;
+            width: auto;
+          }
+        }
+        .notion-text {
+          font-size: 15px;
+        }
+        .subBanner {
+          height: 366px;
+          background: url('/home/banner-dialog-h5-bg.png') no-repeat center -20px;
+          background-size: 100% auto;
+          padding: 193px 22px 0;
+          text-align: center;
+          .notion-asset-wrapper-image {
+            display: none;
+          }
+        }
+      }
+    }
+    /* 业务试用弹窗 end */
   }
   .content {
     .banner-video {
@@ -875,6 +971,7 @@
         &::after {
           width: 90vw;
           height: 90vw;
+          pointer-events: none;
         }
       }
       .banner-image {

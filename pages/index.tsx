@@ -19,5 +19,33 @@ export const getStaticProps = async () => {
 }
 
 export default function NotionDomainPage(props) {
+  // 监听首页banner 弹窗
+  React.useEffect(() => {
+    const showBannerDialog = () => {
+      const dialog = document.querySelector('.pt-trialDialog') as HTMLElement
+      dialog.style.display = 'block'
+    }
+    const hideBannerDialog = () => {
+      const dialog = document.querySelector('.pt-trialDialog') as HTMLElement
+      dialog.style.display = 'none'
+    }
+    const clickHandler = (e: MouseEvent) => {
+      const closeBtn = document.querySelector('.pt-trialDialog .closeBtn') as HTMLElement
+      const showBtn = document.querySelector(
+        '.pt-bannerv2 .header .notion-link[href*="https://mch.ylbhd.com/login?type=demo"]'
+      ) as HTMLElement
+      const clickTarget = e.target as HTMLElement
+      closeBtn.contains(clickTarget) && hideBannerDialog()
+      if (showBtn.contains(clickTarget)) {
+        e.preventDefault()
+        showBannerDialog()
+      }
+    }
+    document.body?.addEventListener('click', clickHandler)
+
+    return () => {
+      document.body?.removeEventListener('click', clickHandler)
+    }
+  }, [])
   return <NotionPage {...props} />
 }
