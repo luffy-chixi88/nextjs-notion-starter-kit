@@ -31,14 +31,21 @@ export default function NotionDomainPage(props) {
     }
     const clickHandler = (e: MouseEvent) => {
       const closeBtn = document.querySelector('.pt-trialDialog .closeBtn') as HTMLElement
-      const showBtn = document.querySelector(
-        '.pt-bannerv2 .header .notion-link[href*="https://mch.ylbhd.com/login?type=demo"]'
-      ) as HTMLElement
+      const trialBanner = document.querySelector('.pt-trialDialog .subBanner') as HTMLElement
+      const showBtns = document.querySelectorAll(
+        '.notion-link[href*="https://mch.ylbhd.com/login?type=demo"]'
+      ) as NodeListOf<Element>
+
       const clickTarget = e.target as HTMLElement
       closeBtn.contains(clickTarget) && hideBannerDialog()
-      if (showBtn.contains(clickTarget)) {
+
+      if ([...showBtns].some((el) => el.contains(clickTarget))) {
         e.preventDefault()
         showBannerDialog()
+      } else if (trialBanner.contains(clickTarget)) {
+        e.preventDefault()
+        const link = trialBanner.querySelector('.notion-link') as HTMLAnchorElement
+        link?.href && window.open(link.href)
       }
     }
     document.body?.addEventListener('click', clickHandler)
