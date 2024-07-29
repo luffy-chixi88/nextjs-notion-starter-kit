@@ -662,6 +662,10 @@
   }
   .header {
     text-align: center;
+    /* 预加载.pt-trialDialog弹窗的banner图片 */
+    background: url('/home/bannerPhone-dialog.png') no-repeat;
+    background-size: 0 0;
+
     .notion-h1 {
       font-size: 64px;
       padding: 24px 0;
@@ -725,16 +729,15 @@
       .subBanner {
         margin-top: 24px;
         padding-top: 48px;
-        height: 318px;
-        background: url('/home/banner-dialog-bg.png') no-repeat top;
-        background-size: 100% auto;
+        height: 300px;
+        background: #f8fdff url('/home/bannerPhone-dialog.png') no-repeat 491px 30px;
+        background-size: 192px auto;
         border-radius: 8px;
         text-align: left;
         padding-left: 140px;
         cursor: pointer;
 
         .notion-asset-wrapper-image {
-          padding-top: 20px;
           margin-bottom: 12px;
           text-align: left;
           flex-direction: row;
@@ -773,9 +776,9 @@
           font-size: 15px;
         }
         .subBanner {
-          height: 366px;
-          background: url('/home/banner-dialog-h5-bg.png') no-repeat center -20px;
-          background-size: 100% auto;
+          height: 364px;
+          background: #f8fdff url('/home/bannerPhone-dialog.png') no-repeat center 23px;
+          background-size: 122px auto;
           padding: 193px 22px 0;
           text-align: center;
           .notion-asset-wrapper-image {
