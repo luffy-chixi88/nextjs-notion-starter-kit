@@ -1872,6 +1872,11 @@
   > .notion-callout-content {
     padding: 0 16px;
   }
+  &.notion-gray_background_co {
+    .border-b {
+      border-color: #f1f1f1;
+    }
+  }
 
   &:not(.notion-gray_background_co) {
     background: var(--bgNight);
