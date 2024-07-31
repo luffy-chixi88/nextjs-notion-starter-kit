@@ -73,6 +73,23 @@
         }
       }
     }
+    b:has(.notion-link) {
+      display: inline-block !important;
+      margin-left: 16px;
+      & > .notion-link {
+        font-weight: 600;
+        height: 40px;
+        padding: 8px 28px;
+        &:first-of-type {
+          margin-left: 0;
+          b {
+            background: transparent;
+            color: var(--light-primary);
+            border: 1px solid var(--light-primary);
+          }
+        }
+      }
+    }
   }
 }
 // 公共導航
@@ -692,6 +709,10 @@
         margin-right: 24px;
       }
     }
+    b:has(.notion-link) {
+      margin: 64px 0;
+      display: inline-block;
+    }
 
     /* 业务试用弹窗 start */
     .pt-trialDialog {
@@ -736,7 +757,9 @@
         text-align: left;
         padding-left: 140px;
         cursor: pointer;
-
+        b {
+          margin: 0;
+        }
         .notion-asset-wrapper-image {
           margin-bottom: 12px;
           text-align: left;

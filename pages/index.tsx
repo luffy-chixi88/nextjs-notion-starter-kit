@@ -33,7 +33,7 @@ export default function NotionDomainPage(props) {
       const closeBtn = document.querySelector('.pt-trialDialog .closeBtn') as HTMLElement
       const trialBanner = document.querySelector('.pt-trialDialog .subBanner') as HTMLElement
       const showBtns = document.querySelectorAll(
-        '.notion-link[href*="https://mch.ylbhd.com/login?type=demo"]'
+        '.notion-link[href*="https://cardcity.net/"]'
       ) as NodeListOf<Element>
 
       const clickTarget = e.target as HTMLElement
