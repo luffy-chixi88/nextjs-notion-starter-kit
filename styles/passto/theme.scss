@@ -2847,3 +2847,10 @@
     }
   }
 }
+
+/* 按钮样式 em>b>.notion-link 表示一个primary按钮 */
+em > b > .notion-link {
+  background-color: var(--light-primary) !important;
+  color: #fff !important;
+  font-style: normal;
+}
