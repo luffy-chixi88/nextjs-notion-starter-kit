@@ -129,6 +129,10 @@ body {
   bottom: 44px !important;
   right: 64px !important;
 }
+.PasstoAI-mask,
+.PasstoAI-tips {
+  display: none;
+}
 @media only screen and (max-width: 768px) {
   #PasstoAI #PasstoAI-chat-container:not(.PasstoAI-enlarge) {
     bottom: 0;
