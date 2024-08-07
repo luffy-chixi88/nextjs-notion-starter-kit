@@ -300,6 +300,7 @@ export const NotionPage: React.FC<types.PageProps> = ({ site, recordMap, error, 
         defer
         src='https://cloud.passto.ai/api/application/embed?protocol=https&host=cloud.passto.ai&token=18d20fd8c7303ca7&hideMask=1'
       ></Script>
+      <Script id='pixel-chaty' async src='https://cdn.chaty.app/pixel.js?id=VuhUaGb6'></Script>
 
       <PageHead
         pageId={pageId}

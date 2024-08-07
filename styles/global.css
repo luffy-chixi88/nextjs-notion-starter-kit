@@ -100,12 +100,21 @@ body {
 
 /* 机器人 */
 #PasstoAI .PasstoAI-chat-button svg {
-  width: 62px;
-  height: 74px;
+  opacity: 0;
 }
 #PasstoAI .PasstoAI-chat-button {
+  right: 44px !important;
   bottom: 40px !important;
+  width: 60px;
+  height: 60px;
   z-index: 50;
+  background: url('/icon/aiChat.svg') no-repeat center;
+  background-size: 100% 100%;
+  box-shadow: 0 4px 8px #2b5fd924;
+  border-radius: 100%;
+  @media only screen and (max-width: 768px) {
+    right: 14px !important;
+  }
 }
 #PasstoAI #PasstoAI-chat-container:not(.PasstoAI-enlarge) {
   bottom: 40px;
@@ -124,6 +133,29 @@ body {
   #PasstoAI #PasstoAI-chat-container:not(.PasstoAI-enlarge) {
     bottom: 0;
   }
+}
+
+#csaas-elements {
+  .csaas-widget {
+    right: 40px;
+    bottom: 120px;
+    z-index: 1001;
+    box-shadow: 0 4px 8px #2b5fd924;
+    border-radius: 100%;
+  }
+  @media only screen and (max-width: 768px) {
+    .csaas-widget {
+      right: 10px;
+    }
+  }
+  /* .csaas-channel-list .csaas-channel,
+  .csaas-channel-list .csaas-channel > a,
+  .csaas-channel-list .csaas-channel > a .csaas-svg,
+  .csaas-i-trigger .csaas-cta-button > button,
+  .csaas-i-trigger .csaas-cta-button > button .csaas-svg {
+    width: 40px !important;
+    height: 40px !important;
+  } */
 }
 
 .hide {

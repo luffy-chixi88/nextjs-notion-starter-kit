@@ -712,6 +712,14 @@
     b:has(.notion-link) {
       margin: 64px 0;
       display: inline-block;
+
+      &:first-child {
+        .notion-link {
+          background: transparent;
+          border: 1px solid var(--light-primary);
+          color: var(--light-primary);
+        }
+      }
     }
 
     /* 业务试用弹窗 start */

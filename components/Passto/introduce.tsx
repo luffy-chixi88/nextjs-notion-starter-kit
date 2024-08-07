@@ -99,6 +99,26 @@ export function PasstoIntro(props) {
                             )}
                           </div>
                         )
+                      case 'ImageRow':
+                        return (
+                          <div key={i} className='mb-5 flex'>
+                            <div className='flex'>
+                              <img src={item.Image[i]} alt={item.Title} />
+                            </div>
+                            {item.Image[i + 1] && (
+                              <div className='flex ml-6'>
+                                <div>
+                                  <img src={item.Image[i + 1]} alt={item.Title} />
+                                </div>
+                                {item.Image[i + 2] && (
+                                  <div className='ml-6'>
+                                    <img src={item.Image[i + 2]} alt={item.Title} />
+                                  </div>
+                                )}
+                              </div>
+                            )}
+                          </div>
+                        )
                       case 'Row':
                       default:
                         return (
