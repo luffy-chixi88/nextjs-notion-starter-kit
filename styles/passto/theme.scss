@@ -2808,6 +2808,7 @@
   .notion-row {
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     @media (max-width: 640px) {
       flex-direction: row;
       .notion-spacer {
@@ -2819,6 +2820,7 @@
     }
     .notion-column {
       width: auto !important;
+      margin: 10px 0;
     }
   }
   .pt-payBtnTag {
