@@ -2821,6 +2821,10 @@
     .notion-column {
       width: auto !important;
       margin: 10px 0;
+      img {
+        object-fit: scale-down !important;
+        width: auto !important;
+      }
     }
   }
   .pt-payBtnTag {
