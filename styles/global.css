@@ -162,6 +162,10 @@ body {
   } */
 }
 
+.PasstoBannerVideo video {
+  height: 100%;
+}
+
 .hide {
   /* display: block !important; */
 }
