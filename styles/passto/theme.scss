@@ -2549,7 +2549,7 @@
       }
       .footerLogo {
         .notion-asset-wrapper {
-          margin-bottom: 24px;
+          margin-bottom: 10px;
           img {
             width: 170px;
           }
@@ -2564,8 +2564,14 @@
 
         > .notion-callout-content > .notion-callout-text {
           display: flex;
-          justify-content: space-between;
+          justify-content: flex-start;
           width: 100%;
+
+          & > figure,
+          & > a {
+            width: auto !important;
+            margin-right: 24px;
+          }
 
           .notion-asset-wrapper {
             min-width: auto;

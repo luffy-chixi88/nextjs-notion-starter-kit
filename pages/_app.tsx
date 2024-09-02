@@ -54,6 +54,27 @@ export default function App({ Component, pageProps }: AppProps) {
     }
   }, [router.events])
 
+  React.useEffect(() => {
+    // 处理页脚邮件点击事件
+    const clickHandler = (e: MouseEvent) => {
+      const clickTarget = e.target as HTMLElement
+      // console.log('clickTarget', clickTarget.tagName, clickTarget.getAttribute('alt'))
+      if (
+        clickTarget.tagName.toLowerCase() === 'img' &&
+        clickTarget.getAttribute('alt')?.startsWith('mailto:')
+      ) {
+        window.location.href = clickTarget.getAttribute('alt')
+        return
+      }
+    }
+
+    document.body?.addEventListener('click', clickHandler)
+
+    return () => {
+      document.body?.removeEventListener('click', clickHandler)
+    }
+  }, [])
+
   return (
     <SnackbarProvider maxSnack={3}>
       <SnackbarUtilsConfig />

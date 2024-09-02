@@ -2,8 +2,8 @@ import { siteConfig } from './lib/site-config'
 
 export default siteConfig({
   // the site's root Notion page (required)
-  // rootNotionPageId: 'e02a0efe35b8404b8999b9c645737f81',   // 中文
-  rootNotionPageId: 'fd4b79df3e8e4924a0f83db4dd5a3a37', // 英文
+  rootNotionPageId: 'e02a0efe35b8404b8999b9c645737f81', // 中文
+  // rootNotionPageId: 'fd4b79df3e8e4924a0f83db4dd5a3a37', // 英文
 
   // if you want to restrict pages to a single notion workspace (optional)
   // (this should be a Notion ID; see the docs for how to extract this)
