@@ -66,7 +66,7 @@ export async function search(params: SearchParams): Promise<SearchResults> {
  * @return {boolean} - Returns true if the block is of type 'file' or 'pdf', false otherwise.
  */
 function isBlockOfTypeFile(block: any): boolean {
-  return block.value.type === 'file' || block.value.type === 'video'
+  return block.value?.type === 'file' || block.value?.type === 'video'
 }
 
 /**
