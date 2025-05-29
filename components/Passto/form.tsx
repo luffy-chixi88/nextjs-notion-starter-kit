@@ -87,7 +87,7 @@ export function PasstoForm(props) {
   return (
     <div className={cs('form-box', className)}>
       <form>
-        {DataList.map((item, i) => {
+        {DataList?.map((item, i) => {
           return (
             <div key={i} className='form-item'>
               <input

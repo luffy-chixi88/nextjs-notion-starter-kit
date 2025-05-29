@@ -110,7 +110,7 @@ export default function Nav(props) {
   )
 
   const navLink = useMemo(() => {
-    return navList.map((item, i) => {
+    return navList?.map((item, i) => {
       // 是否已选中
       const link = item.Title?.[0]?.url || ''
       const newHref = link.indexOf('?pvs') === -1 ? link : mapPageUrl(link)

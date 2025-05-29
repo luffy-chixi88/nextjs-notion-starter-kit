@@ -29,7 +29,7 @@ export function PasstoScence(props) {
   return (
     <div className={cs(className)}>
       <div className='flex items-center justify-start pt-10 max-lg:pt-8 border-b border-b-dashed border-slate-800 overflow-hidden overflow-x-auto'>
-        {list.map((item, i) => {
+        {list?.map((item, i) => {
           return (
             <div
               key={i}

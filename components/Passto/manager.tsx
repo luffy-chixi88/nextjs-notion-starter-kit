@@ -68,7 +68,7 @@ export function PasstoManager(props) {
               swiper.update()
             }}
           >
-            {list.map((item, i) => {
+            {list?.map((item, i) => {
               return (
                 <SwiperSlide key={i} className='slide'>
                   <img className='max-lg:!hidden' src={item.Image} />

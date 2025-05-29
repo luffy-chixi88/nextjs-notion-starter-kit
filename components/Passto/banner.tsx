@@ -67,7 +67,7 @@ function List({ block }) {
   const list = useDataBase<iTableschema>({ block })
   return (
     <div className='pt-list'>
-      {list.map((item, i) => {
+      {list?.map((item, i) => {
         return <ListItem item={item} key={i} />
       })}
     </div>

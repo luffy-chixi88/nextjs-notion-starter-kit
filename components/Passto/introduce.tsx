@@ -44,7 +44,7 @@ export function PasstoIntro(props) {
 
   return (
     <div className={cs(className, 'intro-list flex  max-lg:flex-col')}>
-      {dataList.map((item, index) => {
+      {dataList?.map((item, index) => {
         return (
           <div
             key={index}
