@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 
 import * as types from 'notion-types'
 import { mapImageUrl } from '@/lib/map-image-url'
@@ -13,15 +13,17 @@ interface iProps {
 // 读取block自定义类型
 export function useDataBase<T>({ block, multipleFile = false, multipleLink = false }: iProps) {
   const { recordMap } = useNotionContext()
+
   const component = recordMap.collection_view[block?.view_ids?.[0]]?.value
-  const collectId = component?.format?.collection_pointer?.id
+  const componentId = component?.id || block?.view_ids?.[0]
+  const collectId = component?.format?.collection_pointer?.id || block?.collection_id
 
   const blockIds = useMemo(() => {
     return (
-      recordMap.collection_query?.[collectId]?.[component.id]?.collection_group_results?.blockIds ??
+      recordMap.collection_query?.[collectId]?.[componentId]?.collection_group_results?.blockIds ??
       []
     )
-  }, [recordMap, collectId, component])
+  }, [recordMap, collectId, componentId])
 
   // 数据表结构
   const schema = recordMap.collection?.[collectId]?.value?.schema
@@ -74,9 +76,9 @@ export function useDataBase<T>({ block, multipleFile = false, multipleLink = fal
       })
       return res
     })
-  }, [blockIds, recordMap, schema, multipleFile])
+  }, [blockIds, recordMap.block, schema, multipleFile, multipleLink])
 
-  if (!component || !blockIds) return null
+  if (!componentId || !blockIds) return null
 
   return list
 }
